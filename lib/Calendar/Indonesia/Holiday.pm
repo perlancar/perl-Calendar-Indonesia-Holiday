@@ -17,7 +17,7 @@ our @EXPORT_OK = qw(list_id_holidays is_id_holiday);
 our %SPEC;
 
 my @fixed_holidays = (
-    {
+    my $newyear = {
         day        =>  1, month =>  1,
         id_name    => "Tahun Baru",
         en_name    => "New Year",
@@ -178,6 +178,29 @@ sub _jointlv {
 
 my %year_holidays;
 
+# ditetapkan 9 juni 2008
+my $eidulf2009;
+$year_holidays{2009} = [
+    _h_chnewyear ({day => 26, month =>  1}, {hyear=>2560}),
+    _h_mawlid    ({day =>  9, month =>  3}),
+    _h_nyepi     ({day => 26, month =>  3}, {hyear=>1931}),
+    _h_goodfri   ({day => 10, month =>  4}),
+    _h_vesakha   ({day =>  9, month =>  5}, {hyear=>2553}),
+    _h_ascension ({day => 21, month =>  5}),
+    _h_isramiraj ({day => 20, month =>  7}),
+    ($eidulf2009 =
+    _h_eidulf    ({day => 21, month =>  9}, {hyear=>1930, day=>1})),
+    _h_eidulf    ({day => 22, month =>  9}, {hyear=>1930, day=>2}),
+    _h_eidula    ({day => 27, month => 11}),
+    _h_hijra     ({day => 18, month => 12}, {hyear=>1931}),
+
+    _jointlv     ({day =>  2, month =>  1}, {holiday=>$newyear}),
+    _jointlv     ({day => 18, month =>  9}, {holiday=>$eidulf2009}),
+    _jointlv     ({day => 23, month =>  9}, {holiday=>$eidulf2009}),
+    _jointlv     ({day => 24, month => 12}, {holiday=>$christmas}),
+];
+
+# ditetapkan x xxx 2009
 my $eidulf2010;
 $year_holidays{2010} = [
     _h_chnewyear ({day => 14, month =>  2}, {hyear=>2561}),
@@ -189,14 +212,16 @@ $year_holidays{2010} = [
     _h_isramiraj ({day => 10, month =>  7}),
     ($eidulf2010 =
     _h_eidulf    ({day => 10, month =>  9}, {hyear=>1931, day=>1})),
-    _jointlv     ({day =>  9, month =>  9}, {holiday=>$eidulf2010}),
     _h_eidulf    ({day => 11, month =>  9}, {hyear=>1931, day=>2}),
-    _jointlv     ({day => 13, month =>  9}, {holiday=>$eidulf2010}),
     _h_eidula    ({day => 17, month => 11}),
     _h_hijra     ({day =>  7, month => 12}, {hyear=>1932}),
+
+    _jointlv     ({day =>  9, month =>  9}, {holiday=>$eidulf2010}),
+    _jointlv     ({day => 13, month =>  9}, {holiday=>$eidulf2010}),
     _jointlv     ({day => 24, month => 12}, {holiday=>$christmas}),
 ];
 
+# ditetapkan x xxx 2010
 my $eidulf2011;
 $year_holidays{2011} = [
     _h_chnewyear ({day =>  3, month =>  2}, {hyear=>2562}),
@@ -209,13 +234,16 @@ $year_holidays{2011} = [
     ($eidulf2011 =
     _h_eidulf    ({day => 30, month =>  8}, {hyear=>1932, day=>1})),
     _h_eidulf    ({day => 31, month =>  8}, {hyear=>1932, day=>2}),
+    _h_eidula    ({day =>  7, month => 11}),
+    _h_hijra     ({day => 27, month => 11}, {hyear=>1933}),
+
     _jointlv     ({day => 29, month =>  8}, {holiday=>$eidulf2011}),
     _jointlv     ({day =>  1, month =>  9}, {holiday=>$eidulf2011}),
     _jointlv     ({day =>  2, month =>  9}, {holiday=>$eidulf2011}),
-    _h_eidula    ({day =>  7, month => 11}),
-    _h_hijra     ({day => 27, month => 11}, {hyear=>1933}),
     _jointlv     ({day => 26, month => 12}, {holiday=>$christmas}),
 ];
+
+# ditetapkan x xxx 2011
 
 my @years     = sort keys %year_holidays;
 our $min_year = $years[0];
