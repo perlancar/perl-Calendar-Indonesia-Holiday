@@ -477,7 +477,7 @@ __END__
 
 =head1 DESCRIPTION
 
-This module provides two functions: B<list_id_holidays>.
+This module provides one function: B<list_id_holidays>.
 
 This module uses L<Log::Any> logging framework.
 
