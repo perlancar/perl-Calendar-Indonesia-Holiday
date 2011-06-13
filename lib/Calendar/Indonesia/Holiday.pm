@@ -178,6 +178,25 @@ sub _jointlv {
 
 my %year_holidays;
 
+my $eidulf2010;
+$year_holidays{2010} = [
+    _h_chnewyear ({day => 14, month =>  2}, {hyear=>2561}),
+    _h_mawlid    ({day => 26, month =>  2}),
+    _h_nyepi     ({day => 16, month =>  3}, {hyear=>1932}),
+    _h_goodfri   ({day =>  2, month =>  4}),
+    _h_vesakha   ({day => 28, month =>  5}, {hyear=>2554}),
+    _h_ascension ({day =>  2, month =>  6}),
+    _h_isramiraj ({day => 10, month =>  7}),
+    ($eidulf2010 =
+    _h_eidulf    ({day => 10, month =>  9}, {hyear=>1931, day=>1})),
+    _jointlv     ({day =>  9, month =>  9}, {holiday=>$eidulf2010}),
+    _h_eidulf    ({day => 11, month =>  9}, {hyear=>1931, day=>2}),
+    _jointlv     ({day => 13, month =>  9}, {holiday=>$eidulf2010}),
+    _h_eidula    ({day => 17, month => 11}),
+    _h_hijra     ({day =>  7, month => 12}, {hyear=>1932}),
+    _jointlv     ({day => 24, month => 12}, {holiday=>$christmas}),
+];
+
 my $eidulf2011;
 $year_holidays{2011} = [
     _h_chnewyear ({day =>  3, month =>  2}, {hyear=>2562}),
@@ -225,6 +244,8 @@ for my $year ($min_year .. $max_year) {
         my $h = clone $h0;
         $h->{is_holiday}     //= 0;
         $h->{is_joint_leave} //= 0;
+        delete $h->{id_name0};
+        delete $h->{en_name0};
         push @hy, $h;
     }
 
