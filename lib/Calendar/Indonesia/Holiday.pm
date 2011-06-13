@@ -178,6 +178,31 @@ sub _jointlv {
 
 my %year_holidays;
 
+# ditetapkan x xxx 2007
+my $hijra2008a;
+my $eidulf2008;
+$year_holidays{2008} = [
+    _h_hijra     ({day => 10, month =>  1}, {hyear=>1929}),
+    _h_chnewyear ({day =>  7, month =>  2}, {hyear=>2559}),
+    _h_nyepi     ({day =>  7, month =>  3}, {hyear=>1930}),
+    _h_mawlid    ({day => 20, month =>  3}),
+    _h_goodfri   ({day => 21, month =>  3}),
+    _h_ascension ({day =>  1, month =>  5}),
+    _h_vesakha   ({day => 20, month =>  5}, {hyear=>2552}),
+    _h_isramiraj ({day => 30, month =>  7}),
+    ($eidulf2008 =
+    _h_eidulf    ({day =>  1, month => 10}, {hyear=>1929, day=>1})),
+    _h_eidulf    ({day =>  2, month => 10}, {hyear=>1929, day=>2}),
+    _h_eidula    ({day =>  8, month => 12}),
+    _h_hijra     ({day => 29, month => 12}, {hyear=>1930}),
+
+    _jointlv     ({day => 11, month =>  1}, {holiday=>$hijra2008a}),
+    _jointlv     ({day => 29, month =>  9}, {holiday=>$eidulf2008}),
+    _jointlv     ({day => 30, month =>  9}, {holiday=>$eidulf2008}),
+    _jointlv     ({day =>  3, month => 10}, {holiday=>$eidulf2008}),
+    _jointlv     ({day => 26, month => 12}, {holiday=>$christmas}),
+];
+
 # ditetapkan 9 juni 2008
 my $eidulf2009;
 $year_holidays{2009} = [
