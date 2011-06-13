@@ -206,6 +206,6 @@ None are exported by default, but they are exportable.
 =head1 SEE ALSO
 
 This API is available on GudangAPI, http://www.gudangapi.com/ , under
-"calendar/id" module.
+"calendar/id" module. To use GudangAPI, you can also use L<WWW::GudangAPI>.
 
 =cut
