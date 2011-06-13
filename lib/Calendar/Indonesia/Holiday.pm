@@ -39,8 +39,10 @@ my @fixed_holidays = (
 
 sub _h_chnewyear {
     my ($r, $opts) = @_;
-    $r->{id_name}    = "Tahun Baru Imlek";
-    $r->{en_name}    = "Chinese New Year";
+    $r->{id_name}    = "Tahun Baru Imlek".
+        ($opts->{hyear} ? " $opts->{hyear}":"");
+    $r->{en_name}    = "Chinese New Year".
+        ($opts->{hyear} ? " $opts->{hyear}":"");
     $r->{id_aliases} = [];
     $r->{en_aliases} = [];
     $r->{is_holiday} = 1;
@@ -61,8 +63,10 @@ sub _h_mawlid {
 
 sub _h_nyepi {
     my ($r, $opts) = @_;
-    $r->{id_name}    = "Nyepi";
-    $r->{en_name}    = "Nyepi";
+    $r->{id_name}    = "Nyepi".
+        ($opts->{hyear} ? " $opts->{hyear}":"");
+    $r->{en_name}    = "Nyepi".
+        ($opts->{hyear} ? " $opts->{hyear}":"");
     $r->{id_aliases} = ["Tahun Baru Saka"];
     $r->{en_aliases} = ["Bali New Year", "Bali Day Of Silence"];
     $r->{is_holiday} = 1;
@@ -83,8 +87,10 @@ sub _h_goodfri {
 
 sub _h_vesakha {
     my ($r, $opts) = @_;
-    $r->{id_name}    = "Waisyak";
-    $r->{en_name}    = "Vesakha";
+    $r->{id_name}    = "Waisyak".
+        ($opts->{hyear} ? " $opts->{hyear}":"");
+    $r->{en_name}    = "Vesakha".
+        ($opts->{hyear} ? " $opts->{hyear}":"");
     $r->{id_aliases} = [];
     $r->{en_aliases} = ["Vesak"];
     $r->{is_holiday} = 1;
@@ -117,8 +123,10 @@ sub _h_isramiraj {
 sub _h_eidulf {
     my ($r, $opts) = @_;
     $opts //= {};
-    $r->{id_name0}   = "Idul Fitri";
-    $r->{en_name0}   = "Eid Ul-Fitr";
+    $r->{id_name0}   = "Idul Fitri".
+        ($opts->{hyear} ? " $opts->{hyear}H":"");
+    $r->{en_name0}   = "Eid Ul-Fitr".
+        ($opts->{hyear} ? " $opts->{hyear}H":"");
     $r->{id_name}    = $r->{id_name0}.($opts->{day} ? ", Hari $opts->{day}":"");
     $r->{en_name}    = $r->{en_name0}.($opts->{day} ? ", Day $opts->{day}":"");
     $r->{id_aliases} = ["Lebaran"];
@@ -141,8 +149,11 @@ sub _h_eidula {
 
 sub _h_hijra {
     my ($r, $opts) = @_;
-    $r->{id_name}    = "Tahun Baru Hijriyah";
-    $r->{en_name}    = "Hijra";
+    $opts //= {};
+    $r->{id_name}    = "Tahun Baru Hijriyah".
+        ($opts->{hyear} ? " $opts->{hyear}H":"");
+    $r->{en_name}    = "Hijra".
+        ($opts->{hyear} ? " $opts->{hyear}H":"");
     $r->{id_aliases} = ["1 Muharam"];
     $r->{en_aliases} = [];
     $r->{is_holiday} = 1;
@@ -169,20 +180,21 @@ my %year_holidays;
 
 my $eidulf2011;
 $year_holidays{2011} = [
-    _h_chnewyear ({day =>  3, month =>  2}),
+    _h_chnewyear ({day =>  3, month =>  2}, {hyear=>2562}),
     _h_mawlid    ({day => 16, month =>  2}),
-    _h_nyepi     ({day =>  5, month =>  3}),
+    _h_nyepi     ({day =>  5, month =>  3}, {hyear=>1933}),
     _h_goodfri   ({day => 22, month =>  4}),
-    _h_vesakha   ({day => 17, month =>  5}),
+    _h_vesakha   ({day => 17, month =>  5}, {hyear=>2555}),
     _h_ascension ({day =>  2, month =>  6}),
     _h_isramiraj ({day => 29, month =>  6}),
-    ($eidulf2011 = _h_eidulf    ({day => 30, month =>  8}, {day=>1})),
-    _h_eidulf    ({day => 31, month =>  8}, {day=>2}),
+    ($eidulf2011 =
+    _h_eidulf    ({day => 30, month =>  8}, {hyear=>1932, day=>1})),
+    _h_eidulf    ({day => 31, month =>  8}, {hyear=>1932, day=>2}),
     _jointlv     ({day => 29, month =>  8}, {holiday=>$eidulf2011}),
     _jointlv     ({day =>  1, month =>  9}, {holiday=>$eidulf2011}),
     _jointlv     ({day =>  2, month =>  9}, {holiday=>$eidulf2011}),
     _h_eidula    ({day =>  7, month => 11}),
-    _h_hijra     ({day => 27, month => 11}),
+    _h_hijra     ({day => 27, month => 11}, {hyear=>1933}),
     _jointlv     ({day => 26, month => 12}, {holiday=>$christmas}),
 ];
 
