@@ -117,8 +117,10 @@ sub _h_isramiraj {
 sub _h_eidulf {
     my ($r, $opts) = @_;
     $opts //= {};
-    $r->{id_name}    = "Idul Fitri".($opts->{day} ? ", Hari $opts->{day}":"");
-    $r->{en_name}    = "Eid Ul-Fitr".($opts->{day} ? ", Day $opts->{day}":"");
+    $r->{id_name0}   = "Idul Fitri";
+    $r->{en_name0}   = "Eid Ul-Fitr";
+    $r->{id_name}    = $r->{id_name0}.($opts->{day} ? ", Hari $opts->{day}":"");
+    $r->{en_name}    = $r->{en_name0}.($opts->{day} ? ", Day $opts->{day}":"");
     $r->{id_aliases} = ["Lebaran"];
     $r->{en_aliases} = [];
     $r->{is_holiday} = 1;
@@ -152,8 +154,10 @@ sub _jointlv {
     my ($r, $opts) = @_;
     $opts //= {};
     my $h = $opts->{holiday};
-    $r->{id_name}        = "Cuti Bersama".($h ? " ($h->{id_name})": "");
-    $r->{en_name}        = "Joint Leave".($h ? " ($h->{en_name})": "");
+    $r->{id_name}        = "Cuti Bersama".
+        ($h ? " (".($h->{id_name0} // $h->{id_name}).")": "");
+    $r->{en_name}        = "Joint Leave".
+        ($h ? " (".($h->{en_name0} // $h->{en_name}).")": "");
     $r->{id_aliases}     = [];
     $r->{en_aliases}     = [];
     $r->{is_joint_leave} = 1;
