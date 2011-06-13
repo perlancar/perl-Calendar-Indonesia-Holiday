@@ -176,9 +176,17 @@ sub _jointlv {
     ($r);
 }
 
+sub _make_tentative {
+    my ($holidays) = @_;
+    for (@$holidays) {
+        push @{$_->{tags}}, "tentative" if $_->{is_joint_leave}
+    }
+    $holidays;
+}
+
 my %year_holidays;
 
-# ditetapkan x xxx 2007
+# ditetapkan 5 feb 2008
 my $hijra2008a;
 my $eidulf2008;
 $year_holidays{2008} = [
@@ -269,6 +277,25 @@ $year_holidays{2011} = [
 ];
 
 # ditetapkan x xxx 2011
+my $eidulf2012;
+$year_holidays{2012} = _make_tentative [
+    _h_chnewyear ({day => 23, month =>  1}, {hyear=>2563}),
+    _h_mawlid    ({day =>  4, month =>  2}),
+    _h_nyepi     ({day => 23, month =>  3}, {hyear=>1934}),
+    _h_goodfri   ({day =>  6, month =>  4}),
+    _h_vesakha   ({day =>  6, month =>  5}, {hyear=>2556}),
+    _h_ascension ({day => 17, month =>  5}),
+    _h_isramiraj ({day => 16, month =>  6}),
+    ($eidulf2012 =
+    _h_eidulf    ({day => 21, month =>  8}, {hyear=>1933, day=>1})),
+    _h_eidulf    ({day => 22, month =>  8}, {hyear=>1933, day=>2}),
+    _h_eidula    ({day => 26, month => 10}),
+    _h_hijra     ({day => 15, month => 11}, {hyear=>1934}),
+
+    _jointlv     ({day => 21, month =>  8}, {holiday=>$eidulf2012}),
+    _jointlv     ({day => 22, month =>  8}, {holiday=>$eidulf2012}),
+    _jointlv     ({day => 26, month => 12}, {holiday=>$christmas}),
+];
 
 my @years     = sort keys %year_holidays;
 our $min_year = $years[0];
