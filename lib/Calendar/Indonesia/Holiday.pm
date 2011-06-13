@@ -176,7 +176,7 @@ sub _jointlv {
     ($r);
 }
 
-sub _make_tentative {
+sub _make_jl_tentative {
     my ($holidays) = @_;
     for (@$holidays) {
         push @{$_->{tags}}, "tentative" if $_->{is_joint_leave}
@@ -278,7 +278,7 @@ $year_holidays{2011} = [
 
 # ditetapkan x xxx 2011
 my $eidulf2012;
-$year_holidays{2012} = _make_tentative [
+$year_holidays{2012} = _make_jl_tentative [
     _h_chnewyear ({day => 23, month =>  1}, {hyear=>2563}),
     _h_mawlid    ({day =>  4, month =>  2}),
     _h_nyepi     ({day => 23, month =>  3}, {hyear=>1934}),
