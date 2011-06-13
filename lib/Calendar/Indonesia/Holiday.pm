@@ -287,8 +287,8 @@ $year_holidays{2012} = _make_jl_tentative [
     _h_ascension ({day => 17, month =>  5}),
     _h_isramiraj ({day => 16, month =>  6}),
     ($eidulf2012 =
-    _h_eidulf    ({day => 21, month =>  8}, {hyear=>1933, day=>1})),
-    _h_eidulf    ({day => 22, month =>  8}, {hyear=>1933, day=>2}),
+    _h_eidulf    ({day => 19, month =>  8}, {hyear=>1933, day=>1})),
+    _h_eidulf    ({day => 20, month =>  8}, {hyear=>1933, day=>2}),
     _h_eidula    ({day => 26, month => 10}),
     _h_hijra     ({day => 15, month => 11}, {hyear=>1934}),
 
@@ -296,6 +296,8 @@ $year_holidays{2012} = _make_jl_tentative [
     _jointlv     ({day => 22, month =>  8}, {holiday=>$eidulf2012}),
     _jointlv     ({day => 26, month => 12}, {holiday=>$christmas}),
 ];
+
+# data mwn sd 2020, tapi masih missing waisyak
 
 my @years     = sort keys %year_holidays;
 our $min_year = $years[0];
