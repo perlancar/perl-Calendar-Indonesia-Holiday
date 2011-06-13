@@ -221,21 +221,25 @@ my $res = gen_read_table_func(
                 summary => 'English name',
                 column_index => 5,
                 column_filterable => 0,
+                column_sortable => 0,
             }],
             id_name => ['str*'=>{
                 summary => 'Indonesian name',
                 column_index => 6,
                 column_filterable => 0,
+                column_sortable => 0,
             }],
             en_aliases => ['array*'=>{
                 summary => 'English other names, if any',
                 column_index => 7,
                 column_filterable => 0,
+                column_sortable => 0,
             }],
             id_aliases => ['array*'=>{
                 summary => 'Indonesian other names, if any',
                 column_index => 8,
                 column_filterable => 0,
+                column_sortable => 0,
             }],
             is_holiday => ['bool*'=>{
                 column_index => 9,
@@ -247,6 +251,7 @@ my $res = gen_read_table_func(
             }],
             tags => ['array*'=>{
                 column_index => 11,
+                column_sortable => 0,
             }],
         },
         pk => 'date',
