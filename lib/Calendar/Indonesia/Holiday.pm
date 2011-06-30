@@ -186,7 +186,7 @@ sub _make_jl_tentative {
 
 my %year_holidays;
 
-# ditetapkan 5 feb 2008
+# decreed feb 5, 2008
 my $hijra2008a;
 my $eidulf2008;
 $year_holidays{2008} = [
@@ -211,7 +211,7 @@ $year_holidays{2008} = [
     _jointlv     ({day => 26, month => 12}, {holiday=>$christmas}),
 ];
 
-# ditetapkan 9 juni 2008
+# decreed juni 9, 2008
 my $eidulf2009;
 $year_holidays{2009} = [
     _h_chnewyear ({day => 26, month =>  1}, {hyear=>2560}),
@@ -233,7 +233,7 @@ $year_holidays{2009} = [
     _jointlv     ({day => 24, month => 12}, {holiday=>$christmas}),
 ];
 
-# ditetapkan x xxx 2009
+# decreed aug 7, 2009
 my $eidulf2010;
 $year_holidays{2010} = [
     _h_chnewyear ({day => 14, month =>  2}, {hyear=>2561}),
@@ -254,7 +254,7 @@ $year_holidays{2010} = [
     _jointlv     ({day => 24, month => 12}, {holiday=>$christmas}),
 ];
 
-# ditetapkan x xxx 2010
+# decreed jun 15, 2010
 my $eidulf2011;
 $year_holidays{2011} = [
     _h_chnewyear ({day =>  3, month =>  2}, {hyear=>2562}),
@@ -276,7 +276,7 @@ $year_holidays{2011} = [
     _jointlv     ({day => 26, month => 12}, {holiday=>$christmas}),
 ];
 
-# ditetapkan x xxx 2011
+# decreed may 16, 2011
 my $eidulf2012;
 $year_holidays{2012} = _make_jl_tentative [
     _h_chnewyear ({day => 23, month =>  1}, {hyear=>2563}),
@@ -296,8 +296,6 @@ $year_holidays{2012} = _make_jl_tentative [
     _jointlv     ({day => 22, month =>  8}, {holiday=>$eidulf2012}),
     _jointlv     ({day => 26, month => 12}, {holiday=>$christmas}),
 ];
-
-# data mwn sd 2020, tapi masih missing waisyak
 
 my @years     = sort keys %year_holidays;
 our $min_year = $years[0];
@@ -509,7 +507,8 @@ Will be provided if there is demand and data source.
 =head2 Why only provide data up to (current year)+1?
 
 Some religious holidays, especially Vesakha, are not determined yet. Joint leave
-days are also usually determined in the middle of the previous year.
+days are also usually decreed by the government in May/June of the preceding
+year.
 
 
 =head1 SEE ALSO
