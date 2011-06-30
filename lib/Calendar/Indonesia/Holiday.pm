@@ -12,7 +12,11 @@ use Sub::Spec::Gen::ReadTable qw(gen_read_table_func);
 
 use Exporter;
 our @ISA = qw(Exporter);
-our @EXPORT_OK = qw(list_id_holidays is_id_holiday);
+our @EXPORT_OK = qw(
+                       list_id_holidays
+                       enum_id_workdays
+                       count_id_workdays
+               );
 
 our %SPEC;
 
@@ -419,12 +423,85 @@ no warnings;
 *list_id_holidays = $res->[2]{code};
 use warnings;
 
+$SPEC{enum_id_workdays} = {
+    summary => 'Enumerate working days in a certain period (month/year)',
+    description => <<'_',
+
+Working day is defined as day that is not Saturday*/Sunday/holiday/joint leave
+days*. If work_saturdays is set to true, Saturdays are also counted as working
+days. If observe_joint_leaves is set to false, joint leave days are also counted
+as working days.
+
+_
+    args => {
+        month => ['int*' => {
+            # defaults to current month
+        }],
+        year => ['int*' => {
+            # defaults to current year
+        }],
+        work_saturdays => ['bool' => {
+            summary => 'If set to 1, Saturday is a working day',
+            default => 0,
+        }],
+        observe_joint_leaves => ['bool' => {
+            summary => 'If set to 0, do not observe joint leave as holidays',
+            default => 1,
+        }],
+    },
+};
+sub enum_id_workdays {
+    my %args = @_;
+
+    # XXX args
+    my $now = DateTime->now;
+    my $year  = $args{year}  // $now->year;
+    my $month = $args{month} // $now->month;
+    my $work_saturdays = $args{work_saturdays} // 0;
+    my $observe_joint_leaves = $args{observe_joint_leaves} // 1;
+    my $eom = DateTime->new(year=>$year, month=>$month, day=>1)->
+        add(months=>1)->subtract(days=>1);
+
+    my @args = (year=>$year, month=>$month);
+    push @args, (is_holiday=>1) if !$observe_joint_leaves;
+    my $res = list_id_holidays(@args);
+    return [500, "Can't list holidays: $res->[0] - $res->[1]"]
+        unless $res->[0] == 200;
+    #use Data::Dump; dd $res;
+
+    my @wd;
+    for my $day (1..$eom->day) {
+        my $dt = DateTime->new(day=>$day, month=>$month, year=>$year);
+        next if $dt->day_of_week == 7;
+        next if $dt->day_of_week == 6 && !$work_saturdays;
+        my $ymd = sprintf "%04d-%02d-%02d", $year, $month, $day;
+        next if $ymd ~~ @{$res->[2]};
+        push @wd, $ymd;
+    }
+
+    [200, "OK", \@wd];
+}
+
+$spec = clone($SPEC{enum_id_workdays});
+$spec->{summary} = "Count working days in a certain period (month/year)";
+$SPEC{count_id_workdays} = $spec;
+sub count_id_workdays {
+    my $res = enum_id_workdays(@_);
+    return $res unless $res->[0] == 200;
+    $res->[2] = @{$res->[2]};
+    $res;
+}
+
 1;
 __END__
 
 =head1 SYNOPSIS
 
- use Calendar::Indonesia::Holiday qw(list_id_holidays);
+ use Calendar::Indonesia::Holiday qw(
+     list_id_holidays
+     enum_id_workdays
+     count_id_workdays
+ );
 
  # list Indonesian holidays for the year 2011, without the joint leave days
  # ("cuti bersama"), show only the dates
@@ -471,6 +548,13 @@ __END__
  # check whether 2011-02-16 is a holiday
  my $res = list_id_holidays(date => '2011-02-16');
  print "2011-02-16 is a holiday\n" if @{$res->[2]};
+
+ # enumerate working days for a certain period
+ my $res = enum_id_workdays(year=>2011, month=>7);
+
+ # idem, but returns a number instead. year/month defaults to current
+ # year/month.
+ my $res = count_id_workdays();
 
 
 =head1 DESCRIPTION
