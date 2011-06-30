@@ -1,5 +1,14 @@
 Revision history for Calendar-Indonesia-Holiday
 
+0.02     2011-06-30
+
+         [ENHANCEMENTS]
+
+         - Add functions: enum_id_workdays(), count_id_workdays().
+
+         - (documentation) Add FAQ.
+
+
 0.01     2011-06-14
 
          First release.
