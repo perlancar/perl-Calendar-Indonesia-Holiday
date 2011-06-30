@@ -559,7 +559,7 @@ __END__
 
 =head1 DESCRIPTION
 
-This module provides one function: B<list_id_holidays>.
+This module provides functions to list Indonesian holidays.
 
 This module uses L<Log::Any> logging framework.
 
