@@ -1,5 +1,12 @@
 Revision history for Calendar-Indonesia-Holiday
 
+0.03     2011-07-10
+
+         [ENHANCEMENTS]
+
+         - Add alias Calendar::ID::Holiday
+
+
 0.02     2011-06-30
 
          [ENHANCEMENTS]
