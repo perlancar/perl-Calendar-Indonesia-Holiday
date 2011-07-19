@@ -1,6 +1,9 @@
 package Calendar::ID::Holiday;
 use Calendar::Indonesia::Holiday;
-our %SPEC = %Calendar::Indonesia::Holiday::SPEC;
+our @ISA       = @Calendar::Indonesia::Holiday::ISA;
+our @EXPORT    = @Calendar::Indonesia::Holiday::EXPORT;
+our @EXPORT_OK = @Calendar::Indonesia::Holiday::EXPORT_OK;
+our %SPEC      = %Calendar::Indonesia::Holiday::SPEC;
 for my $f (keys %SPEC) {
     *{$f} = \&{"Calendar::Indonesia::Holiday::$f"};
 }
