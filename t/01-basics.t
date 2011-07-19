@@ -27,19 +27,24 @@ subtest "list_id_holidays (is_joint_leave=0)" => sub {
 };
 
 subtest count_id_workdays => sub {
-    $res = count_id_workdays(year => 2011, month => 12);
+    $res = count_id_workdays(start_date => '2011-12-01',
+                             end_date => '2011-12-31');
     is($res->[0], 200, "status");
     is($res->[2], 21, "num");
 };
 
 subtest "count_id_workdays (work_saturdays=1)" => sub {
-    $res = count_id_workdays(year => 2011, month => 12, work_saturdays=>1);
+    $res = count_id_workdays(start_date => '2011-12-01',
+                             end_date => '2011-12-31',
+                             work_saturdays=>1);
     is($res->[0], 200, "status");
     is($res->[2], 26, "num");
 };
 
 subtest "count_id_workdays (observe_joint_leaves=0)" => sub {
-    $res = count_id_workdays(year=>2011, month=>12, observe_joint_leaves=>0);
+    $res = count_id_workdays(start_date => '2011-12-01',
+                             end_date => '2011-12-31',
+                             observe_joint_leaves=>0);
     is($res->[0], 200, "status");
     is($res->[2], 22, "num");
 };
