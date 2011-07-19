@@ -423,8 +423,19 @@ no warnings;
 *list_id_holidays = $res->[2]{code};
 use warnings;
 
+sub _check_date_arg {
+    my ($date) = @_;
+    if (ref($date) && $date->isa('DateTime')) {
+        return $date;
+    } elsif ($date =~ /\A(\d{4})-(\d{2})-(\d{2})\z/) {
+        return DateTime->new(year=>$1, month=>$2, day=>$3);
+    } else {
+        return;
+    }
+}
+
 $SPEC{enum_id_workdays} = {
-    summary => 'Enumerate working days in a certain period (month/year)',
+    summary => 'Enumerate working days for a certain period',
     description => <<'_',
 
 Working day is defined as day that is not Saturday*/Sunday/holiday/joint leave
@@ -434,11 +445,23 @@ as working days.
 
 _
     args => {
-        month => ['int*' => {
-            # defaults to current month
+        start_date => ['str*' => {
+            summary => 'Starting date',
+            description => <<'_',
+
+Defaults to start of current month. Either a string in the form of "YYYY-MM-DD",
+or a DateTime object, is accepted.
+
+_
         }],
-        year => ['int*' => {
-            # defaults to current year
+        end_date => ['str*' => {
+            summary => 'End date',
+            description => <<'_',
+
+Defaults to end of current month. Either a string in the form of "YYYY-MM-DD",
+or a DateTime object, is accepted.
+
+_
         }],
         work_saturdays => ['bool' => {
             summary => 'If set to 1, Saturday is a working day',
@@ -455,14 +478,26 @@ sub enum_id_workdays {
 
     # XXX args
     my $now = DateTime->now;
-    my $year  = $args{year}  // $now->year;
-    my $month = $args{month} // $now->month;
+    my $som = DateTime->new(year => $now->year, month => $now->month, day => 1);
+    my $eom = $som->clone->add(months=>1)->subtract(days=>1);
+    my $start_date = _check_date_arg($args{start_date} // $som) or
+        return [400, "Invalid start_date, must be string 'YYYY-MM-DD' ".
+                    "or DateTime object"];
+    my $end_date   = _check_date_arg($args{end_date} // $eom) or
+        return [400, "Invalid end_date, must be string 'YYYY-MM-DD' ".
+                    "or DateTime object"];
+    for ($start_date, $end_date) {
+        return [400, "Sorry, no data for year earlier than $min_year available"]
+            if $_->year < $min_year;
+        return [400, "Sorry, no data for year newer than $max_year available"]
+            if $_->year > $max_year;
+    }
     my $work_saturdays = $args{work_saturdays} // 0;
     my $observe_joint_leaves = $args{observe_joint_leaves} // 1;
-    my $eom = DateTime->new(year=>$year, month=>$month, day=>1)->
-        add(months=>1)->subtract(days=>1);
 
-    my @args = (year=>$year, month=>$month);
+    my @args;
+    push @args, min_year=>$start_date->year;
+    push @args, max_year=>$end_date->year;
     push @args, (is_holiday=>1) if !$observe_joint_leaves;
     my $res = list_id_holidays(@args);
     return [500, "Can't list holidays: $res->[0] - $res->[1]"]
@@ -470,11 +505,13 @@ sub enum_id_workdays {
     #use Data::Dump; dd $res;
 
     my @wd;
-    for my $day (1..$eom->day) {
-        my $dt = DateTime->new(day=>$day, month=>$month, year=>$year);
+    my $dt = $start_date->clone->subtract(days=>1);
+    while (1) {
+        $dt->add(days=>1);
         next if $dt->day_of_week == 7;
         next if $dt->day_of_week == 6 && !$work_saturdays;
-        my $ymd = sprintf "%04d-%02d-%02d", $year, $month, $day;
+        last if DateTime->compare($dt, $end_date) > 0;
+        my $ymd = $dt->ymd;
         next if $ymd ~~ @{$res->[2]};
         push @wd, $ymd;
     }
@@ -483,7 +520,7 @@ sub enum_id_workdays {
 }
 
 $spec = clone($SPEC{enum_id_workdays});
-$spec->{summary} = "Count working days in a certain period (month/year)";
+$spec->{summary} = "Count working days for a certain period";
 $SPEC{count_id_workdays} = $spec;
 sub count_id_workdays {
     my $res = enum_id_workdays(@_);
