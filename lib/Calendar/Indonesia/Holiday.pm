@@ -408,14 +408,17 @@ my $res = gen_read_table_func(
 die "BUG: Can't generate func: $res->[0] - $res->[1]"
     unless $res->[0] == 200;
 
-my $spec = $res->[2]{spec};
+my $AVAILABLE_YEARS =
+    "Contains data from years $min_year to $max_year (joint leave days until\n".
+    "$max_joint_leave_year).";
+
+    my $spec = $res->[2]{spec};
 $spec->{summary} = "List Indonesian holidays in calendar";
 $spec->{description} = <<"_";
 
 List holidays and joint leave days ("cuti bersama").
 
-Contains data from years $min_year to $max_year (joint leave days until
-$max_joint_leave_year).
+$AVAILABLE_YEARS.
 
 _
 $SPEC{list_id_holidays} = $spec;
@@ -442,6 +445,8 @@ Working day is defined as day that is not Saturday*/Sunday/holiday/joint leave
 days*. If work_saturdays is set to true, Saturdays are also counted as working
 days. If observe_joint_leaves is set to false, joint leave days are also counted
 as working days.
+
+$AVAILABLE_YEARS.
 
 _
     args => {
