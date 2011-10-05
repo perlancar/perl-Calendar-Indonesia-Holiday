@@ -659,11 +659,11 @@ government civil workers, banks, etc. I am marking joint leave days with
 is_joint_leave=1 and is_holiday=0, while the holidays themselves with
 is_holiday=1, so you can differentiate/select both/either one.
 
-=head2 Holidays before 2008?
+=head2 Holidays before 2002?
 
 Will be provided if there is demand and data source.
 
-=head2 Why only provide data up to (current year)+1?
+=head2 Holidays after (current year)+1?
 
 Some religious holidays, especially Vesakha, are not determined yet. Joint leave
 days are also usually decreed by the government in May/June of the preceding
