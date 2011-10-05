@@ -213,6 +213,28 @@ sub _expand_dm {
 
 my %year_holidays;
 
+# decreed jul 17, 2003
+my $eidulf2004;
+$year_holidays{2004} = [
+    _h_chnewyear ({_expand_dm("22-01")}, {hyear=>2555}),
+    _h_eidula    ({_expand_dm("02-02")}, {hyear=>1424, original_date=>'2004-02-01'}),
+    _h_hijra     ({_expand_dm("23-02")}, {hyear=>1425, original_date=>'2004-02-01'}),
+    _h_nyepi     ({_expand_dm("22-03")}, {hyear=>1927}),
+    _h_goodfri   ({_expand_dm("09-04")}),
+    _h_mawlid    ({_expand_dm("03-05")}, {original_date=>'2004-05-02'}),
+    _h_ascension ({_expand_dm("20-05")}),
+    _h_vesakha   ({_expand_dm("03-06")}, {hyear=>2548}),
+    _h_isramiraj ({_expand_dm("13-09")}, {original_date=>'2004-09-12'}),
+    ($eidulf2004 =
+    _h_eidulf    ({_expand_dm("14-11")}, {hyear=>1425, day=>1})),
+    _h_eidulf    ({_expand_dm("15-11")}, {hyear=>1425, day=>2}),
+    _h_eidulf    ({_expand_dm("16-11")}, {hyear=>1425, day=>3}),
+
+    _jointlv     ({_expand_dm("17-11")}, {holiday=>$eidulf2004}),
+    _jointlv     ({_expand_dm("18-11")}, {holiday=>$eidulf2004}),
+    _jointlv     ({_expand_dm("19-11")}, {holiday=>$eidulf2004}),
+];
+
 # decreed jul ??, 2004
 my $eidulf2005;
 $year_holidays{2005} = [
