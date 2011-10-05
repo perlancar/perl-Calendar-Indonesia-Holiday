@@ -188,13 +188,18 @@ sub _make_jl_tentative {
     $holidays;
 }
 
+sub _expand_dm {
+    $_[0] =~ m!(\d+)[-/](\d+)! or die "Bug: bad dm syntax $_[0]";
+    return (day => $1, month => $2);
+}
+
 my %year_holidays;
 
 # decreed feb 5, 2008
-my $hijra2008a;
+my $hijra2008;
 my $eidulf2008;
 $year_holidays{2008} = [
-    _h_hijra     ({day => 10, month =>  1}, {hyear=>1929}),
+    _h_hijra     ({day => 10, month =>  1}, {hyear=>1429}),
     _h_chnewyear ({day =>  7, month =>  2}, {hyear=>2559}),
     _h_nyepi     ({day =>  7, month =>  3}, {hyear=>1930}),
     _h_mawlid    ({day => 20, month =>  3}),
@@ -203,12 +208,12 @@ $year_holidays{2008} = [
     _h_vesakha   ({day => 20, month =>  5}, {hyear=>2552}),
     _h_isramiraj ({day => 30, month =>  7}),
     ($eidulf2008 =
-    _h_eidulf    ({day =>  1, month => 10}, {hyear=>1929, day=>1})),
-    _h_eidulf    ({day =>  2, month => 10}, {hyear=>1929, day=>2}),
+    _h_eidulf    ({day =>  1, month => 10}, {hyear=>1429, day=>1})),
+    _h_eidulf    ({day =>  2, month => 10}, {hyear=>1429, day=>2}),
     _h_eidula    ({day =>  8, month => 12}),
-    _h_hijra     ({day => 29, month => 12}, {hyear=>1930}),
+    _h_hijra     ({day => 29, month => 12}, {hyear=>1430}),
 
-    _jointlv     ({day => 11, month =>  1}, {holiday=>$hijra2008a}),
+    _jointlv     ({day => 11, month =>  1}, {holiday=>$hijra2008}),
     _jointlv     ({day => 29, month =>  9}, {holiday=>$eidulf2008}),
     _jointlv     ({day => 30, month =>  9}, {holiday=>$eidulf2008}),
     _jointlv     ({day =>  3, month => 10}, {holiday=>$eidulf2008}),
@@ -226,10 +231,10 @@ $year_holidays{2009} = [
     _h_ascension ({day => 21, month =>  5}),
     _h_isramiraj ({day => 20, month =>  7}),
     ($eidulf2009 =
-    _h_eidulf    ({day => 21, month =>  9}, {hyear=>1930, day=>1})),
-    _h_eidulf    ({day => 22, month =>  9}, {hyear=>1930, day=>2}),
+    _h_eidulf    ({day => 21, month =>  9}, {hyear=>1430, day=>1})),
+    _h_eidulf    ({day => 22, month =>  9}, {hyear=>1430, day=>2}),
     _h_eidula    ({day => 27, month => 11}),
-    _h_hijra     ({day => 18, month => 12}, {hyear=>1931}),
+    _h_hijra     ({day => 18, month => 12}, {hyear=>1431}),
 
     _jointlv     ({day =>  2, month =>  1}, {holiday=>$newyear}),
     _jointlv     ({day => 18, month =>  9}, {holiday=>$eidulf2009}),
@@ -248,10 +253,10 @@ $year_holidays{2010} = [
     _h_ascension ({day =>  2, month =>  6}),
     _h_isramiraj ({day => 10, month =>  7}),
     ($eidulf2010 =
-    _h_eidulf    ({day => 10, month =>  9}, {hyear=>1931, day=>1})),
-    _h_eidulf    ({day => 11, month =>  9}, {hyear=>1931, day=>2}),
+    _h_eidulf    ({day => 10, month =>  9}, {hyear=>1431, day=>1})),
+    _h_eidulf    ({day => 11, month =>  9}, {hyear=>1431, day=>2}),
     _h_eidula    ({day => 17, month => 11}),
-    _h_hijra     ({day =>  7, month => 12}, {hyear=>1932}),
+    _h_hijra     ({day =>  7, month => 12}, {hyear=>1432}),
 
     _jointlv     ({day =>  9, month =>  9}, {holiday=>$eidulf2010}),
     _jointlv     ({day => 13, month =>  9}, {holiday=>$eidulf2010}),
@@ -269,10 +274,10 @@ $year_holidays{2011} = [
     _h_ascension ({day =>  2, month =>  6}),
     _h_isramiraj ({day => 29, month =>  6}),
     ($eidulf2011 =
-    _h_eidulf    ({day => 30, month =>  8}, {hyear=>1932, day=>1})),
-    _h_eidulf    ({day => 31, month =>  8}, {hyear=>1932, day=>2}),
+    _h_eidulf    ({day => 30, month =>  8}, {hyear=>1432, day=>1})),
+    _h_eidulf    ({day => 31, month =>  8}, {hyear=>1432, day=>2}),
     _h_eidula    ({day =>  7, month => 11}),
-    _h_hijra     ({day => 27, month => 11}, {hyear=>1933}),
+    _h_hijra     ({day => 27, month => 11}, {hyear=>1433}),
 
     _jointlv     ({day => 29, month =>  8}, {holiday=>$eidulf2011}),
     _jointlv     ({day =>  1, month =>  9}, {holiday=>$eidulf2011}),
@@ -291,10 +296,10 @@ $year_holidays{2012} = _make_jl_tentative [
     _h_ascension ({day => 17, month =>  5}),
     _h_isramiraj ({day => 16, month =>  6}),
     ($eidulf2012 =
-    _h_eidulf    ({day => 19, month =>  8}, {hyear=>1933, day=>1})),
-    _h_eidulf    ({day => 20, month =>  8}, {hyear=>1933, day=>2}),
+    _h_eidulf    ({day => 19, month =>  8}, {hyear=>1433, day=>1})),
+    _h_eidulf    ({day => 20, month =>  8}, {hyear=>1433, day=>2}),
     _h_eidula    ({day => 26, month => 10}),
-    _h_hijra     ({day => 15, month => 11}, {hyear=>1934}),
+    _h_hijra     ({day => 15, month => 11}, {hyear=>1434}),
 
     _jointlv     ({day => 21, month =>  8}, {holiday=>$eidulf2012}),
     _jointlv     ({day => 22, month =>  8}, {holiday=>$eidulf2012}),
