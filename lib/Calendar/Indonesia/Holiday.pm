@@ -255,7 +255,7 @@ my $hijra2008a;
 my $eidulf2008;
 $year_holidays{2008} = [
     ($hijra2008a =
-    _h_hijra     ({_expand_dm("10- 1")}, {hyear=>1429})),
+    _h_hijra     ({_expand_dm("10-01")}, {hyear=>1429})),
     _h_chnewyear ({_expand_dm("07-02")}, {hyear=>2559}),
     _h_nyepi     ({_expand_dm("07-03")}, {hyear=>1930}),
     _h_mawlid    ({_expand_dm("20-03")}),
