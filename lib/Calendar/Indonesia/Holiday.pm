@@ -195,11 +195,39 @@ sub _expand_dm {
 
 my %year_holidays;
 
+# decreed jul 24, 2006
+my $ascension2007;
+my $hijra2007;
+my $eidulf2007;
+$year_holidays{2007} = [
+    _h_hijra     ({_expand_dm("20-01")}, {hyear=>1428}),
+    _h_chnewyear ({_expand_dm("18-02")}, {hyear=>2558}),
+    _h_nyepi     ({_expand_dm("19-03")}, {hyear=>1929}),
+    _h_mawlid    ({_expand_dm("31-03")}),
+    _h_goodfri   ({_expand_dm("06-04")}),
+    ($ascension2007 =
+    _h_ascension ({_expand_dm("17-05")})),
+    _h_vesakha   ({_expand_dm("01-06")}, {hyear=>2551}),
+    _h_isramiraj ({_expand_dm("11-08")}),
+    ($eidulf2007 =
+    _h_eidulf    ({_expand_dm("13-10")}, {hyear=>1428, day=>1})),
+    _h_eidulf    ({_expand_dm("14-10")}, {hyear=>1428, day=>2}),
+    _h_eidula    ({_expand_dm("20-12")}, {hyear=>1428}),
+
+    _jointlv     ({_expand_dm("18-05")}, {holiday=>$ascension2007}),
+    _jointlv     ({_expand_dm("12-10")}, {holiday=>$eidulf2007}),
+    _jointlv     ({_expand_dm("15-10")}, {holiday=>$eidulf2007}),
+    _jointlv     ({_expand_dm("16-10")}, {holiday=>$eidulf2007}),
+    _jointlv     ({_expand_dm("21-12")}, {holiday=>$christmas}),
+    _jointlv     ({_expand_dm("24-12")}, {holiday=>$christmas}),
+];
+
 # decreed feb 5, 2008
-my $hijra2008;
+my $hijra2008a;
 my $eidulf2008;
 $year_holidays{2008} = [
-    _h_hijra     ({day => 10, month =>  1}, {hyear=>1429}),
+    ($hijra2008a =
+    _h_hijra     ({day => 10, month =>  1}, {hyear=>1429})),
     _h_chnewyear ({day =>  7, month =>  2}, {hyear=>2559}),
     _h_nyepi     ({day =>  7, month =>  3}, {hyear=>1930}),
     _h_mawlid    ({day => 20, month =>  3}),
@@ -213,7 +241,7 @@ $year_holidays{2008} = [
     _h_eidula    ({day =>  8, month => 12}),
     _h_hijra     ({day => 29, month => 12}, {hyear=>1430}),
 
-    _jointlv     ({day => 11, month =>  1}, {holiday=>$hijra2008}),
+    _jointlv     ({day => 11, month =>  1}, {holiday=>$hijra2008a}),
     _jointlv     ({day => 29, month =>  9}, {holiday=>$eidulf2008}),
     _jointlv     ({day => 30, month =>  9}, {holiday=>$eidulf2008}),
     _jointlv     ({day =>  3, month => 10}, {holiday=>$eidulf2008}),
