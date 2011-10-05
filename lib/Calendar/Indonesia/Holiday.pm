@@ -27,7 +27,7 @@ my @fixed_holidays = (
         en_name    => "New Year",
         tags       => [qw/international/],
     },
-    {
+    my $indep = {
         day        => 17, month =>  8,
         id_name    => "Proklamasi",
         en_name    => "Declaration Of Independence",
@@ -195,9 +195,37 @@ sub _expand_dm {
 
 my %year_holidays;
 
+# decreed mar 22, 2006
+my $nyepi2006;
+my $ascension2006;
+my $eidulf2006;
+$year_holidays{2006} = [
+    _h_eidula    ({_expand_dm("10-01")}, {hyear=>1426}),
+    _h_hijra     ({_expand_dm("31-01")}, {hyear=>1427}),
+    _h_chnewyear ({_expand_dm("29-01")}, {hyear=>2557}),
+    ($nyepi2006 =
+    _h_nyepi     ({_expand_dm("30-03")}, {hyear=>1929})),
+    _h_mawlid    ({_expand_dm("10-04")}),
+    _h_goodfri   ({_expand_dm("14-04")}),
+    _h_vesakha   ({_expand_dm("13-05")}, {hyear=>2550}),
+    ($ascension2006 =
+    _h_ascension ({_expand_dm("25-05")})),
+    _h_isramiraj ({_expand_dm("21-08")}),
+    ($eidulf2006 =
+    _h_eidulf    ({_expand_dm("24-10")}, {hyear=>1427, day=>1})),
+    _h_eidulf    ({_expand_dm("25-10")}, {hyear=>1427, day=>2}),
+    _h_eidula    ({_expand_dm("31-12")}, {hyear=>1427}),
+
+    _jointlv     ({_expand_dm("31-03")}, {holiday=>$nyepi2006}),
+    _jointlv     ({_expand_dm("26-05")}, {holiday=>$ascension2006}),
+    _jointlv     ({_expand_dm("18-08")}, {holiday=>$indep}),
+    _jointlv     ({_expand_dm("23-10")}, {holiday=>$eidulf2006}),
+    _jointlv     ({_expand_dm("26-10")}, {holiday=>$eidulf2006}),
+    _jointlv     ({_expand_dm("27-10")}, {holiday=>$eidulf2006}),
+];
+
 # decreed jul 24, 2006
 my $ascension2007;
-my $hijra2007;
 my $eidulf2007;
 $year_holidays{2007} = [
     _h_hijra     ({_expand_dm("20-01")}, {hyear=>1428}),
