@@ -808,7 +808,6 @@ year.
 
 =head1 SEE ALSO
 
-This API is available on GudangAPI, http://www.gudangapi.com/ , under
-"calendar/id" module. To use GudangAPI, you can use L<WWW::GudangAPI>.
+This API will also be available on GudangAPI, http://gudangapi.com/
 
 =cut
