@@ -23,20 +23,20 @@ our %SPEC;
 my @fixed_holidays = (
     my $newyear = {
         day        =>  1, month =>  1,
-        id_name    => "Tahun Baru",
-        en_name    => "New Year",
+        ind_name    => "Tahun Baru",
+        eng_name    => "New Year",
         tags       => [qw/international/],
     },
     my $indep = {
         day        => 17, month =>  8,
-        id_name    => "Proklamasi",
-        en_name    => "Declaration Of Independence",
+        ind_name    => "Proklamasi",
+        eng_name    => "Declaration Of Independence",
         tags       => [],
     },
     my $christmas = {
         day        => 25, month => 12,
-        id_name    => "Natal",
-        en_name    => "Christmas",
+        ind_name    => "Natal",
+        eng_name    => "Christmas",
         tags       => [qw/international religious religion=christianity/],
     },
 );
@@ -44,16 +44,16 @@ my @fixed_holidays = (
 sub _add_original_date {
     my ($r, $opts) = @_;
     if ($opts->{original_date}) {
-        $r->{id_name} .= " (diperingati $opts->{original_date})";
-        $r->{en_name} .= " (commemorated on $opts->{original_date})";
+        $r->{ind_name} .= " (diperingati $opts->{original_date})";
+        $r->{eng_name} .= " (commemorated on $opts->{original_date})";
     }
 }
 
 sub _h_chnewyear {
     my ($r, $opts) = @_;
-    $r->{id_name}    = "Tahun Baru Imlek".
+    $r->{ind_name}    = "Tahun Baru Imlek".
         ($opts->{hyear} ? " $opts->{hyear}":"");
-    $r->{en_name}    = "Chinese New Year".
+    $r->{eng_name}    = "Chinese New Year".
         ($opts->{hyear} ? " $opts->{hyear}":"");
     _add_original_date($r, $opts);
     $r->{id_aliases} = [];
@@ -65,8 +65,8 @@ sub _h_chnewyear {
 
 sub _h_mawlid {
     my ($r, $opts) = @_;
-    $r->{id_name}    = "Maulid Nabi Muhammad";
-    $r->{en_name}    = "Mawlid";
+    $r->{ind_name}    = "Maulid Nabi Muhammad";
+    $r->{eng_name}    = "Mawlid";
     _add_original_date($r, $opts);
     $r->{id_aliases} = [qw/Maulud/];
     $r->{en_aliases} = ["Mawlid An-Nabi"];
@@ -77,9 +77,9 @@ sub _h_mawlid {
 
 sub _h_nyepi {
     my ($r, $opts) = @_;
-    $r->{id_name}    = "Nyepi".
+    $r->{ind_name}    = "Nyepi".
         ($opts->{hyear} ? " $opts->{hyear}":"");
-    $r->{en_name}    = "Nyepi".
+    $r->{eng_name}    = "Nyepi".
         ($opts->{hyear} ? " $opts->{hyear}":"");
     _add_original_date($r, $opts);
     $r->{id_aliases} = ["Tahun Baru Saka"];
@@ -91,8 +91,8 @@ sub _h_nyepi {
 
 sub _h_goodfri {
     my ($r, $opts) = @_;
-    $r->{id_name}    = "Jum'at Agung";
-    $r->{en_name}    = "Good Friday";
+    $r->{ind_name}    = "Jum'at Agung";
+    $r->{eng_name}    = "Good Friday";
     _add_original_date($r, $opts);
     $r->{id_aliases} = ["Wafat Isa Al-Masih"];
     $r->{en_aliases} = [];
@@ -103,9 +103,9 @@ sub _h_goodfri {
 
 sub _h_vesakha {
     my ($r, $opts) = @_;
-    $r->{id_name}    = "Waisyak".
+    $r->{ind_name}    = "Waisyak".
         ($opts->{hyear} ? " $opts->{hyear}":"");
-    $r->{en_name}    = "Vesakha".
+    $r->{eng_name}    = "Vesakha".
         ($opts->{hyear} ? " $opts->{hyear}":"");
     _add_original_date($r, $opts);
     $r->{id_aliases} = [];
@@ -117,8 +117,8 @@ sub _h_vesakha {
 
 sub _h_ascension {
     my ($r, $opts) = @_;
-    $r->{id_name}    = "Kenaikan Isa Al-Masih";
-    $r->{en_name}    = "Ascension Day";
+    $r->{ind_name}    = "Kenaikan Isa Al-Masih";
+    $r->{eng_name}    = "Ascension Day";
     _add_original_date($r, $opts);
     $r->{id_aliases} = [];
     $r->{en_aliases} = [];
@@ -129,8 +129,8 @@ sub _h_ascension {
 
 sub _h_isramiraj {
     my ($r, $opts) = @_;
-    $r->{id_name}    = "Isra Miraj";
-    $r->{en_name}    = "Isra And Miraj";
+    $r->{ind_name}    = "Isra Miraj";
+    $r->{eng_name}    = "Isra And Miraj";
     _add_original_date($r, $opts);
     $r->{id_aliases} = [];
     $r->{en_aliases} = [];
@@ -142,12 +142,12 @@ sub _h_isramiraj {
 sub _h_eidulf {
     my ($r, $opts) = @_;
     $opts //= {};
-    $r->{id_name0}   = "Idul Fitri".
+    $r->{ind_name0}   = "Idul Fitri".
         ($opts->{hyear} ? " $opts->{hyear}H":"");
-    $r->{en_name0}   = "Eid Ul-Fitr".
+    $r->{eng_name0}   = "Eid Ul-Fitr".
         ($opts->{hyear} ? " $opts->{hyear}H":"");
-    $r->{id_name}    = $r->{id_name0}.($opts->{day} ? ", Hari $opts->{day}":"");
-    $r->{en_name}    = $r->{en_name0}.($opts->{day} ? ", Day $opts->{day}":"");
+    $r->{ind_name}    = $r->{ind_name0}.($opts->{day} ? ", Hari $opts->{day}":"");
+    $r->{eng_name}    = $r->{eng_name0}.($opts->{day} ? ", Day $opts->{day}":"");
     _add_original_date($r, $opts);
     $r->{id_aliases} = ["Lebaran"];
     $r->{en_aliases} = [];
@@ -158,8 +158,8 @@ sub _h_eidulf {
 
 sub _h_eidula {
     my ($r, $opts) = @_;
-    $r->{id_name}    = "Idul Adha";
-    $r->{en_name}    = "Eid Al-Adha";
+    $r->{ind_name}    = "Idul Adha";
+    $r->{eng_name}    = "Eid Al-Adha";
     _add_original_date($r, $opts);
     $r->{id_aliases} = ["Idul Kurban"];
     $r->{en_aliases} = [];
@@ -171,9 +171,9 @@ sub _h_eidula {
 sub _h_hijra {
     my ($r, $opts) = @_;
     $opts //= {};
-    $r->{id_name}    = "Tahun Baru Hijriyah".
+    $r->{ind_name}    = "Tahun Baru Hijriyah".
         ($opts->{hyear} ? " $opts->{hyear}H":"");
-    $r->{en_name}    = "Hijra".
+    $r->{eng_name}    = "Hijra".
         ($opts->{hyear} ? " $opts->{hyear}H":"");
     _add_original_date($r, $opts);
     $r->{id_aliases} = ["1 Muharam"];
@@ -187,10 +187,10 @@ sub _jointlv {
     my ($r, $opts) = @_;
     $opts //= {};
     my $h = $opts->{holiday};
-    $r->{id_name}        = "Cuti Bersama".
-        ($h ? " (".($h->{id_name0} // $h->{id_name}).")": "");
-    $r->{en_name}        = "Joint Leave".
-        ($h ? " (".($h->{en_name0} // $h->{en_name}).")": "");
+    $r->{ind_name}        = "Cuti Bersama".
+        ($h ? " (".($h->{ind_name0} // $h->{ind_name}).")": "");
+    $r->{eng_name}        = "Joint Leave".
+        ($h ? " (".($h->{eng_name0} // $h->{eng_name}).")": "");
     $r->{id_aliases}     = [];
     $r->{en_aliases}     = [];
     $r->{is_joint_leave} = 1;
@@ -497,8 +497,8 @@ for my $year ($min_year .. $max_year) {
         my $h = clone $h0;
         $h->{is_holiday}     //= 0;
         $h->{is_joint_leave} //= 0;
-        delete $h->{id_name0};
-        delete $h->{en_name0};
+        delete $h->{ind_name0};
+        delete $h->{eng_name0};
         push @hy, $h;
     }
 
@@ -533,13 +533,13 @@ my $res = gen_read_table_func(
                 summary => 'Day of week (1-7, Monday is 1)',
                 column_index => 4,
             }],
-            en_name => ['str*'=>{
+            eng_name => ['str*'=>{
                 summary => 'English name',
                 column_index => 5,
                 column_filterable => 0,
                 column_sortable => 0,
             }],
-            id_name => ['str*'=>{
+            ind_name => ['str*'=>{
                 summary => 'Indonesian name',
                 column_index => 6,
                 column_filterable => 0,
@@ -746,8 +746,8 @@ __END__
     day        => 16,
     month      => 2,
     year       => 2011,
-    id_name    => 'Maulid Nabi Muhammad',
-    en_name    => 'Mawlid',
+    ind_name    => 'Maulid Nabi Muhammad',
+    eng_name    => 'Mawlid',
     en_aliases => ['Mawlid An-Nabi'],
     id_aliases => ['Maulud'],
     is_holiday => 1,
