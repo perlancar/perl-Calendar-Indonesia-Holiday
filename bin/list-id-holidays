@@ -7,11 +7,12 @@ use 5.010;
 use strict;
 use warnings;
 
-use Sub::Spec::CmdLine qw(run);
+use Perinci::CmdLine;
 
 # VERSION
 
-run(module => 'Calendar::Indonesia::Holiday', sub=>'list_id_holidays');
+Perinci::CmdLine->new(url => '/Calendar/Indonesia/Holiday/list_id_holidays')->
+    run;
 
 1;
 # ABSTRACT: List Indonesian holidays

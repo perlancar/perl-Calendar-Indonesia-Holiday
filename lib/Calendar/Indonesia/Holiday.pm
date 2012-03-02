@@ -7,7 +7,7 @@ use Log::Any '$log';
 
 use Data::Clone;
 use DateTime;
-use Sub::Spec::Gen::ReadTable qw(gen_read_table_func);
+use Perinci::Sub::Gen::AccessTable qw(gen_access_table_func);
 
 use Exporter;
 our @ISA = qw(Exporter);
@@ -513,63 +513,75 @@ for my $year ($min_year .. $max_year) {
     push @holidays, (sort {$a->{date} cmp $b->{date}} @hf, @hy);
 }
 
-my $res = gen_read_table_func(
+my $res = gen_access_table_func(
     table_data => \@holidays,
     table_spec => {
         columns => {
-            date => ['str*'=>{
-                column_index => 0,
-                column_searchable => 0,
-            }],
-            day => ['int*'=>{
-                column_index => 1,
-            }],
-            month => ['int*'=>{
-                column_index => 2,
-            }],
-            year => ['int*'=>{
-                column_index => 3,
-            }],
-            dow => ['int*'=>{
+            date => {
+                schema => 'str*',
+                index => 0,
+                searchable => 0,
+            },
+            day => {
+                schema => 'int*',
+                index => 1,
+            },
+            month => {
+                schema => 'int*',
+                index => 2,
+            },
+            year => {
+                schema => 'int*',
+                index => 3,
+            },
+            dow => {
+                schema => 'int*',
                 summary => 'Day of week (1-7, Monday is 1)',
-                column_index => 4,
-            }],
-            eng_name => ['str*'=>{
+                index => 4,
+            },
+            eng_name => {
+                schema => 'str*',
                 summary => 'English name',
-                column_index => 5,
-                column_filterable => 0,
-                column_sortable => 0,
-            }],
-            ind_name => ['str*'=>{
+                index => 5,
+                filterable => 0,
+                sortable => 0,
+            },
+            ind_name => {
+                schema => 'str*',
                 summary => 'Indonesian name',
-                column_index => 6,
-                column_filterable => 0,
-                column_sortable => 0,
-            }],
-            en_aliases => ['array*'=>{
+                index => 6,
+                filterable => 0,
+                sortable => 0,
+            },
+            en_aliases => {
+                schema => ['array*'=>{of=>'str*'}],
                 summary => 'English other names, if any',
-                column_index => 7,
-                column_filterable => 0,
-                column_sortable => 0,
-            }],
-            id_aliases => ['array*'=>{
+                index => 7,
+                filterable => 0,
+                sortable => 0,
+            },
+            id_aliases => {
+                schema => ['array*'=>{of=>'str*'}],
                 summary => 'Indonesian other names, if any',
-                column_index => 8,
-                column_filterable => 0,
-                column_sortable => 0,
-            }],
-            is_holiday => ['bool*'=>{
-                column_index => 9,
-            }],
-            is_joint_leave => ['bool*'=>{
+                index => 8,
+                filterable => 0,
+                sortable => 0,
+            },
+            is_holiday => {
+                schema => 'bool*',
+                index => 9,
+            },
+            is_joint_leave => {
+                schema => 'bool*',
                 summary => 'Whether this date is a joint leave day '.
                     '("cuti bersama")',
-                column_index => 10,
-            }],
-            tags => ['array*'=>{
-                column_index => 11,
-                column_sortable => 0,
-            }],
+                index => 10,
+            },
+            tags => {
+                schema => 'array*',
+                index => 11,
+                sortable => 0,
+            },
         },
         pk => 'date',
     },
@@ -582,9 +594,9 @@ my $AVAILABLE_YEARS =
     "Contains data from years $min_year to $max_year (joint leave days until\n".
     "$max_joint_leave_year).";
 
-    my $spec = $res->[2]{spec};
-$spec->{summary} = "List Indonesian holidays in calendar";
-$spec->{description} = <<"_";
+    my $meta = $res->[2]{meta};
+$meta->{summary} = "List Indonesian holidays in calendar";
+$meta->{description} = <<"_";
 
 List holidays and joint leave days ("cuti bersama").
 
@@ -775,7 +787,7 @@ This module provides functions to list Indonesian holidays.
 
 This module uses L<Log::Any> logging framework.
 
-This module's functions has L<Sub::Spec> specs.
+This module has L<Rinci> metadata.
 
 
 =head1 FUNCTIONS
