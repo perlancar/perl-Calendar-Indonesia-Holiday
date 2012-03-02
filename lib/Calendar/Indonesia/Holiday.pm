@@ -1,5 +1,4 @@
 package Calendar::Indonesia::Holiday;
-# ABSTRACT: List Indonesian public holidays
 
 use 5.010;
 use strict;
@@ -17,6 +16,8 @@ our @EXPORT_OK = qw(
                        enum_id_workdays
                        count_id_workdays
                );
+
+# VERSION
 
 our %SPEC;
 
@@ -704,7 +705,7 @@ sub count_id_workdays {
 }
 
 1;
-__END__
+# ABSTRACT: List Indonesian public holidays
 
 =head1 SYNOPSIS
 
