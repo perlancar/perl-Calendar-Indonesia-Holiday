@@ -7,7 +7,7 @@ use Log::Any '$log';
 
 use Data::Clone;
 use DateTime;
-use Perinci::Sub::Gen::AccessTable qw(gen_access_table_func);
+use Perinci::Sub::Gen::AccessTable qw(gen_read_table_func);
 
 use Exporter;
 our @ISA = qw(Exporter);
@@ -513,7 +513,7 @@ for my $year ($min_year .. $max_year) {
     push @holidays, (sort {$a->{date} cmp $b->{date}} @hf, @hy);
 }
 
-my $res = gen_access_table_func(
+my $res = gen_read_table_func(
     table_data => \@holidays,
     table_spec => {
         columns => {
@@ -600,10 +600,10 @@ $meta->{description} = <<"_";
 
 List holidays and joint leave days ("cuti bersama").
 
-$AVAILABLE_YEARS.
+$AVAILABLE_YEARS
 
 _
-$SPEC{list_id_holidays} = $spec;
+$SPEC{list_id_holidays} = $meta;
 no warnings;
 *list_id_holidays = $res->[2]{code};
 use warnings;
@@ -621,14 +621,14 @@ sub _check_date_arg {
 
 $SPEC{enum_id_workdays} = {
     summary => 'Enumerate working days for a certain period',
-    description => <<'_',
+    description => <<"_",
 
 Working day is defined as day that is not Saturday*/Sunday/holiday/joint leave
 days*. If work_saturdays is set to true, Saturdays are also counted as working
 days. If observe_joint_leaves is set to false, joint leave days are also counted
 as working days.
 
-$AVAILABLE_YEARS.
+$AVAILABLE_YEARS
 
 _
     args => {
@@ -683,8 +683,8 @@ sub enum_id_workdays {
     my $observe_joint_leaves = $args{observe_joint_leaves} // 1;
 
     my @args;
-    push @args, min_year=>$start_date->year;
-    push @args, max_year=>$end_date->year;
+    push @args, "year.min"=>$start_date->year;
+    push @args, "year.max"=>$end_date->year;
     push @args, (is_holiday=>1) if !$observe_joint_leaves;
     my $res = list_id_holidays(@args);
     return [500, "Can't list holidays: $res->[0] - $res->[1]"]
@@ -706,9 +706,9 @@ sub enum_id_workdays {
     [200, "OK", \@wd];
 }
 
-$spec = clone($SPEC{enum_id_workdays});
-$spec->{summary} = "Count working days for a certain period";
-$SPEC{count_id_workdays} = $spec;
+$meta = clone($SPEC{enum_id_workdays});
+$meta->{summary} = "Count working days for a certain period";
+$SPEC{count_id_workdays} = $meta;
 sub count_id_workdays {
     my $res = enum_id_workdays(@_);
     return $res unless $res->[0] == 200;
@@ -751,7 +751,7 @@ sub count_id_workdays {
 
  # list religious Indonesian holidays, show full details
  my $res = list_id_holidays(year => 2011,
-                            has_tags => ['religious'], detail=>1);
+                            "tags.has" => ['religious'], detail=>1);
 
  # sample result
  [200, "OK", [
@@ -788,11 +788,6 @@ This module provides functions to list Indonesian holidays.
 This module uses L<Log::Any> logging framework.
 
 This module has L<Rinci> metadata.
-
-
-=head1 FUNCTIONS
-
-None are exported by default, but they are exportable.
 
 
 =head1 FAQ
