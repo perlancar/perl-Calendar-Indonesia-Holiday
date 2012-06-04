@@ -1,5 +1,10 @@
 Revision history for Calendar-Indonesia-Holiday
 
+0.09     2012-06-04
+
+         No functional changes. Update to Perinci::Sub::Gen::AccessTable 0.11g.
+
+
 0.08     2012-03-22
 
          No functional changes. Update to Perinci::Sub::Gen::AccessTable 0.08.
