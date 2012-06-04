@@ -516,7 +516,7 @@ for my $year ($min_year .. $max_year) {
 my $res = gen_read_table_func(
     table_data => \@holidays,
     table_spec => {
-        columns => {
+        fields => {
             date => {
                 schema => 'str*',
                 index => 0,
