@@ -1,8 +1,5 @@
 #!/usr/bin/perl
 
-# workaround for dzil
-package list_id_holidays;
-
 use 5.010;
 use strict;
 use warnings;
@@ -16,6 +13,7 @@ Perinci::CmdLine->new(url => '/Calendar/Indonesia/Holiday/list_id_holidays')->
 
 1;
 # ABSTRACT: List Indonesian holidays
+# PODNAME: list-id-holidays
 
 =head1 SYNOPSIS
 
