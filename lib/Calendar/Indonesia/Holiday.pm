@@ -585,6 +585,7 @@ my $res = gen_read_table_func(
         },
         pk => 'date',
     },
+    langs => ['en_US', 'id_ID'],
 );
 
 die "BUG: Can't generate func: $res->[0] - $res->[1]"
