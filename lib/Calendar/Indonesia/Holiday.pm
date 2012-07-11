@@ -20,7 +20,6 @@ our @EXPORT_OK = qw(
 # VERSION
 
 our %SPEC;
-
 my @fixed_holidays = (
     my $newyear = {
         day        =>  1, month =>  1,
@@ -514,6 +513,7 @@ for my $year ($min_year .. $max_year) {
 }
 
 my $res = gen_read_table_func(
+    name => 'list_id_holidays',
     table_data => \@holidays,
     table_spec => {
         fields => {
@@ -603,10 +603,6 @@ List holidays and joint leave days ("cuti bersama").
 $AVAILABLE_YEARS
 
 _
-$SPEC{list_id_holidays} = $meta;
-no warnings;
-*list_id_holidays = $res->[2]{code};
-use warnings;
 
 sub _check_date_arg {
     my ($date) = @_;
