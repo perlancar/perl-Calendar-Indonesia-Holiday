@@ -1,5 +1,10 @@
 Revision history for Calendar-Indonesia-Holiday
 
+0.11     2012-08-04 (SHARYANTO)
+
+         Update data: 2013 holidays (decreed Jul 19).
+
+
 0.10     2012-07-11 (SHARYANTO)
 
          No functional changes. Update to Perinci::Sub::Gen::AccessTable 0.14.
