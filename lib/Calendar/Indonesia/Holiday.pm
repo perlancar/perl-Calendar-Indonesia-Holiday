@@ -7,7 +7,7 @@ use Log::Any '$log';
 
 use Data::Clone;
 use DateTime;
-use Perinci::Sub::Gen::AccessTable 0.14 qw(gen_read_table_func);
+use Perinci::Sub::Gen::AccessTable 0.15 qw(gen_read_table_func);
 
 use Exporter;
 our @ISA = qw(Exporter);
@@ -538,8 +538,7 @@ for my $year ($min_year .. $max_year) {
 }
 
 my $res = gen_read_table_func(
-    # better be explicit with __PACKAGE__ to avoid confusion due to wrapping
-    name => __PACKAGE__ . '::list_id_holidays',
+    name => 'list_id_holidays',
     table_data => \@holidays,
     table_spec => {
         fields => {
