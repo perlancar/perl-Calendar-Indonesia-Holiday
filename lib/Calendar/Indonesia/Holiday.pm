@@ -8,6 +8,7 @@ use Log::Any '$log';
 use Data::Clone;
 use DateTime;
 use Perinci::Sub::Gen::AccessTable 0.15 qw(gen_read_table_func);
+use Perinci::Sub::Util qw(wrapres);
 
 use Exporter;
 our @ISA = qw(Exporter);
@@ -709,7 +710,7 @@ sub enum_id_workdays {
     push @args, "year.max"=>$end_date->year;
     push @args, (is_holiday=>1) if !$observe_joint_leaves;
     my $res = list_id_holidays(@args);
-    return [500, "Can't list holidays: $res->[0] - $res->[1]"]
+    return wrapres([500, "Can't list holidays: "], $res)
         unless $res->[0] == 200;
     #use Data::Dump; dd $res;
 
