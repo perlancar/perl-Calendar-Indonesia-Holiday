@@ -7,7 +7,7 @@ use Log::Any '$log';
 
 use Data::Clone;
 use DateTime;
-use Perinci::Sub::Gen::AccessTable 0.15 qw(gen_read_table_func);
+use Perinci::Sub::Gen::AccessTable 0.16 qw(gen_read_table_func);
 use Perinci::Sub::Util qw(wrapres);
 
 use Exporter;
