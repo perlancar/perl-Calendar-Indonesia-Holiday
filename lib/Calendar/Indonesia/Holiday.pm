@@ -3,6 +3,7 @@ package Calendar::Indonesia::Holiday;
 use 5.010;
 use strict;
 use warnings;
+use experimental 'smartmatch';
 use Log::Any '$log';
 
 use Data::Clone;
@@ -24,21 +25,31 @@ our %SPEC;
 my @fixed_holidays = (
     my $newyear = {
         day        =>  1, month =>  1,
-        ind_name    => "Tahun Baru",
-        eng_name    => "New Year",
+        ind_name   => "Tahun Baru",
+        eng_name   => "New Year",
         tags       => [qw/international/],
     },
     my $indep = {
         day        => 17, month =>  8,
-        ind_name    => "Proklamasi",
-        eng_name    => "Declaration Of Independence",
+        ind_name   => "Proklamasi",
+        eng_name   => "Declaration Of Independence",
         tags       => [],
     },
     my $christmas = {
         day        => 25, month => 12,
-        ind_name    => "Natal",
-        eng_name    => "Christmas",
+        ind_name   => "Natal",
+        eng_name   => "Christmas",
         tags       => [qw/international religious religion=christianity/],
+    },
+
+    # labor day becomes national holiday since 2014 (decreed by president @ apr
+    # 29, 2013.
+    my $labord = {
+        day        => 1, month => 5,
+        year_start => 2014,
+        ind_name   => "Hari Buruh",
+        eng_name   => "Labor Day",
+        tags       => [qw/international/],
     },
 );
 
@@ -199,17 +210,27 @@ sub _jointlv {
     ($r);
 }
 
+# can operate on a single holiday or multiple ones
+sub _make_tentative {
+    my ($h) = @_;
+    my $hh = ref($h) eq 'ARRAY' ? $h : [$h];
+    for (@$hh) {
+        push @{ $_->{tags} }, 'tentative' unless $_->{tags} ~~ 'tentative';
+    }
+    return $h;
+}
+
 sub _make_jl_tentative {
     my ($holidays) = @_;
     for (@$holidays) {
-        push @{$_->{tags}}, "tentative" if $_->{is_joint_leave}
+        _make_tentative($_) if $_->{is_joint_leave};
     }
     $holidays;
 }
 
 sub _expand_dm {
     $_[0] =~ m!(\d+)[-/](\d+)! or die "Bug: bad dm syntax $_[0]";
-    return (day => $1, month => $2);
+    return (day => $1+0, month => $2+0);
 }
 
 my %year_holidays;
@@ -496,6 +517,33 @@ $year_holidays{2013} = [
     _jointlv     ({_expand_dm("26-12")}, {holiday=>$christmas}),
 ];
 
+my $eidulf2014;
+my $eidula2014;
+$year_holidays{2014} = _make_tentative [ # tentative, no decree yet
+    _h_mawlid    ({_expand_dm("14-01")}),
+    _h_chnewyear ({_expand_dm("31-01")}, {hyear=>2565}),
+    _h_goodfri   ({_expand_dm("18-04")}),
+    _h_vesakha   ({_expand_dm("14-05")}, {hyear=>2558}),
+    _h_isramiraj ({_expand_dm("25-05")}),
+    _h_ascension ({_expand_dm("29-05")}),
+    _h_nyepi     ({_expand_dm("18-04")}, {hyear=>1936}),
+
+    ($eidulf2014 =
+    _h_eidulf    ({_expand_dm("29-07")}, {hyear=>1435, day=>1})),
+    _h_eidulf    ({_expand_dm("30-07")}, {hyear=>1435, day=>2}),
+    ($eidula2014 =
+    _h_eidula    ({_expand_dm("05-10")})),
+    _h_hijra     ({_expand_dm("25-10")}, {hyear=>1436}),
+
+
+    # not yet
+    #_jointlv     ({_expand_dm("-")}, {holiday=>$eidulf2014}),
+    #_jointlv     ({_expand_dm("-")}, {holiday=>$eidulf2014}),
+    #_jointlv     ({_expand_dm("-")}, {holiday=>$eidulf2014}),
+    #_jointlv     ({_expand_dm("-")}, {holiday=>$eidula2014}),
+    #_jointlv     ({_expand_dm("-")}, {holiday=>$christmas}),
+];
+
 my @years     = sort keys %year_holidays;
 our $min_year = $years[0];
 our $max_year = $years[-1];
@@ -511,6 +559,8 @@ my @holidays;
 for my $year ($min_year .. $max_year) {
     my @hf;
     for my $h0 (@fixed_holidays) {
+        next if $h0->{year_start} && $year < $h0->{year_start};
+        next if $h0->{year_en}    && $year > $h0->{year_end};
         my $h = clone $h0;
         push @{$h->{tags}}, "fixed-date";
         $h->{is_holiday}     = 1;
