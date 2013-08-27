@@ -517,6 +517,15 @@ $year_holidays{2013} = [
     _jointlv     ({_expand_dm("26-12")}, {holiday=>$christmas}),
 ];
 
+# decreed aug 21, 2013
+#
+# Surat Keputusan Bersama MenPAN dan RB, Menteri Tenaga Kerja dan Transmigrasi,
+# dan Menteri Agama, Rabu (21/8/2013).
+#
+# ref:
+# - http://www.menpan.go.id/berita-terkini/1713-tahun-2014-libur-nasional-dan-cuti-bersama-19-hari
+# - http://nasional.kompas.com/read/2013/08/21/1314422/2014.Ada.19.Hari.Libur.Nasional.dan.Cuti.Bersama
+# - http://www.kaskus.co.id/thread/52145f5359cb175740000007/jadwal-hari-libur-nasional-amp-cuti-bersama-tahun-2014-resmi--download-kalender/
 my $eidulf2014;
 my $eidula2014;
 $year_holidays{2014} = [
