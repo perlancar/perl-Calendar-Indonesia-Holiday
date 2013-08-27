@@ -49,4 +49,12 @@ subtest "count_id_workdays (observe_joint_leaves=0)" => sub {
     is($res->[2], 22, "num");
 };
 
+subtest "year 2014" => sub {
+    my $res;
+    $res = list_id_holidays(year=>2014, is_joint_leave=>0);
+    is(~~@{$res->[2]}, 15, "num holidays");
+    $res = list_id_holidays(year=>2014, is_joint_leave=>1);
+    is(~~@{$res->[2]},  4, "num joint_leave");
+};
+
 done_testing();

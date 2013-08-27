@@ -519,29 +519,26 @@ $year_holidays{2013} = [
 
 my $eidulf2014;
 my $eidula2014;
-$year_holidays{2014} = _make_tentative [ # tentative, no decree yet
+$year_holidays{2014} = [
     _h_mawlid    ({_expand_dm("14-01")}),
     _h_chnewyear ({_expand_dm("31-01")}, {hyear=>2565}),
+    _h_nyepi     ({_expand_dm("31-03")}, {hyear=>1936}),
     _h_goodfri   ({_expand_dm("18-04")}),
-    _h_vesakha   ({_expand_dm("14-05")}, {hyear=>2558}),
-    _h_isramiraj ({_expand_dm("25-05")}),
+    _h_vesakha   ({_expand_dm("15-05")}, {hyear=>2558}),
+    _h_isramiraj ({_expand_dm("27-05")}),
     _h_ascension ({_expand_dm("29-05")}),
-    _h_nyepi     ({_expand_dm("18-04")}, {hyear=>1936}),
 
     ($eidulf2014 =
-    _h_eidulf    ({_expand_dm("29-07")}, {hyear=>1435, day=>1})),
-    _h_eidulf    ({_expand_dm("30-07")}, {hyear=>1435, day=>2}),
+    _h_eidulf    ({_expand_dm("28-07")}, {hyear=>1435, day=>1}),
+    _h_eidulf    ({_expand_dm("29-07")}, {hyear=>1435, day=>2})),
     ($eidula2014 =
-    _h_eidula    ({_expand_dm("05-10")})),
+    _h_eidula    ({_expand_dm("05-10")}, {hyear=>1435})),
     _h_hijra     ({_expand_dm("25-10")}, {hyear=>1436}),
 
-
-    # not yet
-    #_jointlv     ({_expand_dm("-")}, {holiday=>$eidulf2014}),
-    #_jointlv     ({_expand_dm("-")}, {holiday=>$eidulf2014}),
-    #_jointlv     ({_expand_dm("-")}, {holiday=>$eidulf2014}),
-    #_jointlv     ({_expand_dm("-")}, {holiday=>$eidula2014}),
-    #_jointlv     ({_expand_dm("-")}, {holiday=>$christmas}),
+    _jointlv     ({_expand_dm("30-07")}, {holiday=>$eidulf2014}),
+    _jointlv     ({_expand_dm("31-07")}, {holiday=>$eidulf2014}),
+    _jointlv     ({_expand_dm("01-08")}, {holiday=>$eidulf2014}),
+    _jointlv     ({_expand_dm("26-12")}, {holiday=>$christmas}),
 ];
 
 my @years     = sort keys %year_holidays;

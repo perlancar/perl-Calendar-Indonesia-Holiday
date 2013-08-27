@@ -1,38 +1,43 @@
 Revision history for Calendar-Indonesia-Holiday
 
+0.14     2013-08-27 (SHARYANTO) (not yet released)
+
+         - Update data: 2014 holidays (official, decreed Aug 21st).
+
+
 0.13     2013-07-25 (SHARYANTO)
 
-         Update data: 2014 holidays (tentative, no decree yet).
+         - Update data: 2014 holidays (tentative, no decree yet).
 
 
 0.12     2012-08-04 (SHARYANTO)
 
-         No functional changes. Update to Perinci::Sub::Gen::AccessTable 0.16.
+         - No functional changes. Update to Perinci::Sub::Gen::AccessTable 0.16.
 
 
 0.11     2012-08-04 (SHARYANTO)
 
-         Update data: 2013 holidays (decreed Jul 19).
+         - Update data: 2013 holidays (decreed Jul 19).
 
 
 0.10     2012-07-11 (SHARYANTO)
 
-         No functional changes. Update to Perinci::Sub::Gen::AccessTable 0.14.
+         - No functional changes. Update to Perinci::Sub::Gen::AccessTable 0.14.
 
 
 0.09     2012-06-04 (SHARYANTO)
 
-         No functional changes. Update to Perinci::Sub::Gen::AccessTable 0.11.
+         - No functional changes. Update to Perinci::Sub::Gen::AccessTable 0.11.
 
 
 0.08     2012-03-22 (SHARYANTO)
 
-         No functional changes. Update to Perinci::Sub::Gen::AccessTable 0.08.
+         - No functional changes. Update to Perinci::Sub::Gen::AccessTable 0.08.
 
 
 0.07     2011-12-14 (SHARYANTO)
 
-         No functionality changes.
+         - No functionality changes.
 
          [INCOMPATIBLE CHANGES]
 
@@ -43,12 +48,12 @@ Revision history for Calendar-Indonesia-Holiday
 
 0.06     2011-12-14 (SHARYANTO)
 
-         No library changes. Add command-line script.
+         - No library changes. Add command-line script.
 
 
 0.05     2011-10-05 (SHARYANTO)
 
-         Fix some calendar mistakes, add holidays from 2002-2007.
+         - Fix some calendar mistakes, add holidays from 2002-2007.
 
 
 0.04     2011-07-19 (SHARYANTO)
@@ -84,4 +89,4 @@ Revision history for Calendar-Indonesia-Holiday
 
 0.01     2011-06-14 (SHARYANTO)
 
-         First release.
+         - First release.
