@@ -1,5 +1,16 @@
 Revision history for Calendar-Indonesia-Holiday
 
+0.15     2013-12-12 (SHARYANTO)
+
+         - No functional changes.
+
+         [REMOVED FEATURES]
+
+         - Remove alias module Calendar::Indonesia::Holiday. I'm in general no
+           longer in favor of alias modules, except when it's really needed
+           (e.g. original name is really long).
+
+
 0.14     2013-08-27 (SHARYANTO)
 
          - Update data: 2014 holidays (official, decreed Aug 21st).
