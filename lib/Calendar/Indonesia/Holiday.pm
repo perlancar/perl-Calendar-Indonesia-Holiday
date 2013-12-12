@@ -8,10 +8,10 @@ use Log::Any '$log';
 
 use Data::Clone;
 use DateTime;
-use Perinci::Sub::Gen::AccessTable 0.16 qw(gen_read_table_func);
+use Perinci::Sub::Gen::AccessTable qw(gen_read_table_func);
 use Perinci::Sub::Util qw(err);
 
-use Exporter;
+require Exporter;
 our @ISA = qw(Exporter);
 our @EXPORT_OK = qw(
                        list_id_holidays
