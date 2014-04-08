@@ -1,5 +1,29 @@
 Revision history for Calendar-Indonesia-Holiday
 
+0.17     2014-04-08 (SHARYANTO)
+
+         [INCOMPATIBLE CHANGES]
+
+         - Rename fields 'id_aliases' -> 'ind_aliases' and 'en_aliases' ->
+           'eng_aliases' to be more consistent (language codes in field/function
+           names use ISO 3-letter codes while country names use ISO 2-letter
+           codes).
+
+         [ENHANCEMENTS]
+
+         - Add tentative holiday: Pilpres 2014.
+
+         - Add holidays: Pemilu 2009, Pilpres 2009.
+
+         - Add note field (currently unused).
+
+         - Add year and month to positional arguments so you can just say
+           'list-id-holidays 2014' or 'list-id-holidays 2014 4' instead of
+           'list-id-holidays --year 2014 --month 4'. This is a bit like the Unix
+           'cal' command, except that the order of arguments is (year) or
+           (year,month) instead of (year) or (month,year).
+
+
 0.16     2014-04-08 (SHARYANTO)
 
          - Add holiday: Pemilu 2014.
