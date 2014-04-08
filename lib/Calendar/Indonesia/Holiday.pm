@@ -439,9 +439,11 @@ $year_holidays{2009} = [
     _h_chnewyear ({_expand_dm("26-01")}, {hyear=>2560}),
     _h_mawlid    ({_expand_dm("09-03")}),
     _h_nyepi     ({_expand_dm("26-03")}, {hyear=>1931}),
+    _h_gelection ({_expand_dm("09-04")}, {}),
     _h_goodfri   ({_expand_dm("10-04")}),
     _h_vesakha   ({_expand_dm("09-05")}, {hyear=>2553}),
     _h_ascension ({_expand_dm("21-05")}),
+    _h_pelection ({_expand_dm("08-07")}, {}),
     _h_isramiraj ({_expand_dm("20-07")}),
     ($eidulf2009 =
     _h_eidulf    ({_expand_dm("21-09")}, {hyear=>1430, day=>1})),
