@@ -196,14 +196,29 @@ sub _h_hijra {
     ($r);
 }
 
-sub _h_election {
+sub _h_gelection {
     my ($r, $opts) = @_;
     $r->{ind_name}    = "Pemilu";
     $r->{eng_name}    = "General Election";
     $r->{is_holiday}  = 1;
     $r->{tags}        = [qw/political/];
 
-    $r->{$_} = $opts->{$_} for qw(decree_date decree_note);
+    for (qw(decree_date decree_note)) {
+        $r->{$_} = $opts->{$_} if defined $opts->{$_};
+    }
+    ($r);
+}
+
+sub _h_pelection {
+    my ($r, $opts) = @_;
+    $r->{ind_name}    = "Pilpres";
+    $r->{eng_name}    = "Presidential Election";
+    $r->{is_holiday}  = 1;
+    $r->{tags}        = [qw/political/];
+
+    for (qw(decree_date decree_note)) {
+        $r->{$_} = $opts->{$_} if defined $opts->{$_};
+    }
     ($r);
 }
 
@@ -544,12 +559,16 @@ $year_holidays{2014} = [
     _h_mawlid    ({_expand_dm("14-01")}),
     _h_chnewyear ({_expand_dm("31-01")}, {hyear=>2565}),
     _h_nyepi     ({_expand_dm("31-03")}, {hyear=>1936}),
-    _h_election  ({_expand_dm("09-04")}, {decree_date=>'2014-04-03', decree_note=>"Keppres 14/2014"}),
+    _h_gelection ({_expand_dm("09-04")}, {decree_date=>'2014-04-03', decree_note=>"Keppres 14/2014"}),
     _h_goodfri   ({_expand_dm("18-04")}),
     _h_vesakha   ({_expand_dm("15-05")}, {hyear=>2558}),
     _h_isramiraj ({_expand_dm("27-05")}),
     _h_ascension ({_expand_dm("29-05")}),
 
+    # sudah ditetapkan KPU tapi belum ada keppres
+    _make_tentative(
+        _h_pelection ({_expand_dm("09-07")}, {}),
+    ),
     ($eidulf2014 =
     _h_eidulf    ({_expand_dm("28-07")}, {hyear=>1435, day=>1}),
     _h_eidulf    ({_expand_dm("29-07")}, {hyear=>1435, day=>2})),
@@ -682,9 +701,14 @@ my $res = gen_read_table_func(
                 index => 12,
                 sortable => 0,
             },
+            note => {
+                schema => 'str',
+                index => 13,
+                sortable => 0,
+            },
             tags => {
                 schema => 'array*',
-                index => 13,
+                index => 14,
                 sortable => 0,
             },
         },
