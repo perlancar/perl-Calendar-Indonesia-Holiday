@@ -69,10 +69,10 @@ sub _h_chnewyear {
     $r->{eng_name}    = "Chinese New Year".
         ($opts->{hyear} ? " $opts->{hyear}":"");
     _add_original_date($r, $opts);
-    $r->{id_aliases} = [];
-    $r->{en_aliases} = [];
-    $r->{is_holiday} = 1;
-    $r->{tags}       = [qw/international calendar=lunar/];
+    $r->{ind_aliases} = [];
+    $r->{eng_aliases} = [];
+    $r->{is_holiday}  = 1;
+    $r->{tags}        = [qw/international calendar=lunar/];
     ($r);
 }
 
@@ -81,10 +81,10 @@ sub _h_mawlid {
     $r->{ind_name}    = "Maulid Nabi Muhammad";
     $r->{eng_name}    = "Mawlid";
     _add_original_date($r, $opts);
-    $r->{id_aliases} = [qw/Maulud/];
-    $r->{en_aliases} = ["Mawlid An-Nabi"];
-    $r->{is_holiday} = 1;
-    $r->{tags}       = [qw/religious religion=islam calendar=lunar/];
+    $r->{ind_aliases} = [qw/Maulud/];
+    $r->{eng_aliases} = ["Mawlid An-Nabi"];
+    $r->{is_holiday}  = 1;
+    $r->{tags}        = [qw/religious religion=islam calendar=lunar/];
     ($r);
 }
 
@@ -95,10 +95,10 @@ sub _h_nyepi {
     $r->{eng_name}    = "Nyepi".
         ($opts->{hyear} ? " $opts->{hyear}":"");
     _add_original_date($r, $opts);
-    $r->{id_aliases} = ["Tahun Baru Saka"];
-    $r->{en_aliases} = ["Bali New Year", "Bali Day Of Silence"];
-    $r->{is_holiday} = 1;
-    $r->{tags}       = [qw/religious religion=hinduism calendar=saka/];
+    $r->{ind_aliases} = ["Tahun Baru Saka"];
+    $r->{eng_aliases} = ["Bali New Year", "Bali Day Of Silence"];
+    $r->{is_holiday}  = 1;
+    $r->{tags}        = [qw/religious religion=hinduism calendar=saka/];
     ($r);
 }
 
@@ -107,10 +107,10 @@ sub _h_goodfri {
     $r->{ind_name}    = "Jum'at Agung";
     $r->{eng_name}    = "Good Friday";
     _add_original_date($r, $opts);
-    $r->{id_aliases} = ["Wafat Isa Al-Masih"];
-    $r->{en_aliases} = [];
-    $r->{is_holiday} = 1;
-    $r->{tags}       = [qw/religious religion=christianity/];
+    $r->{ind_aliases} = ["Wafat Isa Al-Masih"];
+    $r->{eng_aliases} = [];
+    $r->{is_holiday}  = 1;
+    $r->{tags}        = [qw/religious religion=christianity/];
     ($r);
 }
 
@@ -121,10 +121,10 @@ sub _h_vesakha {
     $r->{eng_name}    = "Vesakha".
         ($opts->{hyear} ? " $opts->{hyear}":"");
     _add_original_date($r, $opts);
-    $r->{id_aliases} = [];
-    $r->{en_aliases} = ["Vesak"];
-    $r->{is_holiday} = 1;
-    $r->{tags}       = [qw/religious religion=buddhism/];
+    $r->{ind_aliases} = [];
+    $r->{eng_aliases} = ["Vesak"];
+    $r->{is_holiday}  = 1;
+    $r->{tags}        = [qw/religious religion=buddhism/];
     ($r);
 }
 
@@ -133,10 +133,10 @@ sub _h_ascension {
     $r->{ind_name}    = "Kenaikan Isa Al-Masih";
     $r->{eng_name}    = "Ascension Day";
     _add_original_date($r, $opts);
-    $r->{id_aliases} = [];
-    $r->{en_aliases} = [];
-    $r->{is_holiday} = 1;
-    $r->{tags}       = [qw/religious religion=christianity/];
+    $r->{ind_aliases} = [];
+    $r->{eng_aliases} = [];
+    $r->{is_holiday}  = 1;
+    $r->{tags}        = [qw/religious religion=christianity/];
     ($r);
 }
 
@@ -145,27 +145,27 @@ sub _h_isramiraj {
     $r->{ind_name}    = "Isra Miraj";
     $r->{eng_name}    = "Isra And Miraj";
     _add_original_date($r, $opts);
-    $r->{id_aliases} = [];
-    $r->{en_aliases} = [];
-    $r->{is_holiday} = 1;
-    $r->{tags}       = [qw/religious religion=islam calendar=lunar/];
+    $r->{ind_aliases} = [];
+    $r->{eng_aliases} = [];
+    $r->{is_holiday}  = 1;
+    $r->{tags}        = [qw/religious religion=islam calendar=lunar/];
     ($r);
 }
 
 sub _h_eidulf {
     my ($r, $opts) = @_;
     $opts //= {};
-    $r->{ind_name0}   = "Idul Fitri".
+    my $ind_name0     = "Idul Fitri".
         ($opts->{hyear} ? " $opts->{hyear}H":"");
-    $r->{eng_name0}   = "Eid Ul-Fitr".
+    my $eng_name0     = "Eid Ul-Fitr".
         ($opts->{hyear} ? " $opts->{hyear}H":"");
-    $r->{ind_name}    = $r->{ind_name0}.($opts->{day} ? ", Hari $opts->{day}":"");
-    $r->{eng_name}    = $r->{eng_name0}.($opts->{day} ? ", Day $opts->{day}":"");
+    $r->{ind_name}    = $ind_name0.($opts->{day} ? ", Hari $opts->{day}":"");
+    $r->{eng_name}    = $eng_name0.($opts->{day} ? ", Day $opts->{day}":"");
     _add_original_date($r, $opts);
-    $r->{id_aliases} = ["Lebaran"];
-    $r->{en_aliases} = [];
-    $r->{is_holiday} = 1;
-    $r->{tags}       = [qw/religious religion=islam calendar=lunar/];
+    $r->{ind_aliases} = ["Lebaran"];
+    $r->{eng_aliases} = [];
+    $r->{is_holiday}  = 1;
+    $r->{tags}        = [qw/religious religion=islam calendar=lunar/];
     ($r);
 }
 
@@ -174,10 +174,10 @@ sub _h_eidula {
     $r->{ind_name}    = "Idul Adha";
     $r->{eng_name}    = "Eid Al-Adha";
     _add_original_date($r, $opts);
-    $r->{id_aliases} = ["Idul Kurban"];
-    $r->{en_aliases} = [];
-    $r->{is_holiday} = 1;
-    $r->{tags}       = [qw/religious religion=islam calendar=lunar/];
+    $r->{ind_aliases} = ["Idul Kurban"];
+    $r->{eng_aliases} = [];
+    $r->{is_holiday}  = 1;
+    $r->{tags}        = [qw/religious religion=islam calendar=lunar/];
     ($r);
 }
 
@@ -189,10 +189,10 @@ sub _h_hijra {
     $r->{eng_name}    = "Hijra".
         ($opts->{hyear} ? " $opts->{hyear}H":"");
     _add_original_date($r, $opts);
-    $r->{id_aliases} = ["1 Muharam"];
-    $r->{en_aliases} = [];
-    $r->{is_holiday} = 1;
-    $r->{tags}       = [qw/calendar=lunar/];
+    $r->{ind_aliases} = ["1 Muharam"];
+    $r->{eng_aliases} = [];
+    $r->{is_holiday}  = 1;
+    $r->{tags}        = [qw/calendar=lunar/];
     ($r);
 }
 
@@ -200,8 +200,8 @@ sub _h_election {
     my ($r, $opts) = @_;
     $r->{ind_name}    = "Pemilu";
     $r->{eng_name}    = "General Election";
-    $r->{is_holiday} = 1;
-    $r->{tags}       = [qw/political/];
+    $r->{is_holiday}  = 1;
+    $r->{tags}        = [qw/political/];
 
     $r->{$_} = $opts->{$_} for qw(decree_date decree_note);
     ($r);
@@ -215,10 +215,10 @@ sub _jointlv {
         ($h ? " (".($h->{ind_name0} // $h->{ind_name}).")": "");
     $r->{eng_name}        = "Joint Leave".
         ($h ? " (".($h->{eng_name0} // $h->{eng_name}).")": "");
-    $r->{id_aliases}     = [];
-    $r->{en_aliases}     = [];
-    $r->{is_joint_leave} = 1;
-    $r->{tags}           = [];
+    $r->{ind_aliases}     = [];
+    $r->{eng_aliases}     = [];
+    $r->{is_joint_leave}  = 1;
+    $r->{tags}            = [];
     ($r);
 }
 
@@ -648,14 +648,14 @@ my $res = gen_read_table_func(
                 filterable => 0,
                 sortable => 0,
             },
-            en_aliases => {
+            eng_aliases => {
                 schema => ['array*'=>{of=>'str*'}],
                 summary => 'English other names, if any',
                 index => 7,
                 filterable => 0,
                 sortable => 0,
             },
-            id_aliases => {
+            ind_aliases => {
                 schema => ['array*'=>{of=>'str*'}],
                 summary => 'Indonesian other names, if any',
                 index => 8,
@@ -860,16 +860,16 @@ sub count_id_workdays {
 
  # sample result
  [200, "OK", [
-   {date       => '2011-02-16',
-    day        => 16,
-    month      => 2,
-    year       => 2011,
+   {date        => '2011-02-16',
+    day         => 16,
+    month       => 2,
+    year        => 2011,
     ind_name    => 'Maulid Nabi Muhammad',
     eng_name    => 'Mawlid',
-    en_aliases => ['Mawlid An-Nabi'],
-    id_aliases => ['Maulud'],
-    is_holiday => 1,
-    tags       => [qw/religious religion=islam calendar=lunar/],
+    eng_aliases => ['Mawlid An-Nabi'],
+    ind_aliases => ['Maulud'],
+    is_holiday  => 1,
+    tags        => [qw/religious religion=islam calendar=lunar/],
    },
    ...
  ]];
