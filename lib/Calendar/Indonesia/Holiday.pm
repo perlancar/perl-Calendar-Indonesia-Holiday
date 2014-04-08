@@ -202,6 +202,8 @@ sub _h_election {
     $r->{eng_name}    = "General Election";
     $r->{is_holiday} = 1;
     $r->{tags}       = [qw/political/];
+
+    $r->{$_} = $opts->{$_} for qw(decree_date decree_note);
     ($r);
 }
 
