@@ -696,7 +696,8 @@ my $res = gen_read_table_func(
 die "BUG: Can't generate func: $res->[0] - $res->[1]"
     unless $res->[0] == 200;
 
-$SPEC{list_id_holidays}{args}{year}{pos} = 0;
+$SPEC{list_id_holidays}{args}{year}{pos}  = 0;
+$SPEC{list_id_holidays}{args}{month}{pos} = 1;
 
 my $AVAILABLE_YEARS =
     "Contains data from years $min_year to $max_year (joint leave days until\n".
