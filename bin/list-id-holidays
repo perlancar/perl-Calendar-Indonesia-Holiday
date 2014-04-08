@@ -18,7 +18,7 @@ Perinci::CmdLine->new(url => '/Calendar/Indonesia/Holiday/list_id_holidays')->
 =head1 SYNOPSIS
 
  # List Indonesian holidays for year 2011 (without the joint leaves)
- $ list-id-holidays --detail --nois-joint-leave --year 2011
+ $ list-id-holidays --detail --nois-joint-leave 2011
 
  # Show available options
  $ list-id-holidays --help
