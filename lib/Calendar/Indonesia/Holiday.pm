@@ -195,6 +195,15 @@ sub _h_hijra {
     ($r);
 }
 
+sub _h_election {
+    my ($r, $opts) = @_;
+    $r->{ind_name}    = "Pemilu";
+    $r->{eng_name}    = "General Election";
+    $r->{is_holiday} = 1;
+    $r->{tags}       = [qw/political/];
+    ($r);
+}
+
 sub _jointlv {
     my ($r, $opts) = @_;
     $opts //= {};
@@ -532,6 +541,7 @@ $year_holidays{2014} = [
     _h_mawlid    ({_expand_dm("14-01")}),
     _h_chnewyear ({_expand_dm("31-01")}, {hyear=>2565}),
     _h_nyepi     ({_expand_dm("31-03")}, {hyear=>1936}),
+    _h_election  ({_expand_dm("09-04")}),
     _h_goodfri   ({_expand_dm("18-04")}),
     _h_vesakha   ({_expand_dm("15-05")}, {hyear=>2558}),
     _h_isramiraj ({_expand_dm("27-05")}),
