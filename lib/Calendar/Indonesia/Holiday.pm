@@ -42,14 +42,15 @@ my @fixed_holidays = (
         tags       => [qw/international religious religion=christianity/],
     },
 
-    # labor day becomes national holiday since 2014 (decreed by president @ apr
-    # 29, 2013.
     my $labord = {
-        day        => 1, month => 5,
-        year_start => 2014,
-        ind_name   => "Hari Buruh",
-        eng_name   => "Labor Day",
-        tags       => [qw/international/],
+        day         => 1, month => 5,
+        year_start  => 2014,
+        ind_name    => "Hari Buruh",
+        eng_name    => "Labor Day",
+        tags        => [qw/international/],
+        decree_date => "2013-04-29",
+        decree_note => "Labor day becomes national holiday since 2014, ".
+            "decreed by president",
     },
 );
 
@@ -541,7 +542,7 @@ $year_holidays{2014} = [
     _h_mawlid    ({_expand_dm("14-01")}),
     _h_chnewyear ({_expand_dm("31-01")}, {hyear=>2565}),
     _h_nyepi     ({_expand_dm("31-03")}, {hyear=>1936}),
-    _h_election  ({_expand_dm("09-04")}),
+    _h_election  ({_expand_dm("09-04")}, {decree_date=>'2014-04-03', decree_note=>"Keppres 14/2014"}),
     _h_goodfri   ({_expand_dm("18-04")}),
     _h_vesakha   ({_expand_dm("15-05")}, {hyear=>2558}),
     _h_isramiraj ({_expand_dm("27-05")}),
