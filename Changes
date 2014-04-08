@@ -1,5 +1,13 @@
 Revision history for Calendar-Indonesia-Holiday
 
+0.16     2014-04-08 (SHARYANTO)
+
+         - Add holiday: Pemilu 2014.
+
+         - Add decree_date and decree_note fields when data is available (only
+           for a couple of holidays so far).
+
+
 0.15     2013-12-12 (SHARYANTO)
 
          - No functional changes.
