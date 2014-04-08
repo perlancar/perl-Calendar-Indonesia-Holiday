@@ -670,9 +670,19 @@ my $res = gen_read_table_func(
                     '("cuti bersama")',
                 index => 10,
             },
+            decree_date => {
+                schema => 'str',
+                index => 11,
+                sortable => 1,
+            },
+            decree_note => {
+                schema => 'str',
+                index => 12,
+                sortable => 0,
+            },
             tags => {
                 schema => 'array*',
-                index => 11,
+                index => 13,
                 sortable => 0,
             },
         },
