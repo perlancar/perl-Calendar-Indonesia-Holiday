@@ -947,4 +947,7 @@ year.
 
 This API will also be available on GudangAPI, http://gudangapi.com/
 
+Aside from national holidays, some provinces declare their own (e.g. governor
+election day for East Java province, etc).
+
 =cut
