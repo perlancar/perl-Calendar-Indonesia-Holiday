@@ -4,6 +4,7 @@ use 5.010;
 use strict;
 use warnings;
 
+use Calendar::Indonesia::Holiday; # for when fatpacked
 use Perinci::CmdLine 1.06;
 
 # VERSION

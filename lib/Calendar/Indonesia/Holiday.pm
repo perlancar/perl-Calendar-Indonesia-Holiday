@@ -6,8 +6,8 @@ use warnings;
 use experimental 'smartmatch';
 use Log::Any '$log';
 
-use Data::Clone;
 use DateTime;
+use Function::Fallback::CoreOrPP qw(clone);
 use Perinci::Sub::Gen::AccessTable qw(gen_read_table_func);
 use Perinci::Sub::Util qw(err);
 
