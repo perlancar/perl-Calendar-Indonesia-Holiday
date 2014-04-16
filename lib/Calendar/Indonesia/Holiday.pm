@@ -20,6 +20,7 @@ our @EXPORT_OK = qw(
                );
 
 # VERSION
+# DATE
 
 our %SPEC;
 my @fixed_holidays = (
