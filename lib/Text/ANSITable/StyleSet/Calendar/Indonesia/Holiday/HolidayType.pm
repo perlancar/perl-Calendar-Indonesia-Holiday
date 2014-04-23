@@ -12,6 +12,9 @@ has holiday_fgcolor     => (is => 'rw');
 has joint_leave_bgcolor => (is => 'rw');
 has joint_leave_fgcolor => (is => 'rw');
 
+# VERSION
+# DATE
+
 sub summary {
     "Set foreground and/or background color for different holiday types";
 }
