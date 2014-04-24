@@ -35,7 +35,6 @@ sub apply {
             my $is_jl_idx = List::MoreUtils::firstidx(
                 sub {$_ eq 'is_joint_leave'}, @$cols);
 
-            # because we count from 0
             if ($is_h_idx >= 0 && $r->[$is_h_idx]) {
                 $styles{bgcolor} = $self->holiday_bgcolor
                     if defined $self->holiday_bgcolor;
