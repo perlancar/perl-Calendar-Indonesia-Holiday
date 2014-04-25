@@ -635,7 +635,7 @@ my $res = gen_read_table_func(
     table_spec => {
         fields => {
             date => {
-                schema     => 'str*',
+                schema     => 'date*',
                 pos        => 0,
                 searchable => 0,
             },
