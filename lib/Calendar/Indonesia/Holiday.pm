@@ -752,6 +752,7 @@ sub _check_date_arg {
 }
 
 $SPEC{enum_id_workdays} = {
+    v => 1.1,
     summary => 'Enumerate working days for a certain period',
     description => <<"_",
 
@@ -764,32 +765,34 @@ $AVAILABLE_YEARS
 
 _
     args => {
-        start_date => ['str*' => {
+        start_date => {
             summary => 'Starting date',
+            schema  => 'str*',
             description => <<'_',
 
 Defaults to start of current month. Either a string in the form of "YYYY-MM-DD",
 or a DateTime object, is accepted.
 
 _
-        }],
-        end_date => ['str*' => {
+        },
+        end_date => {
             summary => 'End date',
+            schema  => 'str*',
             description => <<'_',
 
 Defaults to end of current month. Either a string in the form of "YYYY-MM-DD",
 or a DateTime object, is accepted.
 
 _
-        }],
-        work_saturdays => ['bool' => {
+        },
+        work_saturdays => {
+            schema  => ['bool' => {default=>0}],
             summary => 'If set to 1, Saturday is a working day',
-            default => 0,
-        }],
-        observe_joint_leaves => ['bool' => {
+        },
+        observe_joint_leaves => {
             summary => 'If set to 0, do not observe joint leave as holidays',
-            default => 1,
-        }],
+            schema  => ['bool' => {default => 1}],
+        },
     },
 };
 sub enum_id_workdays {
