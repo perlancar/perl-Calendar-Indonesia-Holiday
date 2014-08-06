@@ -585,6 +585,34 @@ $year_holidays{2014} = [
     _jointlv     ({_expand_dm("26-12")}, {holiday=>$christmas}),
 ];
 
+# decreed may 7, 2014
+#
+# Surat Keputusan Bersama Libur Nasional dan Cuti Bersama
+#
+# ref:
+# - http://nasional.kompas.com/read/2014/05/07/1805155/Hari.Libur.dan.Cuti.Bersama.2015.Banyak.Long.Weekend.dan.Harpitnas.3
+my $eidulf2015;
+$year_holidays{2015} = [
+    _h_mawlid    ({_expand_dm("03-01")}),
+    _h_chnewyear ({_expand_dm("19-02")}, {hyear=>2566}),
+    _h_nyepi     ({_expand_dm("21-03")}, {hyear=>1937}),
+    _h_goodfri   ({_expand_dm("03-04")}),
+    _h_ascension ({_expand_dm("14-05")}),
+    _h_isramiraj ({_expand_dm("16-05")}),
+    _h_vesakha   ({_expand_dm("02-06")}, {hyear=>2559}),
+
+    ($eidulf2015 =
+    _h_eidulf    ({_expand_dm("17-07")}, {hyear=>1436, day=>1}),
+    _h_eidulf    ({_expand_dm("18-07")}, {hyear=>1436, day=>2})),
+    _h_eidula    ({_expand_dm("24-09")}, {hyear=>1436}),
+    _h_hijra     ({_expand_dm("14-10")}, {hyear=>1437}),
+
+    _jointlv     ({_expand_dm("16-07")}, {holiday=>$eidulf2015}),
+    _jointlv     ({_expand_dm("20-07")}, {holiday=>$eidulf2015}),
+    _jointlv     ({_expand_dm("21-07")}, {holiday=>$eidulf2015}),
+    _jointlv     ({_expand_dm("24-12")}, {holiday=>$christmas}),
+];
+
 my @years     = sort keys %year_holidays;
 our $min_year = $years[0];
 our $max_year = $years[-1];
