@@ -882,6 +882,45 @@ gen_modified_sub(
     },
 );
 
+$SPEC{list_id_workdays} = {
+    v => 1.1,
+    summary => '',
+    args => {
+        year       => {schema=>'int*'},
+        month      => {schema=>['int*', between=>[1, 12]]},
+        start_date => {schema=>'str*'},
+        end_date   => {schema=>'str*'},
+    },
+};
+sub list_id_workdays {
+    my %args = @_;
+
+    my %fargs;
+    my $y = $args{year};
+    my $m = $args{month};
+    if ($y) {
+        if ($m) {
+            $fargs{start_date} = DateTime->new(year=>$y, month=>$m, day=>1);
+            $m++; if ($m == 13) { $m=1; $y++ }
+            $fargs{end_date} = DateTime->new(year=>$y, month=>$m, day=>1)
+                ->subtract(days => 1);
+        } else {
+            $fargs{start_date} = DateTime->new(year=>$y, month=>1, day=>1);
+            $fargs{end_date} = DateTime->new(year=>$y+1, month=>1, day=>1)
+                ->subtract(days => 1);
+        }
+    }
+
+    if ($args{start_date}) {
+        $fargs{start_date} = $fargs{start_date};
+    }
+    if ($args{end_date}) {
+        $fargs{end_date} = $fargs{end_date};
+    }
+
+    Calendar::Indonesia::Holiday::enum_id_workdays(%fargs);
+}
+
 1;
 # ABSTRACT: List Indonesian public holidays
 
