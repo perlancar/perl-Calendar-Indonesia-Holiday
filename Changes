@@ -1,5 +1,12 @@
 Revision history for Calendar-Indonesia-Holiday
 
+0.23     2014-08-16 (SHARYANTO) - Happy 19th CPAN Day!
+
+         - [build] CLI scripts are now generated automatically using
+           Dist::Zilla::Plugin::ScriptFromFunc. The plugin is still at 0.01 so the
+           generated script is not as polished as it should be. Stay tuned.
+
+
 0.22     2014-08-06 (SHARYANTO)
 
          - Update data: 2015 holidays (official, decreed May 7th, so I'm a bit
