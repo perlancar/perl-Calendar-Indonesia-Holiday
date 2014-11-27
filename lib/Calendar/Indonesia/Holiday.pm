@@ -990,10 +990,6 @@ sub list_id_workdays {
 
 This module provides functions to list Indonesian holidays.
 
-This module uses L<Log::Any> logging framework.
-
-This module has L<Rinci> metadata.
-
 
 =head1 FAQ
 
