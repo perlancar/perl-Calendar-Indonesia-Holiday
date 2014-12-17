@@ -23,6 +23,12 @@ our @EXPORT_OK = qw(
                );
 
 our %SPEC;
+
+$SPEC{':package'} = {
+    v => 1.1,
+    summary => 'List Indonesian public holidays',
+};
+
 my @fixed_holidays = (
     my $newyear = {
         day        =>  1, month =>  1,
@@ -659,7 +665,6 @@ for my $year ($min_year .. $max_year) {
 
 my $res = gen_read_table_func(
     name => 'list_id_holidays',
-    summary => 'List Indonesian public holidays',
     table_data => \@holidays,
     table_spec => {
         fields => {

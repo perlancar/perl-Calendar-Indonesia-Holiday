@@ -1,5 +1,8 @@
 package Text::ANSITable::StyleSet::Calendar::Indonesia::Holiday::HolidayType;
 
+# DATE
+# VERSION
+
 use 5.010;
 use Moo;
 use experimental 'smartmatch';
@@ -11,9 +14,6 @@ has holiday_bgcolor     => (is => 'rw');
 has holiday_fgcolor     => (is => 'rw');
 has joint_leave_bgcolor => (is => 'rw');
 has joint_leave_fgcolor => (is => 'rw');
-
-# VERSION
-# DATE
 
 sub summary {
     "Set foreground and/or background color for different holiday types";
@@ -52,6 +52,7 @@ sub apply {
 }
 
 1;
+# ABSTRACT: Set foreground and/or background color for different holiday types
 
 =for Pod::Coverage ^(summary|apply)$
 
