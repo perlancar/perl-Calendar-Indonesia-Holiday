@@ -1,5 +1,8 @@
 package Calendar::Indonesia::Holiday;
 
+# DATE
+# VERSION
+
 use 5.010001;
 use strict;
 use warnings;
@@ -18,9 +21,6 @@ our @EXPORT_OK = qw(
                        enum_id_workdays
                        count_id_workdays
                );
-
-# VERSION
-# DATE
 
 our %SPEC;
 my @fixed_holidays = (
@@ -659,6 +659,7 @@ for my $year ($min_year .. $max_year) {
 
 my $res = gen_read_table_func(
     name => 'list_id_holidays',
+    summary => 'List Indonesian public holidays',
     table_data => \@holidays,
     table_spec => {
         fields => {
@@ -922,7 +923,7 @@ sub list_id_workdays {
 }
 
 1;
-# ABSTRACT: List Indonesian public holidays
+# ABSTRACT:
 
 =head1 SYNOPSIS
 
