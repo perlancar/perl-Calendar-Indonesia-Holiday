@@ -3,7 +3,6 @@
 use 5.010;
 use strict;
 use warnings;
-use Log::Any '$log';
 use Test::More 0.96;
 
 use Calendar::Indonesia::Holiday qw(
