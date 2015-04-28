@@ -1,5 +1,15 @@
 Revision history for Calendar-Indonesia-Holiday
 
+0.24    2015-04-28 (PERLANCAR)
+
+	- Add tentative holidays for 2016.
+
+	- Split CLIs to its own dist App-IndonesianHolidaysUtils to reduce
+	  deps.
+
+	- Replace Log::Any with Log::Any::IfLOG.
+
+
 0.23     2014-08-16 (SHARYANTO) - Happy 19th CPAN Day!
 
          - [build] CLI scripts are now generated automatically using
