@@ -619,22 +619,23 @@ $year_holidays{2015} = [
     _jointlv     ({_expand_dm("24-12")}, {holiday=>$christmas}),
 ];
 
-# tentative
+# decreed jun 25, 2015
 #
 # ref:
 # - http://id.wikipedia.org/wiki/2016#Hari_libur_nasional_di_Indonesia
+# - http://www.merdeka.com/peristiwa/ini-daftar-hari-libur-nasional-dan-cuti-bersama-2016.html
 my $eidulf2016;
 $year_holidays{2016} = [
     _h_chnewyear ({_expand_dm("08-02")}, {hyear=>2567}),
     _h_nyepi     ({_expand_dm("09-03")}, {hyear=>1938}),
     _h_goodfri   ({_expand_dm("25-03")}),
-    _h_isramiraj ({_expand_dm("04-05")}),
     _h_ascension ({_expand_dm("05-05")}),
+    _h_isramiraj ({_expand_dm("06-05")}),
     _h_vesakha   ({_expand_dm("22-05")}, {hyear=>2560}),
     _h_eidulf    ({_expand_dm("06-07")}, {hyear=>1437, day=>1}),
     _h_eidulf    ({_expand_dm("07-07")}, {hyear=>1437, day=>2}),
-    _h_eidula    ({_expand_dm("13-09")}, {hyear=>1437}),
-    _h_hijra     ({_expand_dm("03-10")}, {hyear=>1438}),
+    _h_eidula    ({_expand_dm("12-09")}, {hyear=>1437}),
+    _h_hijra     ({_expand_dm("02-10")}, {hyear=>1438}),
     _h_mawlid    ({_expand_dm("12-12")}),
 ];
 
