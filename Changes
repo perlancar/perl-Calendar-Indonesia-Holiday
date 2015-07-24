@@ -1,5 +1,11 @@
 Revision history for Calendar-Indonesia-Holiday
 
+0.25    2015-07-25 (PERLANCAR)
+
+	- Update with official 2016 holidays (Isra Miraj is May 6th not
+	  4th, Idul Adha is Sep 12th not 13th, Hijra is Oct 2nd not 3rd).
+
+
 0.24    2015-04-28 (PERLANCAR)
 
 	- Add tentative holidays for 2016.
