@@ -579,8 +579,8 @@ $year_holidays{2014} = [
         _h_pelection ({_expand_dm("09-07")}, {}),
     ),
     ($eidulf2014 =
-    _h_eidulf    ({_expand_dm("28-07")}, {hyear=>1435, day=>1}),
-    _h_eidulf    ({_expand_dm("29-07")}, {hyear=>1435, day=>2})),
+    _h_eidulf    ({_expand_dm("28-07")}, {hyear=>1435, day=>1})),
+    _h_eidulf    ({_expand_dm("29-07")}, {hyear=>1435, day=>2}),
     ($eidula2014 =
     _h_eidula    ({_expand_dm("05-10")}, {hyear=>1435})),
     _h_hijra     ({_expand_dm("25-10")}, {hyear=>1436}),
@@ -608,8 +608,8 @@ $year_holidays{2015} = [
     _h_vesakha   ({_expand_dm("02-06")}, {hyear=>2559}),
 
     ($eidulf2015 =
-    _h_eidulf    ({_expand_dm("17-07")}, {hyear=>1436, day=>1}),
-    _h_eidulf    ({_expand_dm("18-07")}, {hyear=>1436, day=>2})),
+    _h_eidulf    ({_expand_dm("17-07")}, {hyear=>1436, day=>1})),
+    _h_eidulf    ({_expand_dm("18-07")}, {hyear=>1436, day=>2}),
     _h_eidula    ({_expand_dm("24-09")}, {hyear=>1436}),
     _h_hijra     ({_expand_dm("14-10")}, {hyear=>1437}),
 
@@ -632,11 +632,17 @@ $year_holidays{2016} = [
     _h_ascension ({_expand_dm("05-05")}),
     _h_isramiraj ({_expand_dm("06-05")}),
     _h_vesakha   ({_expand_dm("22-05")}, {hyear=>2560}),
-    _h_eidulf    ({_expand_dm("06-07")}, {hyear=>1437, day=>1}),
+    ($eidulf2015 =
+    _h_eidulf    ({_expand_dm("06-07")}, {hyear=>1437, day=>1})),
     _h_eidulf    ({_expand_dm("07-07")}, {hyear=>1437, day=>2}),
     _h_eidula    ({_expand_dm("12-09")}, {hyear=>1437}),
     _h_hijra     ({_expand_dm("02-10")}, {hyear=>1438}),
     _h_mawlid    ({_expand_dm("12-12")}),
+
+    _jointlv     ({_expand_dm("04-07")}, {holiday=>$eidulf2016}),
+    _jointlv     ({_expand_dm("05-07")}, {holiday=>$eidulf2016}),
+    _jointlv     ({_expand_dm("08-07")}, {holiday=>$eidulf2016}),
+    _jointlv     ({_expand_dm("26-12")}, {holiday=>$christmas}),
 ];
 
 
