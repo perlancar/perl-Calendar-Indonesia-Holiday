@@ -1023,6 +1023,8 @@ sub list_id_workdays {
 
 This module provides functions to list Indonesian holidays.
 
+There is a command-line script interface for this module: L<list-id-holidays>.
+
 
 =head1 FAQ
 
