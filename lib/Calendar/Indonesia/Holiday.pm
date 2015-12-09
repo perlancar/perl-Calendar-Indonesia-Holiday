@@ -229,6 +229,19 @@ sub _h_pelection {
     ($r);
 }
 
+sub _h_jrelection {
+    my ($r, $opts) = @_;
+    $r->{ind_name}    = "Pilkada Serentak";
+    $r->{eng_name}    = "Joint Regional Election";
+    $r->{is_holiday}  = 1;
+    $r->{tags}        = [qw/political/];
+
+    for (qw(decree_date decree_note)) {
+        $r->{$_} = $opts->{$_} if defined $opts->{$_};
+    }
+    ($r);
+}
+
 sub _jointlv {
     my ($r, $opts) = @_;
     $opts //= {};
@@ -612,6 +625,7 @@ $year_holidays{2015} = [
     _h_eidulf    ({_expand_dm("18-07")}, {hyear=>1436, day=>2}),
     _h_eidula    ({_expand_dm("24-09")}, {hyear=>1436}),
     _h_hijra     ({_expand_dm("14-10")}, {hyear=>1437}),
+    _h_jrelection({_expand_dm("09-12")}, {decree_date => "2015-11-23"}),
 
     _jointlv     ({_expand_dm("16-07")}, {holiday=>$eidulf2015}),
     _jointlv     ({_expand_dm("20-07")}, {holiday=>$eidulf2015}),
