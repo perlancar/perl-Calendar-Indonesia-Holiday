@@ -48,7 +48,6 @@ my @fixed_holidays = (
         eng_name   => "Christmas",
         tags       => [qw/international religious religion=christianity/],
     },
-
     my $labord = {
         day         => 1, month => 5,
         year_start  => 2014,
@@ -283,288 +282,312 @@ sub _expand_dm {
 my %year_holidays;
 
 # decreed ?
-my $eidulf2002;
-$year_holidays{2002} = [
-    _h_chnewyear ({_expand_dm("12-02")}, {hyear=>2553}),
-    _h_eidula    ({_expand_dm("23-02")}, {hyear=>1422}),
-    _h_hijra     ({_expand_dm("15-03")}, {hyear=>1423}),
-    _h_goodfri   ({_expand_dm("29-03")}),
-    _h_nyepi     ({_expand_dm("13-04")}, {hyear=>1924}),
-    _h_ascension ({_expand_dm("09-05")}),
-    _h_mawlid    ({_expand_dm("25-05")}, {hyear=>1423, original_date=>'2003-05-14'}),
-    _h_vesakha   ({_expand_dm("26-05")}, {hyear=>2546}),
-    _h_isramiraj ({_expand_dm("04-10")}),
-    ($eidulf2002 =
-    _h_eidulf    ({_expand_dm("06-12")}, {hyear=>1424, day=>1})),
-    _h_eidulf    ({_expand_dm("07-12")}, {hyear=>1424, day=>2}),
+{
+    my $eidulf2002;
+    $year_holidays{2002} = [
+        _h_chnewyear ({_expand_dm("12-02")}, {hyear=>2553}),
+        _h_eidula    ({_expand_dm("23-02")}, {hyear=>1422}),
+        _h_hijra     ({_expand_dm("15-03")}, {hyear=>1423}),
+        _h_goodfri   ({_expand_dm("29-03")}),
+        _h_nyepi     ({_expand_dm("13-04")}, {hyear=>1924}),
+        _h_ascension ({_expand_dm("09-05")}),
+        _h_mawlid    ({_expand_dm("25-05")}, {hyear=>1423, original_date=>'2003-05-14'}),
+        _h_vesakha   ({_expand_dm("26-05")}, {hyear=>2546}),
+        _h_isramiraj ({_expand_dm("04-10")}),
+        ($eidulf2002 =
+        _h_eidulf    ({_expand_dm("06-12")}, {hyear=>1424, day=>1})),
+        _h_eidulf    ({_expand_dm("07-12")}, {hyear=>1424, day=>2}),
 
-    _jointlv     ({_expand_dm("05-12")}, {holiday=>$eidulf2002}),
-    _jointlv     ({_expand_dm("09-12")}, {holiday=>$eidulf2002}),
-    _jointlv     ({_expand_dm("10-12")}, {holiday=>$eidulf2002}),
-    _jointlv     ({_expand_dm("26-12")}, {holiday=>$christmas}),
-];
+        _jointlv     ({_expand_dm("05-12")}, {holiday=>$eidulf2002}),
+        _jointlv     ({_expand_dm("09-12")}, {holiday=>$eidulf2002}),
+        _jointlv     ({_expand_dm("10-12")}, {holiday=>$eidulf2002}),
+        _jointlv     ({_expand_dm("26-12")}, {holiday=>$christmas}),
+    ];
+}
 
 # decreed nov 25, 2002
-my $eidulf2003;
-$year_holidays{2003} = [
-    _h_chnewyear ({_expand_dm("01-02")}, {hyear=>2554}),
-    _h_eidula    ({_expand_dm("12-02")}, {hyear=>1423}),
-    _h_hijra     ({_expand_dm("03-03")}, {hyear=>1424, original_date=>'2003-03-04'}),
-    _h_nyepi     ({_expand_dm("02-04")}, {hyear=>1925}),
-    _h_goodfri   ({_expand_dm("18-04")}),
-    _h_mawlid    ({_expand_dm("15-05")}, {original_date=>'2003-05-14'}),
-    _h_vesakha   ({_expand_dm("16-05")}, {hyear=>2547}),
-    _h_ascension ({_expand_dm("30-05")}, {original_date=>'2003-05-29'}),
-    _h_isramiraj ({_expand_dm("22-09")}, {original_date=>'2003-09-24'}),
-    ($eidulf2003 =
-    _h_eidulf    ({_expand_dm("25-11")}, {hyear=>1425, day=>1})),
-    _h_eidulf    ({_expand_dm("26-11")}, {hyear=>1425, day=>2}),
+{
+    my $eidulf2003;
+    $year_holidays{2003} = [
+        _h_chnewyear ({_expand_dm("01-02")}, {hyear=>2554}),
+        _h_eidula    ({_expand_dm("12-02")}, {hyear=>1423}),
+        _h_hijra     ({_expand_dm("03-03")}, {hyear=>1424, original_date=>'2003-03-04'}),
+        _h_nyepi     ({_expand_dm("02-04")}, {hyear=>1925}),
+        _h_goodfri   ({_expand_dm("18-04")}),
+        _h_mawlid    ({_expand_dm("15-05")}, {original_date=>'2003-05-14'}),
+        _h_vesakha   ({_expand_dm("16-05")}, {hyear=>2547}),
+        _h_ascension ({_expand_dm("30-05")}, {original_date=>'2003-05-29'}),
+        _h_isramiraj ({_expand_dm("22-09")}, {original_date=>'2003-09-24'}),
+        ($eidulf2003 =
+        _h_eidulf    ({_expand_dm("25-11")}, {hyear=>1425, day=>1})),
+        _h_eidulf    ({_expand_dm("26-11")}, {hyear=>1425, day=>2}),
 
-    _jointlv     ({_expand_dm("24-11")}, {holiday=>$eidulf2003}),
-    _jointlv     ({_expand_dm("27-11")}, {holiday=>$eidulf2003}),
-    _jointlv     ({_expand_dm("28-11")}, {holiday=>$eidulf2003}),
-    _jointlv     ({_expand_dm("26-12")}, {holiday=>$christmas}),
-];
-my $indep2003 = clone($indep); $indep2003->{day} = 18;
-_add_original_date($indep2003, {original_date=>'2003-08-17'});
+        _jointlv     ({_expand_dm("24-11")}, {holiday=>$eidulf2003}),
+        _jointlv     ({_expand_dm("27-11")}, {holiday=>$eidulf2003}),
+        _jointlv     ({_expand_dm("28-11")}, {holiday=>$eidulf2003}),
+        _jointlv     ({_expand_dm("26-12")}, {holiday=>$christmas}),
+    ];
+    my $indep2003 = clone($indep); $indep2003->{day} = 18;
+    _add_original_date($indep2003, {original_date=>'2003-08-17'});
+}
 
 # decreed jul 17, 2003
-my $eidulf2004;
-$year_holidays{2004} = [
-    _h_chnewyear ({_expand_dm("22-01")}, {hyear=>2555}),
-    _h_eidula    ({_expand_dm("02-02")}, {hyear=>1424, original_date=>'2004-02-01'}),
-    _h_hijra     ({_expand_dm("23-02")}, {hyear=>1425, original_date=>'2004-02-01'}),
-    _h_nyepi     ({_expand_dm("22-03")}, {hyear=>1926}),
-    _h_goodfri   ({_expand_dm("09-04")}),
-    _h_mawlid    ({_expand_dm("03-05")}, {original_date=>'2004-05-02'}),
-    _h_ascension ({_expand_dm("20-05")}),
-    _h_vesakha   ({_expand_dm("03-06")}, {hyear=>2548}),
-    _h_isramiraj ({_expand_dm("13-09")}, {original_date=>'2004-09-12'}),
-    ($eidulf2004 =
-    _h_eidulf    ({_expand_dm("14-11")}, {hyear=>1425, day=>1})),
-    _h_eidulf    ({_expand_dm("15-11")}, {hyear=>1425, day=>2}),
-    _h_eidulf    ({_expand_dm("16-11")}, {hyear=>1425, day=>3}),
+{
+    my $eidulf2004;
+    $year_holidays{2004} = [
+        _h_chnewyear ({_expand_dm("22-01")}, {hyear=>2555}),
+        _h_eidula    ({_expand_dm("02-02")}, {hyear=>1424, original_date=>'2004-02-01'}),
+        _h_hijra     ({_expand_dm("23-02")}, {hyear=>1425, original_date=>'2004-02-01'}),
+        _h_nyepi     ({_expand_dm("22-03")}, {hyear=>1926}),
+        _h_goodfri   ({_expand_dm("09-04")}),
+        _h_mawlid    ({_expand_dm("03-05")}, {original_date=>'2004-05-02'}),
+        _h_ascension ({_expand_dm("20-05")}),
+        _h_vesakha   ({_expand_dm("03-06")}, {hyear=>2548}),
+        _h_isramiraj ({_expand_dm("13-09")}, {original_date=>'2004-09-12'}),
+        ($eidulf2004 =
+        _h_eidulf    ({_expand_dm("14-11")}, {hyear=>1425, day=>1})),
+        _h_eidulf    ({_expand_dm("15-11")}, {hyear=>1425, day=>2}),
+        _h_eidulf    ({_expand_dm("16-11")}, {hyear=>1425, day=>3}),
 
-    _jointlv     ({_expand_dm("17-11")}, {holiday=>$eidulf2004}),
-    _jointlv     ({_expand_dm("18-11")}, {holiday=>$eidulf2004}),
-    _jointlv     ({_expand_dm("19-11")}, {holiday=>$eidulf2004}),
-];
+        _jointlv     ({_expand_dm("17-11")}, {holiday=>$eidulf2004}),
+        _jointlv     ({_expand_dm("18-11")}, {holiday=>$eidulf2004}),
+        _jointlv     ({_expand_dm("19-11")}, {holiday=>$eidulf2004}),
+    ];
+}
 
 # decreed jul ??, 2004
-my $eidulf2005;
-$year_holidays{2005} = [
-    _h_eidula    ({_expand_dm("21-01")}, {hyear=>1425}),
-    _h_chnewyear ({_expand_dm("09-02")}, {hyear=>2556}),
-    _h_hijra     ({_expand_dm("10-02")}, {hyear=>1426}),
-    _h_nyepi     ({_expand_dm("11-03")}, {hyear=>1927}),
-    _h_goodfri   ({_expand_dm("25-03")}),
-    _h_mawlid    ({_expand_dm("22-04")}, {original_date=>'2005-21-04'}),
-    _h_ascension ({_expand_dm("05-05")}),
-    _h_vesakha   ({_expand_dm("24-05")}, {hyear=>2549}),
-    _h_isramiraj ({_expand_dm("02-09")}, {original_date=>'2005-09-01'}),
-    ($eidulf2005 =
-    _h_eidulf    ({_expand_dm("03-11")}, {hyear=>1426, day=>1})),
-    _h_eidulf    ({_expand_dm("04-11")}, {hyear=>1426, day=>2}),
+{
+    my $eidulf2005;
+    $year_holidays{2005} = [
+        _h_eidula    ({_expand_dm("21-01")}, {hyear=>1425}),
+        _h_chnewyear ({_expand_dm("09-02")}, {hyear=>2556}),
+        _h_hijra     ({_expand_dm("10-02")}, {hyear=>1426}),
+        _h_nyepi     ({_expand_dm("11-03")}, {hyear=>1927}),
+        _h_goodfri   ({_expand_dm("25-03")}),
+        _h_mawlid    ({_expand_dm("22-04")}, {original_date=>'2005-21-04'}),
+        _h_ascension ({_expand_dm("05-05")}),
+        _h_vesakha   ({_expand_dm("24-05")}, {hyear=>2549}),
+        _h_isramiraj ({_expand_dm("02-09")}, {original_date=>'2005-09-01'}),
+        ($eidulf2005 =
+        _h_eidulf    ({_expand_dm("03-11")}, {hyear=>1426, day=>1})),
+        _h_eidulf    ({_expand_dm("04-11")}, {hyear=>1426, day=>2}),
 
-    _jointlv     ({_expand_dm("02-11")}, {holiday=>$eidulf2005}),
-    _jointlv     ({_expand_dm("05-11")}, {holiday=>$eidulf2005}),
-    _jointlv     ({_expand_dm("07-11")}, {holiday=>$eidulf2005}),
-    _jointlv     ({_expand_dm("08-11")}, {holiday=>$eidulf2005}),
-];
+        _jointlv     ({_expand_dm("02-11")}, {holiday=>$eidulf2005}),
+        _jointlv     ({_expand_dm("05-11")}, {holiday=>$eidulf2005}),
+        _jointlv     ({_expand_dm("07-11")}, {holiday=>$eidulf2005}),
+        _jointlv     ({_expand_dm("08-11")}, {holiday=>$eidulf2005}),
+    ];
+}
 
 # decreed mar 22, 2006 (?)
-my $nyepi2006;
-my $ascension2006;
-my $eidulf2006;
-$year_holidays{2006} = [
-    _h_eidula    ({_expand_dm("10-01")}, {hyear=>1426}),
-    _h_hijra     ({_expand_dm("31-01")}, {hyear=>1427}),
-    _h_chnewyear ({_expand_dm("29-01")}, {hyear=>2557}),
-    ($nyepi2006 =
-    _h_nyepi     ({_expand_dm("30-03")}, {hyear=>1928})),
-    _h_mawlid    ({_expand_dm("10-04")}),
-    _h_goodfri   ({_expand_dm("14-04")}),
-    _h_vesakha   ({_expand_dm("13-05")}, {hyear=>2550}),
-    ($ascension2006 =
-    _h_ascension ({_expand_dm("25-05")})),
-    _h_isramiraj ({_expand_dm("21-08")}),
-    ($eidulf2006 =
-    _h_eidulf    ({_expand_dm("24-10")}, {hyear=>1427, day=>1})),
-    _h_eidulf    ({_expand_dm("25-10")}, {hyear=>1427, day=>2}),
-    _h_eidula    ({_expand_dm("31-12")}, {hyear=>1427}),
+{
+    my $nyepi2006;
+    my $ascension2006;
+    my $eidulf2006;
+    $year_holidays{2006} = [
+        _h_eidula    ({_expand_dm("10-01")}, {hyear=>1426}),
+        _h_hijra     ({_expand_dm("31-01")}, {hyear=>1427}),
+        _h_chnewyear ({_expand_dm("29-01")}, {hyear=>2557}),
+        ($nyepi2006 =
+        _h_nyepi     ({_expand_dm("30-03")}, {hyear=>1928})),
+        _h_mawlid    ({_expand_dm("10-04")}),
+        _h_goodfri   ({_expand_dm("14-04")}),
+        _h_vesakha   ({_expand_dm("13-05")}, {hyear=>2550}),
+        ($ascension2006 =
+        _h_ascension ({_expand_dm("25-05")})),
+        _h_isramiraj ({_expand_dm("21-08")}),
+        ($eidulf2006 =
+        _h_eidulf    ({_expand_dm("24-10")}, {hyear=>1427, day=>1})),
+        _h_eidulf    ({_expand_dm("25-10")}, {hyear=>1427, day=>2}),
+        _h_eidula    ({_expand_dm("31-12")}, {hyear=>1427}),
 
-    _jointlv     ({_expand_dm("31-03")}, {holiday=>$nyepi2006}),
-    _jointlv     ({_expand_dm("26-05")}, {holiday=>$ascension2006}),
-    _jointlv     ({_expand_dm("18-08")}, {holiday=>$indep}),
-    _jointlv     ({_expand_dm("23-10")}, {holiday=>$eidulf2006}),
-    _jointlv     ({_expand_dm("26-10")}, {holiday=>$eidulf2006}),
-    _jointlv     ({_expand_dm("27-10")}, {holiday=>$eidulf2006}),
-];
+        _jointlv     ({_expand_dm("31-03")}, {holiday=>$nyepi2006}),
+        _jointlv     ({_expand_dm("26-05")}, {holiday=>$ascension2006}),
+        _jointlv     ({_expand_dm("18-08")}, {holiday=>$indep}),
+        _jointlv     ({_expand_dm("23-10")}, {holiday=>$eidulf2006}),
+        _jointlv     ({_expand_dm("26-10")}, {holiday=>$eidulf2006}),
+        _jointlv     ({_expand_dm("27-10")}, {holiday=>$eidulf2006}),
+    ];
+}
 
 # decreed jul 24, 2006
-my $ascension2007;
-my $eidulf2007;
-$year_holidays{2007} = [
-    _h_hijra     ({_expand_dm("20-01")}, {hyear=>1428}),
-    _h_chnewyear ({_expand_dm("18-02")}, {hyear=>2558}),
-    _h_nyepi     ({_expand_dm("19-03")}, {hyear=>1929}),
-    _h_mawlid    ({_expand_dm("31-03")}),
-    _h_goodfri   ({_expand_dm("06-04")}),
-    ($ascension2007 =
-    _h_ascension ({_expand_dm("17-05")})),
-    _h_vesakha   ({_expand_dm("01-06")}, {hyear=>2551}),
-    _h_isramiraj ({_expand_dm("11-08")}),
-    ($eidulf2007 =
-    _h_eidulf    ({_expand_dm("13-10")}, {hyear=>1428, day=>1})),
-    _h_eidulf    ({_expand_dm("14-10")}, {hyear=>1428, day=>2}),
-    _h_eidula    ({_expand_dm("20-12")}, {hyear=>1428}),
+{
+    my $ascension2007;
+    my $eidulf2007;
+    $year_holidays{2007} = [
+        _h_hijra     ({_expand_dm("20-01")}, {hyear=>1428}),
+        _h_chnewyear ({_expand_dm("18-02")}, {hyear=>2558}),
+        _h_nyepi     ({_expand_dm("19-03")}, {hyear=>1929}),
+        _h_mawlid    ({_expand_dm("31-03")}),
+        _h_goodfri   ({_expand_dm("06-04")}),
+        ($ascension2007 =
+        _h_ascension ({_expand_dm("17-05")})),
+        _h_vesakha   ({_expand_dm("01-06")}, {hyear=>2551}),
+        _h_isramiraj ({_expand_dm("11-08")}),
+        ($eidulf2007 =
+        _h_eidulf    ({_expand_dm("13-10")}, {hyear=>1428, day=>1})),
+        _h_eidulf    ({_expand_dm("14-10")}, {hyear=>1428, day=>2}),
+        _h_eidula    ({_expand_dm("20-12")}, {hyear=>1428}),
 
-    _jointlv     ({_expand_dm("18-05")}, {holiday=>$ascension2007}),
-    _jointlv     ({_expand_dm("12-10")}, {holiday=>$eidulf2007}),
-    _jointlv     ({_expand_dm("15-10")}, {holiday=>$eidulf2007}),
-    _jointlv     ({_expand_dm("16-10")}, {holiday=>$eidulf2007}),
-    _jointlv     ({_expand_dm("21-12")}, {holiday=>$christmas}),
-    _jointlv     ({_expand_dm("24-12")}, {holiday=>$christmas}),
-];
+        _jointlv     ({_expand_dm("18-05")}, {holiday=>$ascension2007}),
+        _jointlv     ({_expand_dm("12-10")}, {holiday=>$eidulf2007}),
+        _jointlv     ({_expand_dm("15-10")}, {holiday=>$eidulf2007}),
+        _jointlv     ({_expand_dm("16-10")}, {holiday=>$eidulf2007}),
+        _jointlv     ({_expand_dm("21-12")}, {holiday=>$christmas}),
+        _jointlv     ({_expand_dm("24-12")}, {holiday=>$christmas}),
+    ];
+}
 
 # decreed feb 5, 2008 (?)
-my $hijra2008a;
-my $eidulf2008;
-$year_holidays{2008} = [
-    ($hijra2008a =
-    _h_hijra     ({_expand_dm("10-01")}, {hyear=>1429})),
-    _h_chnewyear ({_expand_dm("07-02")}, {hyear=>2559}),
-    _h_nyepi     ({_expand_dm("07-03")}, {hyear=>1930}),
-    _h_mawlid    ({_expand_dm("20-03")}),
-    _h_goodfri   ({_expand_dm("21-03")}),
-    _h_ascension ({_expand_dm("01-05")}),
-    _h_vesakha   ({_expand_dm("20-05")}, {hyear=>2552}),
-    _h_isramiraj ({_expand_dm("30-07")}),
-    ($eidulf2008 =
-    _h_eidulf    ({_expand_dm("01-10")}, {hyear=>1429, day=>1})),
-    _h_eidulf    ({_expand_dm("02-10")}, {hyear=>1429, day=>2}),
-    _h_eidula    ({_expand_dm("08-12")}),
-    _h_hijra     ({_expand_dm("29-12")}, {hyear=>1430}),
+{
+    my $hijra2008a;
+    my $eidulf2008;
+    $year_holidays{2008} = [
+        ($hijra2008a =
+        _h_hijra     ({_expand_dm("10-01")}, {hyear=>1429})),
+        _h_chnewyear ({_expand_dm("07-02")}, {hyear=>2559}),
+        _h_nyepi     ({_expand_dm("07-03")}, {hyear=>1930}),
+        _h_mawlid    ({_expand_dm("20-03")}),
+        _h_goodfri   ({_expand_dm("21-03")}),
+        _h_ascension ({_expand_dm("01-05")}),
+        _h_vesakha   ({_expand_dm("20-05")}, {hyear=>2552}),
+        _h_isramiraj ({_expand_dm("30-07")}),
+        ($eidulf2008 =
+        _h_eidulf    ({_expand_dm("01-10")}, {hyear=>1429, day=>1})),
+        _h_eidulf    ({_expand_dm("02-10")}, {hyear=>1429, day=>2}),
+        _h_eidula    ({_expand_dm("08-12")}),
+        _h_hijra     ({_expand_dm("29-12")}, {hyear=>1430}),
 
-    _jointlv     ({_expand_dm("11-01")}, {holiday=>$hijra2008a}),
-    _jointlv     ({_expand_dm("29-09")}, {holiday=>$eidulf2008}),
-    _jointlv     ({_expand_dm("30-09")}, {holiday=>$eidulf2008}),
-    _jointlv     ({_expand_dm("03-10")}, {holiday=>$eidulf2008}),
-    _jointlv     ({_expand_dm("26-12")}, {holiday=>$christmas}),
-];
+        _jointlv     ({_expand_dm("11-01")}, {holiday=>$hijra2008a}),
+        _jointlv     ({_expand_dm("29-09")}, {holiday=>$eidulf2008}),
+        _jointlv     ({_expand_dm("30-09")}, {holiday=>$eidulf2008}),
+        _jointlv     ({_expand_dm("03-10")}, {holiday=>$eidulf2008}),
+        _jointlv     ({_expand_dm("26-12")}, {holiday=>$christmas}),
+    ];
+}
 
 # decreed juni 9, 2008
-my $eidulf2009;
-$year_holidays{2009} = [
-    _h_chnewyear ({_expand_dm("26-01")}, {hyear=>2560}),
-    _h_mawlid    ({_expand_dm("09-03")}),
-    _h_nyepi     ({_expand_dm("26-03")}, {hyear=>1931}),
-    _h_lelection ({_expand_dm("09-04")}, {}),
-    _h_goodfri   ({_expand_dm("10-04")}),
-    _h_vesakha   ({_expand_dm("09-05")}, {hyear=>2553}),
-    _h_ascension ({_expand_dm("21-05")}),
-    _h_pelection ({_expand_dm("08-07")}, {}),
-    _h_isramiraj ({_expand_dm("20-07")}),
-    ($eidulf2009 =
-    _h_eidulf    ({_expand_dm("21-09")}, {hyear=>1430, day=>1})),
-    _h_eidulf    ({_expand_dm("22-09")}, {hyear=>1430, day=>2}),
-    _h_eidula    ({_expand_dm("27-11")}),
-    _h_hijra     ({_expand_dm("18-12")}, {hyear=>1431}),
+{
+    my $eidulf2009;
+    $year_holidays{2009} = [
+        _h_chnewyear ({_expand_dm("26-01")}, {hyear=>2560}),
+        _h_mawlid    ({_expand_dm("09-03")}),
+        _h_nyepi     ({_expand_dm("26-03")}, {hyear=>1931}),
+        _h_lelection ({_expand_dm("09-04")}, {}),
+        _h_goodfri   ({_expand_dm("10-04")}),
+        _h_vesakha   ({_expand_dm("09-05")}, {hyear=>2553}),
+        _h_ascension ({_expand_dm("21-05")}),
+        _h_pelection ({_expand_dm("08-07")}, {}),
+        _h_isramiraj ({_expand_dm("20-07")}),
+        ($eidulf2009 =
+        _h_eidulf    ({_expand_dm("21-09")}, {hyear=>1430, day=>1})),
+        _h_eidulf    ({_expand_dm("22-09")}, {hyear=>1430, day=>2}),
+        _h_eidula    ({_expand_dm("27-11")}),
+        _h_hijra     ({_expand_dm("18-12")}, {hyear=>1431}),
 
-    _jointlv     ({_expand_dm("02-01")}, {holiday=>$newyear}),
-    _jointlv     ({_expand_dm("18-09")}, {holiday=>$eidulf2009}),
-    _jointlv     ({_expand_dm("23-09")}, {holiday=>$eidulf2009}),
-    _jointlv     ({_expand_dm("24-12")}, {holiday=>$christmas}),
-];
+        _jointlv     ({_expand_dm("02-01")}, {holiday=>$newyear}),
+        _jointlv     ({_expand_dm("18-09")}, {holiday=>$eidulf2009}),
+        _jointlv     ({_expand_dm("23-09")}, {holiday=>$eidulf2009}),
+        _jointlv     ({_expand_dm("24-12")}, {holiday=>$christmas}),
+    ];
+}
 
 # decreed aug 7, 2009
-my $eidulf2010;
-$year_holidays{2010} = [
-    _h_chnewyear ({_expand_dm("14-02")}, {hyear=>2561}),
-    _h_mawlid    ({_expand_dm("26-02")}),
-    _h_nyepi     ({_expand_dm("16-03")}, {hyear=>1932}),
-    _h_goodfri   ({_expand_dm("02-04")}),
-    _h_vesakha   ({_expand_dm("28-05")}, {hyear=>2554}),
-    _h_ascension ({_expand_dm("02-06")}),
-    _h_isramiraj ({_expand_dm("10-07")}),
-    ($eidulf2010 =
-    _h_eidulf    ({_expand_dm("10-09")}, {hyear=>1431, day=>1})),
-    _h_eidulf    ({_expand_dm("11-09")}, {hyear=>1431, day=>2}),
-    _h_eidula    ({_expand_dm("17-11")}),
-    _h_hijra     ({_expand_dm("07-12")}, {hyear=>1432}),
+{
+    my $eidulf2010;
+    $year_holidays{2010} = [
+        _h_chnewyear ({_expand_dm("14-02")}, {hyear=>2561}),
+        _h_mawlid    ({_expand_dm("26-02")}),
+        _h_nyepi     ({_expand_dm("16-03")}, {hyear=>1932}),
+        _h_goodfri   ({_expand_dm("02-04")}),
+        _h_vesakha   ({_expand_dm("28-05")}, {hyear=>2554}),
+        _h_ascension ({_expand_dm("02-06")}),
+        _h_isramiraj ({_expand_dm("10-07")}),
+        ($eidulf2010 =
+        _h_eidulf    ({_expand_dm("10-09")}, {hyear=>1431, day=>1})),
+        _h_eidulf    ({_expand_dm("11-09")}, {hyear=>1431, day=>2}),
+        _h_eidula    ({_expand_dm("17-11")}),
+        _h_hijra     ({_expand_dm("07-12")}, {hyear=>1432}),
 
-    _jointlv     ({_expand_dm("09-09")}, {holiday=>$eidulf2010}),
-    _jointlv     ({_expand_dm("13-09")}, {holiday=>$eidulf2010}),
-    _jointlv     ({_expand_dm("24-12")}, {holiday=>$christmas}),
-];
+        _jointlv     ({_expand_dm("09-09")}, {holiday=>$eidulf2010}),
+        _jointlv     ({_expand_dm("13-09")}, {holiday=>$eidulf2010}),
+        _jointlv     ({_expand_dm("24-12")}, {holiday=>$christmas}),
+    ];
+}
 
 # decreed jun 15, 2010
-my $eidulf2011;
-$year_holidays{2011} = [
-    _h_chnewyear ({_expand_dm("03-02")}, {hyear=>2562}),
-    _h_mawlid    ({_expand_dm("16-02")}),
-    _h_nyepi     ({_expand_dm("05-03")}, {hyear=>1933}),
-    _h_goodfri   ({_expand_dm("22-04")}),
-    _h_vesakha   ({_expand_dm("17-05")}, {hyear=>2555}),
-    _h_ascension ({_expand_dm("02-06")}),
-    _h_isramiraj ({_expand_dm("29-06")}),
-    ($eidulf2011 =
-    _h_eidulf    ({_expand_dm("30-08")}, {hyear=>1432, day=>1})),
-    _h_eidulf    ({_expand_dm("31-08")}, {hyear=>1432, day=>2}),
-    _h_eidula    ({_expand_dm("07-11")}),
-    _h_hijra     ({_expand_dm("27-11")}, {hyear=>1433}),
+{
+    my $eidulf2011;
+    $year_holidays{2011} = [
+        _h_chnewyear ({_expand_dm("03-02")}, {hyear=>2562}),
+        _h_mawlid    ({_expand_dm("16-02")}),
+        _h_nyepi     ({_expand_dm("05-03")}, {hyear=>1933}),
+        _h_goodfri   ({_expand_dm("22-04")}),
+        _h_vesakha   ({_expand_dm("17-05")}, {hyear=>2555}),
+        _h_ascension ({_expand_dm("02-06")}),
+        _h_isramiraj ({_expand_dm("29-06")}),
+        ($eidulf2011 =
+        _h_eidulf    ({_expand_dm("30-08")}, {hyear=>1432, day=>1})),
+        _h_eidulf    ({_expand_dm("31-08")}, {hyear=>1432, day=>2}),
+        _h_eidula    ({_expand_dm("07-11")}),
+        _h_hijra     ({_expand_dm("27-11")}, {hyear=>1433}),
 
-    _jointlv     ({_expand_dm("29-08")}, {holiday=>$eidulf2011}),
-    _jointlv     ({_expand_dm("01-09")}, {holiday=>$eidulf2011}),
-    _jointlv     ({_expand_dm("02-09")}, {holiday=>$eidulf2011}),
-    _jointlv     ({_expand_dm("26-12")}, {holiday=>$christmas}),
-];
+        _jointlv     ({_expand_dm("29-08")}, {holiday=>$eidulf2011}),
+        _jointlv     ({_expand_dm("01-09")}, {holiday=>$eidulf2011}),
+        _jointlv     ({_expand_dm("02-09")}, {holiday=>$eidulf2011}),
+        _jointlv     ({_expand_dm("26-12")}, {holiday=>$christmas}),
+    ];
+}
 
 # decreed may 16, 2011
-my $eidulf2012;
-$year_holidays{2012} = [
-    _h_chnewyear ({_expand_dm("23-01")}, {hyear=>2563}),
-    _h_mawlid    ({_expand_dm("04-02")}),
-    _h_nyepi     ({_expand_dm("23-03")}, {hyear=>1934}),
-    _h_goodfri   ({_expand_dm("06-04")}),
-    _h_vesakha   ({_expand_dm("06-05")}, {hyear=>2556}),
-    _h_ascension ({_expand_dm("17-05")}),
-    _h_isramiraj ({_expand_dm("16-06")}),
-    ($eidulf2012 =
-    _h_eidulf    ({_expand_dm("19-08")}, {hyear=>1433, day=>1})),
-    _h_eidulf    ({_expand_dm("20-08")}, {hyear=>1433, day=>2}),
-    _h_eidula    ({_expand_dm("26-10")}),
-    _h_hijra     ({_expand_dm("15-11")}, {hyear=>1434}),
+{
+    my $eidulf2012;
+    $year_holidays{2012} = [
+        _h_chnewyear ({_expand_dm("23-01")}, {hyear=>2563}),
+        _h_mawlid    ({_expand_dm("04-02")}),
+        _h_nyepi     ({_expand_dm("23-03")}, {hyear=>1934}),
+        _h_goodfri   ({_expand_dm("06-04")}),
+        _h_vesakha   ({_expand_dm("06-05")}, {hyear=>2556}),
+        _h_ascension ({_expand_dm("17-05")}),
+        _h_isramiraj ({_expand_dm("16-06")}),
+        ($eidulf2012 =
+        _h_eidulf    ({_expand_dm("19-08")}, {hyear=>1433, day=>1})),
+        _h_eidulf    ({_expand_dm("20-08")}, {hyear=>1433, day=>2}),
+        _h_eidula    ({_expand_dm("26-10")}),
+        _h_hijra     ({_expand_dm("15-11")}, {hyear=>1434}),
 
-    _jointlv     ({_expand_dm("21-08")}, {holiday=>$eidulf2012}),
-    _jointlv     ({_expand_dm("22-08")}, {holiday=>$eidulf2012}),
-    _jointlv     ({_expand_dm("26-12")}, {holiday=>$christmas}),
-];
+        _jointlv     ({_expand_dm("21-08")}, {holiday=>$eidulf2012}),
+        _jointlv     ({_expand_dm("22-08")}, {holiday=>$eidulf2012}),
+        _jointlv     ({_expand_dm("26-12")}, {holiday=>$christmas}),
+    ];
+}
 
 # decreed jul 19, 2012
-my $eidulf2013;
-my $eidula2013;
-$year_holidays{2013} = [
-    _h_mawlid    ({_expand_dm("24-01")}),
-    _h_chnewyear ({_expand_dm("10-02")}, {hyear=>2564}),
-    _h_nyepi     ({_expand_dm("12-03")}, {hyear=>1935}),
-    _h_goodfri   ({_expand_dm("29-03")}),
-    _h_ascension ({_expand_dm("09-05")}),
-    _h_vesakha   ({_expand_dm("25-05")}, {hyear=>2557}),
-    _h_isramiraj ({_expand_dm("06-06")}),
-    ($eidulf2013 =
-    _h_eidulf    ({_expand_dm("08-08")}, {hyear=>1434, day=>1})),
-    _h_eidulf    ({_expand_dm("09-08")}, {hyear=>1434, day=>2}),
-    ($eidula2013 =
-    _h_eidula    ({_expand_dm("15-10")})),
-    _h_hijra     ({_expand_dm("05-11")}, {hyear=>1435}),
+{
+    my $eidulf2013;
+    my $eidula2013;
+    $year_holidays{2013} = [
+        _h_mawlid    ({_expand_dm("24-01")}),
+        _h_chnewyear ({_expand_dm("10-02")}, {hyear=>2564}),
+        _h_nyepi     ({_expand_dm("12-03")}, {hyear=>1935}),
+        _h_goodfri   ({_expand_dm("29-03")}),
+        _h_ascension ({_expand_dm("09-05")}),
+        _h_vesakha   ({_expand_dm("25-05")}, {hyear=>2557}),
+        _h_isramiraj ({_expand_dm("06-06")}),
+        ($eidulf2013 =
+        _h_eidulf    ({_expand_dm("08-08")}, {hyear=>1434, day=>1})),
+        _h_eidulf    ({_expand_dm("09-08")}, {hyear=>1434, day=>2}),
+        ($eidula2013 =
+        _h_eidula    ({_expand_dm("15-10")})),
+        _h_hijra     ({_expand_dm("05-11")}, {hyear=>1435}),
 
-    _jointlv     ({_expand_dm("05-08")}, {holiday=>$eidulf2013}),
-    _jointlv     ({_expand_dm("06-08")}, {holiday=>$eidulf2013}),
-    _jointlv     ({_expand_dm("07-08")}, {holiday=>$eidulf2013}),
-    _jointlv     ({_expand_dm("14-10")}, {holiday=>$eidula2013}),
-    _jointlv     ({_expand_dm("26-12")}, {holiday=>$christmas}),
-];
+        _jointlv     ({_expand_dm("05-08")}, {holiday=>$eidulf2013}),
+        _jointlv     ({_expand_dm("06-08")}, {holiday=>$eidulf2013}),
+        _jointlv     ({_expand_dm("07-08")}, {holiday=>$eidulf2013}),
+        _jointlv     ({_expand_dm("14-10")}, {holiday=>$eidula2013}),
+        _jointlv     ({_expand_dm("26-12")}, {holiday=>$christmas}),
+    ];
+}
 
 # decreed aug 21, 2013
 #
@@ -575,34 +598,36 @@ $year_holidays{2013} = [
 # - http://www.menpan.go.id/berita-terkini/1713-tahun-2014-libur-nasional-dan-cuti-bersama-19-hari
 # - http://nasional.kompas.com/read/2013/08/21/1314422/2014.Ada.19.Hari.Libur.Nasional.dan.Cuti.Bersama
 # - http://www.kaskus.co.id/thread/52145f5359cb175740000007/jadwal-hari-libur-nasional-amp-cuti-bersama-tahun-2014-resmi--download-kalender/
-my $eidulf2014;
-my $eidula2014;
-$year_holidays{2014} = [
-    _h_mawlid    ({_expand_dm("14-01")}),
-    _h_chnewyear ({_expand_dm("31-01")}, {hyear=>2565}),
-    _h_nyepi     ({_expand_dm("31-03")}, {hyear=>1936}),
-    _h_lelection ({_expand_dm("09-04")}, {decree_date=>'2014-04-03', decree_note=>"Keppres 14/2014"}),
-    _h_goodfri   ({_expand_dm("18-04")}),
-    _h_vesakha   ({_expand_dm("15-05")}, {hyear=>2558}),
-    _h_isramiraj ({_expand_dm("27-05")}),
-    _h_ascension ({_expand_dm("29-05")}),
+{
+    my $eidulf2014;
+    my $eidula2014;
+    $year_holidays{2014} = [
+        _h_mawlid    ({_expand_dm("14-01")}),
+        _h_chnewyear ({_expand_dm("31-01")}, {hyear=>2565}),
+        _h_nyepi     ({_expand_dm("31-03")}, {hyear=>1936}),
+        _h_lelection ({_expand_dm("09-04")}, {decree_date=>'2014-04-03', decree_note=>"Keppres 14/2014"}),
+        _h_goodfri   ({_expand_dm("18-04")}),
+        _h_vesakha   ({_expand_dm("15-05")}, {hyear=>2558}),
+        _h_isramiraj ({_expand_dm("27-05")}),
+        _h_ascension ({_expand_dm("29-05")}),
 
-    # sudah ditetapkan KPU tapi belum ada keppres
-    _make_tentative(
+        # sudah ditetapkan KPU tapi belum ada keppres
+        _make_tentative(
         _h_pelection ({_expand_dm("09-07")}, {}),
-    ),
-    ($eidulf2014 =
-    _h_eidulf    ({_expand_dm("28-07")}, {hyear=>1435, day=>1})),
-    _h_eidulf    ({_expand_dm("29-07")}, {hyear=>1435, day=>2}),
-    ($eidula2014 =
-    _h_eidula    ({_expand_dm("05-10")}, {hyear=>1435})),
-    _h_hijra     ({_expand_dm("25-10")}, {hyear=>1436}),
+        ),
+        ($eidulf2014 =
+        _h_eidulf    ({_expand_dm("28-07")}, {hyear=>1435, day=>1})),
+        _h_eidulf    ({_expand_dm("29-07")}, {hyear=>1435, day=>2}),
+        ($eidula2014 =
+        _h_eidula    ({_expand_dm("05-10")}, {hyear=>1435})),
+        _h_hijra     ({_expand_dm("25-10")}, {hyear=>1436}),
 
-    _jointlv     ({_expand_dm("30-07")}, {holiday=>$eidulf2014}),
-    _jointlv     ({_expand_dm("31-07")}, {holiday=>$eidulf2014}),
-    _jointlv     ({_expand_dm("01-08")}, {holiday=>$eidulf2014}),
-    _jointlv     ({_expand_dm("26-12")}, {holiday=>$christmas}),
-];
+        _jointlv     ({_expand_dm("30-07")}, {holiday=>$eidulf2014}),
+        _jointlv     ({_expand_dm("31-07")}, {holiday=>$eidulf2014}),
+        _jointlv     ({_expand_dm("01-08")}, {holiday=>$eidulf2014}),
+        _jointlv     ({_expand_dm("26-12")}, {holiday=>$christmas}),
+    ];
+}
 
 # decreed may 7, 2014
 #
@@ -610,53 +635,83 @@ $year_holidays{2014} = [
 #
 # ref:
 # - http://nasional.kompas.com/read/2014/05/07/1805155/Hari.Libur.dan.Cuti.Bersama.2015.Banyak.Long.Weekend.dan.Harpitnas.3
-my $eidulf2015;
-$year_holidays{2015} = [
-    _h_mawlid    ({_expand_dm("03-01")}),
-    _h_chnewyear ({_expand_dm("19-02")}, {hyear=>2566}),
-    _h_nyepi     ({_expand_dm("21-03")}, {hyear=>1937}),
-    _h_goodfri   ({_expand_dm("03-04")}),
-    _h_ascension ({_expand_dm("14-05")}),
-    _h_isramiraj ({_expand_dm("16-05")}),
-    _h_vesakha   ({_expand_dm("02-06")}, {hyear=>2559}),
+{
+    my $eidulf2015;
+    $year_holidays{2015} = [
+        _h_mawlid    ({_expand_dm("03-01")}),
+        _h_chnewyear ({_expand_dm("19-02")}, {hyear=>2566}),
+        _h_nyepi     ({_expand_dm("21-03")}, {hyear=>1937}),
+        _h_goodfri   ({_expand_dm("03-04")}),
+        _h_ascension ({_expand_dm("14-05")}),
+        _h_isramiraj ({_expand_dm("16-05")}),
+        _h_vesakha   ({_expand_dm("02-06")}, {hyear=>2559}),
 
-    ($eidulf2015 =
-    _h_eidulf    ({_expand_dm("17-07")}, {hyear=>1436, day=>1})),
-    _h_eidulf    ({_expand_dm("18-07")}, {hyear=>1436, day=>2}),
-    _h_eidula    ({_expand_dm("24-09")}, {hyear=>1436}),
-    _h_hijra     ({_expand_dm("14-10")}, {hyear=>1437}),
-    _h_jrelection({_expand_dm("09-12")}, {decree_date => "2015-11-23"}),
+        ($eidulf2015 =
+        _h_eidulf    ({_expand_dm("17-07")}, {hyear=>1436, day=>1})),
+        _h_eidulf    ({_expand_dm("18-07")}, {hyear=>1436, day=>2}),
+        _h_eidula    ({_expand_dm("24-09")}, {hyear=>1436}),
+        _h_hijra     ({_expand_dm("14-10")}, {hyear=>1437}),
+        _h_jrelection({_expand_dm("09-12")}, {decree_date => "2015-11-23"}),
 
-    _jointlv     ({_expand_dm("16-07")}, {holiday=>$eidulf2015}),
-    _jointlv     ({_expand_dm("20-07")}, {holiday=>$eidulf2015}),
-    _jointlv     ({_expand_dm("21-07")}, {holiday=>$eidulf2015}),
-    _jointlv     ({_expand_dm("24-12")}, {holiday=>$christmas}),
-];
+        _jointlv     ({_expand_dm("16-07")}, {holiday=>$eidulf2015}),
+        _jointlv     ({_expand_dm("20-07")}, {holiday=>$eidulf2015}),
+        _jointlv     ({_expand_dm("21-07")}, {holiday=>$eidulf2015}),
+        _jointlv     ({_expand_dm("24-12")}, {holiday=>$christmas}),
+    ];
+}
 
 # decreed jun 25, 2015
 #
 # ref:
 # - http://id.wikipedia.org/wiki/2016#Hari_libur_nasional_di_Indonesia
 # - http://www.merdeka.com/peristiwa/ini-daftar-hari-libur-nasional-dan-cuti-bersama-2016.html
-my $eidulf2016;
-$year_holidays{2016} = [
-    _h_chnewyear ({_expand_dm("08-02")}, {hyear=>2567}),
-    _h_nyepi     ({_expand_dm("09-03")}, {hyear=>1938}),
-    _h_goodfri   ({_expand_dm("25-03")}),
-    _h_ascension ({_expand_dm("05-05")}),
-    _h_isramiraj ({_expand_dm("06-05")}),
-    _h_vesakha   ({_expand_dm("22-05")}, {hyear=>2560}),
-    ($eidulf2015 =
-    _h_eidulf    ({_expand_dm("06-07")}, {hyear=>1437, day=>1})),
-    _h_eidulf    ({_expand_dm("07-07")}, {hyear=>1437, day=>2}),
-    _h_eidula    ({_expand_dm("12-09")}, {hyear=>1437}),
-    _h_hijra     ({_expand_dm("02-10")}, {hyear=>1438}),
-    _h_mawlid    ({_expand_dm("12-12")}),
+{
+    my $eidulf2016;
+    $year_holidays{2016} = [
+        _h_chnewyear ({_expand_dm("08-02")}, {hyear=>2567}),
+        _h_nyepi     ({_expand_dm("09-03")}, {hyear=>1938}),
+        _h_goodfri   ({_expand_dm("25-03")}),
+        _h_ascension ({_expand_dm("05-05")}),
+        _h_isramiraj ({_expand_dm("06-05")}),
+        _h_vesakha   ({_expand_dm("22-05")}, {hyear=>2560}),
+        ($eidulf2016 =
+        _h_eidulf    ({_expand_dm("06-07")}, {hyear=>1437, day=>1})),
+        _h_eidulf    ({_expand_dm("07-07")}, {hyear=>1437, day=>2}),
+        _h_eidula    ({_expand_dm("12-09")}, {hyear=>1437}),
+        _h_hijra     ({_expand_dm("02-10")}, {hyear=>1438}),
+        _h_mawlid    ({_expand_dm("12-12")}),
 
-    _jointlv     ({_expand_dm("04-07")}, {holiday=>$eidulf2016}),
-    _jointlv     ({_expand_dm("05-07")}, {holiday=>$eidulf2016}),
-    _jointlv     ({_expand_dm("08-07")}, {holiday=>$eidulf2016}),
-    _jointlv     ({_expand_dm("26-12")}, {holiday=>$christmas}),
+        _jointlv     ({_expand_dm("04-07")}, {holiday=>$eidulf2016}),
+        _jointlv     ({_expand_dm("05-07")}, {holiday=>$eidulf2016}),
+        _jointlv     ({_expand_dm("08-07")}, {holiday=>$eidulf2016}),
+        _jointlv     ({_expand_dm("26-12")}, {holiday=>$christmas}),
+    ];
+}
+
+# decreed apr 14, 2016
+#
+# ref:
+# - https://id.wikipedia.org/wiki/2017#Hari_libur_nasional_di_Indonesia
+# - http://www.kemenkopmk.go.id/artikel/penetapan-hari-libur-nasional-dan-cuti-bersama-tahun-2017
+my $eidulf2017;
+$year_holidays{2017} = [
+    _h_chnewyear ({_expand_dm("28-01")}, {hyear=>2568}),
+    _h_nyepi     ({_expand_dm("28-03")}, {hyear=>1939}),
+    _h_goodfri   ({_expand_dm("14-04")}),
+    _h_isramiraj ({_expand_dm("24-04")}, {hyear=>1438}),
+    _h_vesakha   ({_expand_dm("11-05")}, {hyear=>2561}),
+    _h_ascension ({_expand_dm("25-05")}),
+    ($eidulf2017 =
+    _h_eidulf    ({_expand_dm("25-06")}, {hyear=>1438, day=>1})),
+    _h_eidulf    ({_expand_dm("26-06")}, {hyear=>1438, day=>2}),
+    _h_eidula    ({_expand_dm("01-09")}, {hyear=>1438}),
+    _h_hijra     ({_expand_dm("21-09")}, {hyear=>1439}),
+    _h_mawlid    ({_expand_dm("01-12")}, {hyear=>1439}),
+
+    _jointlv     ({_expand_dm("27-06")}, {holiday=>$eidulf2017}),
+    _jointlv     ({_expand_dm("28-06")}, {holiday=>$eidulf2017}),
+    _jointlv     ({_expand_dm("29-06")}, {holiday=>$eidulf2017}),
+    _jointlv     ({_expand_dm("30-06")}, {holiday=>$eidulf2017}),
 ];
 
 
