@@ -1034,11 +1034,13 @@ sub list_id_workdays {
      count_id_workdays
  );
 
- # list Indonesian holidays for the year 2011, without the joint leave days
- # ("cuti bersama"), show only the dates
+This lists Indonesian holidays for the year 2011, without the joint leave days
+("cuti bersama"), showing only the dates:
 
  my $res = list_id_holidays(year => 2011, is_joint_leave=>0);
- # sample result
+
+Sample result:
+
  [200, "OK", [
    '2011-01-01',
    '2011-02-03',
@@ -1056,11 +1058,13 @@ sub list_id_workdays {
    '2011-12-25',
  ]];
 
- # list religious Indonesian holidays, show full details
+This lists religious Indonesian holidays, showing full details:
+
  my $res = list_id_holidays(year => 2011,
                             "tags.has" => ['religious'], detail=>1);
 
- # sample result
+Sample result:
+
  [200, "OK", [
    {date        => '2011-02-16',
     day         => 16,
@@ -1076,15 +1080,18 @@ sub list_id_workdays {
    ...
  ]];
 
- # check whether 2011-02-16 is a holiday
+This checks whether 2011-02-16 is a holiday:
+
  my $res = list_id_holidays(date => '2011-02-16');
  print "2011-02-16 is a holiday\n" if @{$res->[2]};
 
- # enumerate working days for a certain period
+This enumerate working days for a certain period:
+
  my $res = enum_id_workdays(year=>2011, month=>7);
 
- # idem, but returns a number instead. year/month defaults to current
- # year/month.
+Idem, but returns a number instead. year/month defaults to current
+year/month:
+
  my $res = count_id_workdays();
 
 
