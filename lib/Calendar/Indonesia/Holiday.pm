@@ -719,6 +719,7 @@ $year_holidays{2017} = [
     _h_hijra     ({_expand_dm("21-09")}, {hyear=>1439}),
     _h_mawlid    ({_expand_dm("01-12")}, {hyear=>1439}),
 
+    _jointlv     ({_expand_dm("23-06")}, {holiday=>$eidulf2017}), # ref: Keppres 18/2017 (2017-06-15)
     _jointlv     ({_expand_dm("27-06")}, {holiday=>$eidulf2017}),
     _jointlv     ({_expand_dm("28-06")}, {holiday=>$eidulf2017}),
     _jointlv     ({_expand_dm("29-06")}, {holiday=>$eidulf2017}),
