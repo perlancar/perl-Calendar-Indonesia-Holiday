@@ -1,3 +1,11 @@
+0.30    2017-06-20 (PERLANCAR)
+
+	- Add joint leave on 2017-06-23 (ref: Keppres 18/2017 on
+	  2017-06-15).
+
+	- Remove use of Log::Any::IfLOG.
+
+
 0.29    2017-05-29 (PERLANCAR)
 
 	- Add Pancasila Day (June 1) as a holiday from 2017.
