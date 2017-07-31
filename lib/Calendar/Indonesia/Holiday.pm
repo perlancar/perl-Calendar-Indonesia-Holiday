@@ -701,66 +701,70 @@ my %year_holidays;
 # ref:
 # - https://id.wikipedia.org/wiki/2017#Hari_libur_nasional_di_Indonesia
 # - http://www.kemenkopmk.go.id/artikel/penetapan-hari-libur-nasional-dan-cuti-bersama-tahun-2017
-my $eidulf2017;
-$year_holidays{2017} = [
-    _h_chnewyear ({_expand_dm("28-01")}, {hyear=>2568}),
-    _h_nyepi     ({_expand_dm("28-03")}, {hyear=>1939}),
-    _h_goodfri   ({_expand_dm("14-04")}),
-    _h_isramiraj ({_expand_dm("24-04")}, {hyear=>1438}),
-    _h_vesakha   ({_expand_dm("11-05")}, {hyear=>2561}),
-    _h_ascension ({_expand_dm("25-05")}),
-    ($eidulf2017 =
-    _h_eidulf    ({_expand_dm("25-06")}, {hyear=>1438, day=>1})),
-    _h_eidulf    ({_expand_dm("26-06")}, {hyear=>1438, day=>2}),
-    _h_eidula    ({_expand_dm("01-09")}, {hyear=>1438}),
-    _h_hijra     ({_expand_dm("21-09")}, {hyear=>1439}),
-    _h_mawlid    ({_expand_dm("01-12")}, {hyear=>1439}),
+{
+    my $eidulf2017;
+    $year_holidays{2017} = [
+        _h_chnewyear ({_expand_dm("28-01")}, {hyear=>2568}),
+        _h_nyepi     ({_expand_dm("28-03")}, {hyear=>1939}),
+        _h_goodfri   ({_expand_dm("14-04")}),
+        _h_isramiraj ({_expand_dm("24-04")}, {hyear=>1438}),
+        _h_vesakha   ({_expand_dm("11-05")}, {hyear=>2561}),
+        _h_ascension ({_expand_dm("25-05")}),
+        ($eidulf2017 =
+        _h_eidulf    ({_expand_dm("25-06")}, {hyear=>1438, day=>1})),
+        _h_eidulf    ({_expand_dm("26-06")}, {hyear=>1438, day=>2}),
+        _h_eidula    ({_expand_dm("01-09")}, {hyear=>1438}),
+        _h_hijra     ({_expand_dm("21-09")}, {hyear=>1439}),
+        _h_mawlid    ({_expand_dm("01-12")}, {hyear=>1439}),
 
-    _jointlv     ({_expand_dm("23-06")}, {holiday=>$eidulf2017}), # ref: Keppres 18/2017 (2017-06-15)
-    _jointlv     ({_expand_dm("27-06")}, {holiday=>$eidulf2017}),
-    _jointlv     ({_expand_dm("28-06")}, {holiday=>$eidulf2017}),
-    _jointlv     ({_expand_dm("29-06")}, {holiday=>$eidulf2017}),
-    _jointlv     ({_expand_dm("30-06")}, {holiday=>$eidulf2017}),
-];
+        _jointlv     ({_expand_dm("23-06")}, {holiday=>$eidulf2017}), # ref: Keppres 18/2017 (2017-06-15)
+        _jointlv     ({_expand_dm("27-06")}, {holiday=>$eidulf2017}),
+        _jointlv     ({_expand_dm("28-06")}, {holiday=>$eidulf2017}),
+        _jointlv     ({_expand_dm("29-06")}, {holiday=>$eidulf2017}),
+        _jointlv     ({_expand_dm("30-06")}, {holiday=>$eidulf2017}),
+    ];
+}
 
 # draft
 #
 # ref:
 # - https://id.wikipedia.org/wiki/2018
 # - https://www.kemenkopmk.go.id/artikel/rakor-skb-3-menteri-tentang-hari-libur-nasional-dan-cuti-bersama-2018 (mar 13, 2017)
-my $eidulf2018;
-$year_holidays{2018} = [
-    # - new year
-    _h_chnewyear ({_expand_dm("16-02")}, {hyear=>2569}),
-    _h_nyepi     ({_expand_dm("18-03")}, {hyear=>1940}),
-    _h_goodfri   ({_expand_dm("30-03")}),
-    _h_isramiraj ({_expand_dm("13-04")}, {hyear=>1439}),
+{
+    my $eidulf2018;
+    $year_holidays{2018} = [
+        # - new year
+        _h_chnewyear ({_expand_dm("16-02")}, {hyear=>2569}),
+        _h_nyepi     ({_expand_dm("18-03")}, {hyear=>1940}),
+        _h_goodfri   ({_expand_dm("30-03")}),
+        _h_isramiraj ({_expand_dm("13-04")}, {hyear=>1439}),
 
-    # - labor day
-    _h_ascension ({_expand_dm("10-05")}),
-    _h_vesakha   ({_expand_dm("29-05")}, {hyear=>2562}),
-    # - pancasila day
-    ($eidulf2018 =
-    _h_eidulf    ({_expand_dm("15-06")}, {hyear=>1439, day=>1})),
+        # - labor day
+        _h_ascension ({_expand_dm("10-05")}),
+        _h_vesakha   ({_expand_dm("29-05")}, {hyear=>2562}),
+        # - pancasila day
+        ($eidulf2018 =
+        _h_eidulf    ({_expand_dm("15-06")}, {hyear=>1439, day=>1})),
 
-    _h_eidulf    ({_expand_dm("16-06")}, {hyear=>1439, day=>2}),
-    # - independence day
-    _h_eidula    ({_expand_dm("22-08")}, {hyear=>1439}),
-    _h_hijra     ({_expand_dm("12-09")}, {hyear=>1440}),
-    _h_mawlid    ({_expand_dm("20-11")}, {hyear=>1440}),
+        _h_eidulf    ({_expand_dm("16-06")}, {hyear=>1439, day=>2}),
+        # - independence day
+        _h_eidula    ({_expand_dm("22-08")}, {hyear=>1439}),
+        _h_hijra     ({_expand_dm("12-09")}, {hyear=>1440}),
+        _h_mawlid    ({_expand_dm("20-11")}, {hyear=>1440}),
 
-    # - christmas
+        # - christmas
 
-    # note: this is currently just a wild guess because i'm having difficulty
-    # finding sources
-    _make_tentative(
-        _jointlv     ({_expand_dm("14-06")}, {holiday=>$eidulf2018}),
-        _jointlv     ({_expand_dm("18-06")}, {holiday=>$eidulf2018}),
-        _jointlv     ({_expand_dm("19-06")}, {holiday=>$eidulf2018}),
-        _jointlv     ({_expand_dm("20-06")}, {holiday=>$eidulf2018}),
-        _jointlv     ({_expand_dm("24-12")}, {holiday=>$christmas}),
-    ),
-];
+        # note: this is currently just a wild guess because i'm having
+        # difficulty finding sources
+        _make_tentative(
+            _jointlv     ({_expand_dm("14-06")}, {holiday=>$eidulf2018}),
+            _jointlv     ({_expand_dm("18-06")}, {holiday=>$eidulf2018}),
+            _jointlv     ({_expand_dm("19-06")}, {holiday=>$eidulf2018}),
+            _jointlv     ({_expand_dm("20-06")}, {holiday=>$eidulf2018}),
+            _jointlv     ({_expand_dm("24-12")}, {holiday=>$christmas}),
+        ),
+    ];
+}
 
 
 my @years     = sort keys %year_holidays;
