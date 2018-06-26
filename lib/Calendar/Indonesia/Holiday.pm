@@ -748,6 +748,7 @@ my %year_holidays;
         _h_eidulf    ({_expand_dm("15-06")}, {hyear=>1439, day=>1})),
 
         _h_eidulf    ({_expand_dm("16-06")}, {hyear=>1439, day=>2}),
+        _h_jrelection({_expand_dm("27-06")}, {decree_date=>"2018-06-25"}),
         # - independence day
         _h_eidula    ({_expand_dm("22-08")}, {hyear=>1439}),
         _h_hijra     ({_expand_dm("11-09")}, {hyear=>1440}),
