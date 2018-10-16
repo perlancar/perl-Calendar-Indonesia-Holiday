@@ -767,6 +767,36 @@ my %year_holidays;
     ];
 }
 
+# tentative
+#
+# ref:
+# - https://kalender.web.id/2019.html
+{
+    my $eidulf2019;
+    $year_holidays{2019} = [
+        # - new year
+        _h_chnewyear ({_expand_dm("05-02")}, {hyear=>2570}),
+        _h_nyepi     ({_expand_dm("07-03")}, {hyear=>1941}),
+        _h_isramiraj ({_expand_dm("03-04")}, {hyear=>1440}),
+        _h_goodfri   ({_expand_dm("19-04")}),
+        # - labor day
+        _h_vesakha   ({_expand_dm("19-05")}, {hyear=>2563}),
+        _h_ascension ({_expand_dm("30-05")}),
+        # - pancasila day
+        ($eidulf2019 =
+        _h_eidulf    ({_expand_dm("05-06")}, {hyear=>1440, day=>1})),
+        _h_eidulf    ({_expand_dm("06-06")}, {hyear=>1439, day=>2}),
+        _h_eidula    ({_expand_dm("11-08")}, {hyear=>1440}),
+        # - independence day
+        _h_hijra     ({_expand_dm("01-09")}, {hyear=>1441}),
+        _h_mawlid    ({_expand_dm("09-11")}, {hyear=>1441}),
+        # - christmas
+
+        # XXX joint leave
+    ];
+}
+
+
 my @years     = sort keys %year_holidays;
 our $min_year = $years[0];
 our $max_year = $years[-1];
