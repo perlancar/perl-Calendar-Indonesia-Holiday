@@ -756,18 +756,16 @@ my %year_holidays;
 
         # - christmas
 
-        # note: this is currently just a wild guess because i'm having
-        # difficulty finding sources
-        _make_tentative(
-            _jointlv     ({_expand_dm("13-06")}, {holiday=>$eidulf2018}),
-            _jointlv     ({_expand_dm("14-06")}, {holiday=>$eidulf2018}),
-            _jointlv     ({_expand_dm("18-06")}, {holiday=>$eidulf2018}),
-            _jointlv     ({_expand_dm("19-06")}, {holiday=>$eidulf2018}),
-            _jointlv     ({_expand_dm("24-12")}, {holiday=>$christmas}),
-        ),
+        _jointlv     ({_expand_dm("11-06")}, {holiday=>$eidulf2018}),
+        _jointlv     ({_expand_dm("12-06")}, {holiday=>$eidulf2018}),
+        _jointlv     ({_expand_dm("13-06")}, {holiday=>$eidulf2018}),
+        _jointlv     ({_expand_dm("14-06")}, {holiday=>$eidulf2018}),
+        _jointlv     ({_expand_dm("18-06")}, {holiday=>$eidulf2018}),
+        _jointlv     ({_expand_dm("19-06")}, {holiday=>$eidulf2018}),
+        _jointlv     ({_expand_dm("20-06")}, {holiday=>$eidulf2018}),
+        _jointlv     ({_expand_dm("24-12")}, {holiday=>$christmas}),
     ];
 }
-
 
 my @years     = sort keys %year_holidays;
 our $min_year = $years[0];
