@@ -767,10 +767,10 @@ my %year_holidays;
     ];
 }
 
-# tentative
+# decreed nov 13, 2018
 #
 # ref:
-# - https://kalender.web.id/2019.html
+# - https://jpp.go.id/humaniora/sosial-budaya/327328-pemerintah-resmi-menetapkan-hari-libur-nasional-2019
 {
     my $eidulf2019;
     $year_holidays{2019} = [
@@ -792,7 +792,10 @@ my %year_holidays;
         _h_mawlid    ({_expand_dm("09-11")}, {hyear=>1441}),
         # - christmas
 
-        # XXX joint leave
+        _jointlv     ({_expand_dm("03-06")}, {holiday=>$eidulf2019}),
+        _jointlv     ({_expand_dm("04-06")}, {holiday=>$eidulf2019}),
+        _jointlv     ({_expand_dm("07-06")}, {holiday=>$eidulf2019}),
+        _jointlv     ({_expand_dm("24-12")}, {holiday=>$christmas}),
     ];
 }
 
