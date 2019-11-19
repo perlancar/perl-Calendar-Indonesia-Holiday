@@ -785,7 +785,7 @@ my %year_holidays;
         # - pancasila day
         ($eidulf2019 =
         _h_eidulf    ({_expand_dm("05-06")}, {hyear=>1440, day=>1})),
-        _h_eidulf    ({_expand_dm("06-06")}, {hyear=>1439, day=>2}),
+        _h_eidulf    ({_expand_dm("06-06")}, {hyear=>1440, day=>2}),
         _h_eidula    ({_expand_dm("11-08")}, {hyear=>1440}),
         # - independence day
         _h_hijra     ({_expand_dm("01-09")}, {hyear=>1441}),
