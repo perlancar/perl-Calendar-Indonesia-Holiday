@@ -799,6 +799,43 @@ my %year_holidays;
     ];
 }
 
+# decreed aug 28, 2019
+#
+# ref:
+# - https://www.kominfo.go.id/content/detail/20922/inilah-jadwal-libur-nasional-dan-cuti-bersama-tahun-2020/0/berita
+#   "Jakarta, Kominfo - Rapat Tingkat Menteri (RTM) tentang Hari Libur Nasional
+#   dan Cuti Bersama Tahun 2020 yang dipimpin oleh Menko bidang Pembangunan
+#   Manusia dan Kebudayaan (PMK), Puan Maharani, di Gedung Kemenko PMK, Jakarta,
+#   Selasa (28/8/2019) pagi, telah menyepakati tahun 2020 akan memiliki 16 Hari
+#   Libur Nasional dan 4 hari Cuti Bersama."
+{
+    my $eidulf2020;
+    $year_holidays{2020} = [
+        # - new year
+        _h_chnewyear ({_expand_dm("25-01")}, {hyear=>2571}),
+        _h_isramiraj ({_expand_dm("22-03")}, {hyear=>1441}),
+        _h_nyepi     ({_expand_dm("25-03")}, {hyear=>1942}),
+        _h_goodfri   ({_expand_dm("10-04")}),
+        # - labor day
+        _h_vesakha   ({_expand_dm("07-05")}, {hyear=>2564}),
+        _h_ascension ({_expand_dm("21-05")}),
+        ($eidulf2020 =
+        _h_eidulf    ({_expand_dm("24-05")}, {hyear=>1441, day=>1})),
+        _h_eidulf    ({_expand_dm("25-05")}, {hyear=>1441, day=>2}),
+        # - pancasila day
+        _h_eidula    ({_expand_dm("31-07")}, {hyear=>1441}),
+        # - independence day
+        _h_hijra     ({_expand_dm("20-08")}, {hyear=>1442}),
+        _h_mawlid    ({_expand_dm("29-10")}, {hyear=>1442}),
+        # - christmas
+
+        _jointlv     ({_expand_dm("22-05")}, {holiday=>$eidulf2020}),
+        _jointlv     ({_expand_dm("26-05")}, {holiday=>$eidulf2020}),
+        _jointlv     ({_expand_dm("27-05")}, {holiday=>$eidulf2020}),
+        _jointlv     ({_expand_dm("24-12")}, {holiday=>$christmas}),
+    ];
+}
+
 
 my @years     = sort keys %year_holidays;
 our $min_year = $years[0];
