@@ -82,7 +82,7 @@
 	- Replace Log::Any with Log::Any::IfLOG.
 
 
-0.23     2014-08-16 (SHARYANTO) - Happy 19th CPAN Day!
+0.23     2014-08-16  Released-By: SHARYANTO; Note: Happy 19th CPAN Day!
 
          - [build] CLI scripts are now generated automatically using
            Dist::Zilla::Plugin::ScriptFromFunc. The plugin is still at 0.01 so the
@@ -253,3 +253,4 @@
 0.01     2011-06-14  Released-By: SHARYANTO
 
          - First release.
+
