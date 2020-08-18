@@ -1,6 +1,8 @@
 package Calendar::Indonesia::Holiday;
 
+# AUTHORITY
 # DATE
+# DIST
 # VERSION
 
 use 5.010001;
@@ -822,8 +824,9 @@ my %year_holidays;
 
 {
     my $hijra2020;
-    my $mawlid2020;
+    my $eidula2020;
     my $eidulf2020;
+    my $mawlid2020;
     $year_holidays{2020} = [
         # - new year
         _h_chnewyear ({_expand_dm("25-01")}, {hyear=>2571}),
@@ -836,17 +839,17 @@ my %year_holidays;
         _h_eidulf    ({_expand_dm("24-05")}, {hyear=>1441, day=>1}),
         ($eidulf2020 = _h_eidulf({_expand_dm("25-05")}, {hyear=>1441, day=>2})),
         # - pancasila day
-        ($hijra2020 = _h_eidula ({_expand_dm("31-07")}, {hyear=>1441})),
+        ($eidula2020 = _h_eidula ({_expand_dm("31-07")}, {hyear=>1441})),
         # - independence day
-        _h_hijra     ({_expand_dm("20-08")}, {hyear=>1442}),
+        ($hijra2020 = _h_hijra     ({_expand_dm("20-08")}, {hyear=>1442})),
         ($mawlid2020 = _h_mawlid({_expand_dm("29-10")}, {hyear=>1442})),
         # - christmas
     ];
 
     push @{ $year_holidays{2020} }, (
         _jointlv     ({_expand_dm("21-08")}, {holiday=>$hijra2020}),
-        _jointlv     ({_expand_dm("28-08")}, {holiday=>$mawlid2020}),
-        _jointlv     ({_expand_dm("30-08")}, {holiday=>$mawlid2020}),
+        _jointlv     ({_expand_dm("28-10")}, {holiday=>$mawlid2020}),
+        _jointlv     ({_expand_dm("30-10")}, {holiday=>$mawlid2020}),
         _jointlv     ({_expand_dm("24-12")}, {holiday=>$christmas}),
         _jointlv     ({_expand_dm("28-12")}, {holiday=>$eidulf2020}),
         _jointlv     ({_expand_dm("29-12")}, {holiday=>$eidulf2020}),
