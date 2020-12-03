@@ -804,6 +804,7 @@ my %year_holidays;
 # decreed aug 28, 2019
 # revised mar 9, 2020
 # revised may 20, 2020
+# revised dec 1, 2020
 #
 # ref:
 # - https://www.kominfo.go.id/content/detail/20922/inilah-jadwal-libur-nasional-dan-cuti-bersama-tahun-2020/0/berita
@@ -817,10 +818,7 @@ my %year_holidays;
 #   telah ditetapkan 20 hari, menjadi 24 hari. Yang tadi sudah ditetapkan
 #   bersama oleh Menag, Menaker, dan Menpan RB," kata Muhadjir, Senin
 #   (9/3/2020), usai rapat koordinasi di kantor Kemenko PMK, Jakarta.
-# - https://travel.tempo.co/read/1345498/ini-daftar-revisi-hari-libur-nasional-dan-cuti-bersama-tahun-2020/full&view=ok
-#   "Surat keputusan bersama itu ditandatangani oleh Menteri Agama Fachrul Razi,
-#   Menteri Ketenagakerjaan Ida Fauziyah, dan Menteri Pendayagunaan Aparatur
-#   Negara dan Reformasi Birokrasi Tjahjo Kumolo pada Rabu, 20 Mei 2020."
+# - https://www.kemenkopmk.go.id/sites/default/files/pengumuman/2020-12/SKB%203%20Menteri%20tentang%20Perubahan%20ke-4%20Libnas%20%26%20Cutber%202020_0.pdf
 
 {
     my $hijra2020;
@@ -851,9 +849,6 @@ my %year_holidays;
         _jointlv     ({_expand_dm("28-10")}, {holiday=>$mawlid2020}),
         _jointlv     ({_expand_dm("30-10")}, {holiday=>$mawlid2020}),
         _jointlv     ({_expand_dm("24-12")}, {holiday=>$christmas}),
-        _jointlv     ({_expand_dm("28-12")}, {holiday=>$eidulf2020}),
-        _jointlv     ({_expand_dm("29-12")}, {holiday=>$eidulf2020}),
-        _jointlv     ({_expand_dm("30-12")}, {holiday=>$eidulf2020}),
         _jointlv     ({_expand_dm("31-12")}, {holiday=>$eidulf2020}),
     );
 }
