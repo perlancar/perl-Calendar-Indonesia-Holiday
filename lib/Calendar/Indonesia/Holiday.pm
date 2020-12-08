@@ -832,6 +832,7 @@ my %year_holidays;
         # - independence day
         ($hijra2020 = _h_hijra     ({_expand_dm("20-08")}, {hyear=>1442})),
         ($mawlid2020 = _h_mawlid({_expand_dm("29-10")}, {hyear=>1442})),
+        _h_jrelection({_expand_dm("09-12")}, {decree_date => "2015-11-27"}), # keppres 20/2020 (2020-11-27), surat edaran menaker m/14/hk.04/xii/2020 (2020-12-07)
         # - christmas
     ];
 
@@ -881,6 +882,32 @@ my %year_holidays;
         _jointlv     ({_expand_dm("24-12")}, {holiday=>$christmas}),
         _jointlv     ({_expand_dm("27-12")}, {holiday=>$christmas}),
     );
+}
+
+L2022: {
+    # 2022 holidays
+    1;
+}
+
+{
+    # 2023 holidays
+    1;
+}
+
+{
+    # 2024 holidays
+    1;
+}
+
+{
+    # 2025 holidays
+    #_h_jrelection({_expand_dm("09-12")}, {decree_date => "2025-11-xx"}), # keppres xx/2025, surat edaran menaker xxx.../2020 (2020-12-xx)
+    1;
+}
+
+{
+    # 2026 holidays
+    1;
 }
 
 
