@@ -1240,6 +1240,7 @@ _
         year       => {schema=>'int*'},
         date       => {schema=>'str*', pos=>0},
 
+        include_joint_leave => {schema=>'bool*', cmdline_aliases=>{j=>{}}},
         reverse    => {schema=>'bool*', cmdline_aliases=>{r=>{}}},
         quiet      => {schema=>'bool*', cmdline_aliases=>{q=>{}}},
         detail     => {schema=>'bool*', cmdline_aliases=>{l=>{}}},
