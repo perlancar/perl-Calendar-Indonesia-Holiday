@@ -1219,6 +1219,83 @@ sub list_id_workdays {
     Calendar::Indonesia::Holiday::enum_id_workdays(%fargs);
 }
 
+$SPEC{is_id_holiday} = {
+    v => 1.1,
+    summary => 'Check whether a date is an Indonesian holiday',
+    description => <<'_',
+
+Will return boolean if a given date is a holiday. A joint leave day will not
+count as holiday unless you specify `include_joint_leave` option.
+
+Date can be given using separate `day` (of month), `month`, and `year`, or as a
+single YYYY-MM-DD date.
+
+Will return undef (exit code 2 on CLI) if year is not within range of the
+holiday data.
+
+_
+    args => {
+        day        => {schema=>['int*', between=>[1,31]]},
+        month      => {schema=>['int*', between=>[1, 12]]},
+        year       => {schema=>'int*'},
+        date       => {schema=>'str*', pos=>0},
+
+        reverse    => {schema=>'bool*', cmdline_aliases=>{r=>{}}},
+        quiet      => {schema=>'bool*', cmdline_aliases=>{q=>{}}},
+        detail     => {schema=>'bool*', cmdline_aliases=>{l=>{}}},
+    },
+    args_rels => {
+        choose_all => [qw/day month year/],
+        req_one => [qw/day date/],
+    },
+};
+sub is_id_holiday {
+    my %args = @_;
+
+    my ($y, $m, $d);
+    if (defined $args{date}) {
+        $args{date} =~ /\A(\d{4})-(\d{1,2})-(\d{1,2})\z/
+            or return [400, "Invalid date syntax, please use 'YYYY-MM-DD' format"];
+        ($y, $m, $d) = ($1, $2, $3);
+    } else {
+        ($y = $args{year}) && ($m = $args{month}) && ($d = $args{day})
+            or return [400, "Please specify day/month/year or date"];
+    }
+    my $date = sprintf "%04d-%02d-%02d", $y, $m, $d;
+
+    for my $e (@fixed_holidays) {
+        next if defined $e->{year_start} && $y < $e->{year_start};
+        next if defined $e->{year_end} && $y > $e->{year_end};
+        next unless $e->{day} == $d && $e->{month} == $m;
+        return [200, "OK", ($args{reverse} ? 0 : ($args{detail} ? $e : 1)), {
+            'cmdline.exit_code' => ($args{reverse} ? 1 : 0),
+            ('cmdline.result' => ($args{quiet} ? '' : "Date $date IS a holiday")) x !$args{detail},
+        }];
+    }
+
+    unless ($y >= $min_year && $y <= $max_year) {
+        return [200, "OK", undef, {
+            'cmdline.exit_code' => 2,
+            'cmdline.result' => ($args{quiet} ? '' : "Date year ($y) is not within range of holiday data ($min_year-$max_year)"),
+        }];
+    }
+
+    for my $e (@{ $year_holidays{$y} }) {
+        next unless $e->{day} == $d && $e->{month} == $m;
+        next if $e->{is_joint_leave} && !$args{include_joint_leave};
+        return [200, "OK", ($args{reverse} ? 0 : ($args{detail} ? $e : 1)), {
+            'cmdline.exit_code' => ($args{reverse} ? 1 : 0),
+            ('cmdline.result' => ($args{quiet} ? '' : "Date $date IS a holiday")) x !$args{detail},
+        }];
+    }
+
+    return [200, "OK", ($args{reverse} ? 1:0), {
+        'cmdline.exit_code' => ($args{reverse} ? 0 : 1),
+        'cmdline.result' => ($args{quiet} ? '' : "Date $date is NOT a holiday"),
+    }];
+}
+
+
 1;
 # ABSTRACT:
 
