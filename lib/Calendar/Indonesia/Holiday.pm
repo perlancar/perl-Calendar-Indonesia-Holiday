@@ -37,18 +37,21 @@ my @fixed_holidays = (
         ind_name   => "Tahun Baru",
         eng_name   => "New Year",
         tags       => [qw/international/],
+        fixed_date => 1,
     },
     my $indep = {
         day        => 17, month =>  8,
         ind_name   => "Proklamasi",
         eng_name   => "Declaration Of Independence",
         tags       => [qw/national/],
+        fixed_date => 1,
     },
     my $christmas = {
         day        => 25, month => 12,
         ind_name   => "Natal",
         eng_name   => "Christmas",
         tags       => [qw/international religious religion=christianity/],
+        fixed_date => 1,
     },
     my $labord = {
         day         => 1, month => 5,
@@ -59,17 +62,19 @@ my @fixed_holidays = (
         decree_date => "2013-04-29",
         decree_note => "Labor day becomes national holiday since 2014, ".
             "decreed by president",
+        fixed_date  => 1,
     },
     my $pancasilad = {
         day         => 1, month => 6,
         year_start  => 2017,
         ind_name    => "Hari Lahir Pancasila",
         eng_name    => "Pancasila Day",
-        tags       => [qw/national/],
+        tags        => [qw/national/],
         decree_date => "2016-06-01",
         decree_note => "Pancasila day becomes national holiday since 2017, ".
             "decreed by president (Keppres 24/2016)",
         # ref: http://www.kemendagri.go.id/media/documents/2016/08/03/k/e/keppres_no.24_th_2016.pdf
+        fixed_date  => 1,
     },
 );
 
