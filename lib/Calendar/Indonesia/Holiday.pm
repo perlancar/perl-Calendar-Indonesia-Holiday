@@ -184,8 +184,8 @@ sub _h_eidulf {
         ($opts->{hyear} ? " $opts->{hyear}H":"");
     my $eng_name0     = "Eid Ul-Fitr".
         ($opts->{hyear} ? " $opts->{hyear}H":"");
-    $r->{ind_name}    = $ind_name0.($opts->{day} ? ", Hari $opts->{day}":"");
-    $r->{eng_name}    = $eng_name0.($opts->{day} ? ", Day $opts->{day}":"");
+    $r->{ind_name}    = $ind_name0.($opts->{day} ? " (Hari $opts->{day})":"");
+    $r->{eng_name}    = $eng_name0.($opts->{day} ? " (Day $opts->{day})":"");
     _add_original_date($r, $opts);
     $r->{ind_aliases} = ["Lebaran"];
     $r->{eng_aliases} = [];
