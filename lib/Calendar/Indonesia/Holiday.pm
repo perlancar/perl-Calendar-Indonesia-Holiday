@@ -1388,14 +1388,32 @@ There is a command-line script interface for this module: L<list-id-holidays>.
 
 Workers are normally granted around 12 days of paid leave per year (excluding
 special leaves like maternity, etc). They are free to spend them on whichever
-days they want. The joint leave ("cuti bersama") is a government program since
-2002 to recommend that some of these leave days be spent together nationally on
-certain assigned days, especially adjacent to holidays like Eid Ul-Fitr
-("Lebaran"). It is not mandated (companies can opt to follow it or not,
-depending on their specific situation), but many do follow it anyway, e.g.
-government civil workers, banks, etc. I am marking joint leave days with
-is_joint_leave=1 and is_holiday=0, while the holidays themselves with
-is_holiday=1, so you can differentiate/select both/either one.
+days they want. The joint leave ("cuti bersama") is a government program to
+recommend that some of these leave days be spent together nationally on certain
+assigned days, especially adjacent to holidays like Eid Ul-Fitr ("Lebaran"). It
+is not mandated (companies can opt to follow it or not, depending on their
+specific situation), but many do follow it anyway, e.g. government civil
+workers, banks, etc. I am marking joint leave days with is_joint_leave=1 and
+is_holiday=0, while the holidays themselves with is_holiday=1, so you can
+differentiate/select both/either one.
+
+=head2 When was joint leave established?
+
+Joint leave was first decreed in 2001 [1] for the 2002 & 2003 calendar years.
+The 2001 calendar year does not yet have joint leave days [2]. See also [3].
+Websites that list joint leave days for 2001 or earlier years (example: [4],
+[5]) are incorrect; by 2001 or earlier, these joint leave days had not been
+officially decreed by the government.
+
+[1] https://jdih.kemnaker.go.id/data_wirata/2002-4-4.pdf
+
+[2] https://peraturan.bkpm.go.id/jdih/userfiles/batang/Kepmenag_162_2000.pdf
+
+[3] http://www.wikiapbn.org/cuti-bersama/
+
+[4] https://kalenderindonesia.com/libur/masehi/2001
+
+[5] https://kalenderindonesia.com/libur/masehi/1991
 
 =head2 Holidays before 2002?
 
