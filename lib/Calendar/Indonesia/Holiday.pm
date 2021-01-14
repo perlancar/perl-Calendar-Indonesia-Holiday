@@ -301,6 +301,23 @@ my %year_holidays;
 # decreed ?
 # source: https://id.wikipedia.org/wiki/1999
 {
+    $year_holidays{1998} = [
+        _h_eidulf    ({_expand_dm("30-01")}, {hyear=>1418, day=>1}),
+        _h_eidulf    ({_expand_dm("31-01")}, {hyear=>1418, day=>2}),
+        _h_nyepi     ({_expand_dm("29-03")}, {hyear=>1920}),
+        _h_eidula    ({_expand_dm("07-04")}, {hyear=>1418}),
+        _h_goodfri   ({_expand_dm("10-04")}),
+        _h_hijra     ({_expand_dm("28-04")}, {hyear=>1419}),
+        _h_vesakha   ({_expand_dm("11-05")}, {hyear=>2542}),
+        _h_ascension ({_expand_dm("21-05")}),
+        _h_mawlid    ({_expand_dm("06-07")}, {hyear=>1419}),
+        _h_isramiraj ({_expand_dm("17-11")}, {hyear=>1419}),
+    ];
+}
+
+# decreed ?
+# source: https://id.wikipedia.org/wiki/1999
+{
     $year_holidays{1999} = [
         _h_eidulf    ({_expand_dm("19-01")}, {hyear=>1419, day=>1}),
         _h_eidulf    ({_expand_dm("20-01")}, {hyear=>1419, day=>2}),
