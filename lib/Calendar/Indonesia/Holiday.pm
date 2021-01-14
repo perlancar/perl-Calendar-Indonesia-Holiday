@@ -296,6 +296,54 @@ sub _expand_dm {
     return (day => $1+0, month => $2+0);
 }
 
+sub _uniquify_holidays {
+    my @holidays = @_;
+
+    my %seen; # key=mm-dd (e.g. 12-25), val=[hol1, hol2, ...]
+    for my $h (@holidays) {
+        my $k = sprintf "%02d-%02d", $h->{month}, $h->{day};
+        $seen{$k} //= [];
+        push @{ $seen{$k} }, $h;
+    }
+
+    for my $k (keys %seen) {
+        if (@{ $seen{$k} } == 1) {
+            $seen{$k} = $seen{$k}[0];
+        } else {
+            my $h_mult = {
+                multiple => 1,
+                ind_name => join(", ", map {$_->{ind_name}} @{ $seen{$k} }),
+                eng_name => join(", ", map {$_->{eng_name}} @{ $seen{$k} }),
+                holidays => $seen{$k},
+            };
+            # join all the tags
+            my @tags;
+            for my $h (@{ $seen{$k} }) {
+                next unless $h->{tags};
+                for my $t (@{ $h->{tags} }) {
+                    push @tags, $t unless grep { $_ eq $t } @tags;
+                }
+            }
+            $h_mult->{tags} = \@tags;
+            # join all the properties
+          PROP:
+            for my $prop (keys %{ $seen{$k}[0] }) {
+                next if exists $h_mult->{$prop};
+                my %vals;
+                for my $h (@{ $seen{$k} }) {
+                    next PROP unless defined $h->{$prop};
+                    $vals{ $h->{$prop} }++;
+                }
+                next if keys(%vals) > 1;
+                $h_mult->{$prop} = $seen{$k}[0]{$prop};
+            }
+            $seen{$k} = $h_mult;
+        }
+    }
+
+    map { $seen{$_} } sort keys %seen;
+}
+
 my %year_holidays;
 
 # decreed ?
@@ -1066,11 +1114,12 @@ for my $year ($min_year .. $max_year) {
         $h->{dow}  = $dt->day_of_week;
     }
 
-    push @holidays, (sort {$a->{date} cmp $b->{date}} @hf, @hy);
+    push @holidays, _uniquify_holidays(@hf, @hy);
 }
 
 my $res = gen_read_table_func(
     name => 'list_id_holidays',
+    description => <<'_',
     table_data => \@holidays,
     table_spec => {
         fields => {
@@ -1523,7 +1572,32 @@ officially decreed by the government.
 
 [5] https://kalenderindonesia.com/libur/masehi/1991
 
-=head2 Holidays before 2002?
+=head2 What happens when multiple religious/holidays coincide on a single calendar day?
+
+For example, in 1997, both Hijra and Ascension Day fall on May 8th. When this
+happens, C<ind_name> and C<eng_name> will contain all the names of the holidays
+separated by comma, respectively:
+
+ Tahun Baru Hijriah, Kenaikan Isa Al-Masih
+ Hijra, Ascension Day
+
+All the properties that have the same value will be set in the merged holiday
+data:
+
+ is_holiday => 1,
+ is_joint_leave => 1,
+
+The C<multiple> property will also be set to true:
+
+ multiple => 1,
+
+All the tags will be merged:
+
+ tags => ['religious', 'religion=christianity', 'calendar=lunar']
+
+You can get each holiday's data in the C<holidays> key.
+
+=head2 Data for older holidays?
 
 Will be provided if there is demand and data source.
 
