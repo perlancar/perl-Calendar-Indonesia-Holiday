@@ -1318,9 +1318,7 @@ die "BUG: Can't generate func: $res->[0] - $res->[1]"
 $SPEC{list_id_holidays}{args}{year}{pos}  = 0;
 $SPEC{list_id_holidays}{args}{month}{pos} = 1;
 
-my $AVAILABLE_YEARS =
-    "Contains data from years $min_year to $max_year (joint leave days until\n".
-    "$max_joint_leave_year).";
+my $TEXT_AVAILABLE_YEARS = "Contains data from years $min_year to $max_year";
 
     my $meta = $res->[2]{meta};
 $meta->{summary} = "List Indonesian holidays in calendar";
@@ -1328,7 +1326,7 @@ $meta->{description} = <<"_";
 
 List holidays and joint leave days ("cuti bersama").
 
-$AVAILABLE_YEARS
+$TEXT_AVAILABLE_YEARS
 
 _
 
@@ -1353,7 +1351,7 @@ days*. If work_saturdays is set to true, Saturdays are also counted as working
 days. If observe_joint_leaves is set to false, joint leave days are also counted
 as working days.
 
-$AVAILABLE_YEARS
+$TEXT_AVAILABLE_YEARS
 
 _
     args => {
