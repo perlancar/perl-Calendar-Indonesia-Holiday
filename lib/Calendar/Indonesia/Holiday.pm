@@ -299,19 +299,37 @@ sub _expand_dm {
 my %year_holidays;
 
 # decreed ?
+# source: https://id.wikipedia.org/wiki/1996
+{
+    $year_holidays{1996} = [
+        _h_eidulf    ({_expand_dm("20-02")}, {hyear=>1416, day=>1}),
+        _h_eidulf    ({_expand_dm("21-02")}, {hyear=>1416, day=>2}),
+        _h_nyepi     ({_expand_dm("21-03")}, {hyear=>1918}),
+        _h_goodfri   ({_expand_dm("05-04")}),
+        _h_eidula    ({_expand_dm("28-04")}, {hyear=>1416}),
+        _h_ascension ({_expand_dm("16-05")}),
+        _h_hijra     ({_expand_dm("19-05")}, {hyear=>1417}),
+        _h_vesakha   ({_expand_dm("02-06")}, {hyear=>2540}),
+        _h_mawlid    ({_expand_dm("28-07")}, {hyear=>1417}),
+        _h_isramiraj ({_expand_dm("08-12")}, {hyear=>1417}),
+    ];
+}
+
+# decreed ?
 # source: https://id.wikipedia.org/wiki/1997
 {
     $year_holidays{1997} = [
-        _h_eidulf    ({_expand_dm("30-01")}, {hyear=>1418, day=>1}),
-        _h_eidulf    ({_expand_dm("31-01")}, {hyear=>1418, day=>2}),
-        _h_nyepi     ({_expand_dm("29-03")}, {hyear=>1920}),
-        _h_eidula    ({_expand_dm("07-04")}, {hyear=>1418}),
-        _h_goodfri   ({_expand_dm("10-04")}),
-        _h_hijra     ({_expand_dm("28-04")}, {hyear=>1419}),
-        _h_vesakha   ({_expand_dm("11-05")}, {hyear=>2542}),
-        _h_ascension ({_expand_dm("21-05")}),
-        _h_mawlid    ({_expand_dm("06-07")}, {hyear=>1419}),
-        _h_isramiraj ({_expand_dm("17-11")}, {hyear=>1419}),
+        _h_eidulf    ({_expand_dm("09-02")}, {hyear=>1417, day=>1}),
+        _h_eidulf    ({_expand_dm("10-02")}, {hyear=>1417, day=>2}),
+        _h_goodfri   ({_expand_dm("28-03")}),
+        _h_nyepi     ({_expand_dm("09-04")}, {hyear=>1919}),
+        _h_eidula    ({_expand_dm("18-04")}, {hyear=>1417}),
+        _h_hijra     ({_expand_dm("08-05")}, {hyear=>1418}), # coincide
+        _h_ascension ({_expand_dm("08-05")}),                # coincide
+        _h_vesakha   ({_expand_dm("22-05")}, {hyear=>2541}),
+        _h_lelection ({_expand_dm("29-05")}, {}),
+        _h_mawlid    ({_expand_dm("17-07")}, {hyear=>1418}),
+        _h_isramiraj ({_expand_dm("28-11")}, {hyear=>1418}),
     ];
 }
 
