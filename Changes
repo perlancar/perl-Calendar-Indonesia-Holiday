@@ -1,3 +1,17 @@
+0.334   2021-01-14  Released-By: PERLANCAR; Urgency: medium
+
+        [Enhancements]
+
+	- Handle case where two or more religious/holidays fall on the same
+	  calendar day (e.g. May 8th, 1997).
+
+	[Data]
+
+        - Add holidays for 1990-1999.
+
+	- [bugfix] Forgot to add holidays: legislative election 2004 & 2019.
+
+
 0.333   2021-01-14  Released-By: PERLANCAR; Urgency: medium
 
         [Data]
