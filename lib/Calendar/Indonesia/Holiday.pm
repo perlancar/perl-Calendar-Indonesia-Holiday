@@ -823,6 +823,7 @@ my %year_holidays;
         _h_chnewyear ({_expand_dm("05-02")}, {hyear=>2570}),
         _h_nyepi     ({_expand_dm("07-03")}, {hyear=>1941}),
         _h_isramiraj ({_expand_dm("03-04")}, {hyear=>1440}),
+        _h_lelection ({_expand_dm("17-04")}),
         _h_goodfri   ({_expand_dm("19-04")}),
         # - labor day
         _h_vesakha   ({_expand_dm("19-05")}, {hyear=>2563}),
