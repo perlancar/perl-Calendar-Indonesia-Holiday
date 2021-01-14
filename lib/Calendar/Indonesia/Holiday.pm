@@ -312,8 +312,8 @@ my %year_holidays;
         _h_vesakha   ({_expand_dm("26-05")}, {hyear=>2546}),
         _h_isramiraj ({_expand_dm("04-10")}),
         ($eidulf2002 =
-        _h_eidulf    ({_expand_dm("06-12")}, {hyear=>1424, day=>1})),
-        _h_eidulf    ({_expand_dm("07-12")}, {hyear=>1424, day=>2}),
+        _h_eidulf    ({_expand_dm("06-12")}, {hyear=>1423, day=>1})),
+        _h_eidulf    ({_expand_dm("07-12")}, {hyear=>1423, day=>2}),
 
         _jointlv     ({_expand_dm("05-12")}, {holiday=>$eidulf2002}),
         _jointlv     ({_expand_dm("09-12")}, {holiday=>$eidulf2002}),
@@ -336,8 +336,8 @@ my %year_holidays;
         _h_ascension ({_expand_dm("30-05")}, {original_date=>'2003-05-29'}),
         _h_isramiraj ({_expand_dm("22-09")}, {original_date=>'2003-09-24'}),
         ($eidulf2003 =
-        _h_eidulf    ({_expand_dm("25-11")}, {hyear=>1425, day=>1})),
-        _h_eidulf    ({_expand_dm("26-11")}, {hyear=>1425, day=>2}),
+        _h_eidulf    ({_expand_dm("25-11")}, {hyear=>1424, day=>1})),
+        _h_eidulf    ({_expand_dm("26-11")}, {hyear=>1424, day=>2}),
 
         _jointlv     ({_expand_dm("24-11")}, {holiday=>$eidulf2003}),
         _jointlv     ({_expand_dm("27-11")}, {holiday=>$eidulf2003}),
