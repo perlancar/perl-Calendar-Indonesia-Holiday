@@ -1380,11 +1380,13 @@ There is a command-line script interface for this module: L<list-id-holidays>.
 
 =head2 What is "joint leave"?
 
-Workers are normally granted 12 days of paid leave per year. They are free to
-spend it on whichever days they want. The joint leave ("cuti bersama") is a
-government program of recent years (since 2002) to recommend that some of these
-leave days be spent together nationally on certain days, especially during
-Lebaran (Eid Ul-Fitr). It is not mandated, but many do follow it anyway, e.g.
+Workers are normally granted around 12 days of paid leave per year (excluding
+special leaves like maternity, etc). They are free to spend them on whichever
+days they want. The joint leave ("cuti bersama") is a government program since
+2002 to recommend that some of these leave days be spent together nationally on
+certain assigned days, especially adjacent to holidays like Eid Ul-Fitr
+("Lebaran"). It is not mandated (companies can opt to follow it or not,
+depending on their specific situation), but many do follow it anyway, e.g.
 government civil workers, banks, etc. I am marking joint leave days with
 is_joint_leave=1 and is_holiday=0, while the holidays themselves with
 is_holiday=1, so you can differentiate/select both/either one.
