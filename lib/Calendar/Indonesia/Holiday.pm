@@ -1119,7 +1119,6 @@ for my $year ($min_year .. $max_year) {
 
 my $res = gen_read_table_func(
     name => 'list_id_holidays',
-    description => <<'_',
     table_data => \@holidays,
     table_spec => {
         fields => {
