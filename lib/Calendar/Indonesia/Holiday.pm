@@ -91,6 +91,7 @@ sub _h_chnewyear {
     $r->{ind_aliases} = [];
     $r->{eng_aliases} = [];
     $r->{is_holiday}  = 1;
+    $r->{year_start}  = 2003; # decreed in 2002 by megawati soekarnoputri
     $r->{tags}        = [qw/international calendar=lunar/];
     ($r);
 }
