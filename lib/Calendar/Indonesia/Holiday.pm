@@ -299,6 +299,23 @@ sub _expand_dm {
 my %year_holidays;
 
 # decreed ?
+# source:
+{
+    $year_holidays{2001} = [
+        _h_eidula    ({_expand_dm("05-03")}, {hyear=>1421}),
+        _h_nyepi     ({_expand_dm("25-03")}, {hyear=>1923}),
+        _h_hijra     ({_expand_dm("26-03")}, {hyear=>1422}),
+        _h_goodfri   ({_expand_dm("13-04")}),
+        _h_vesakha   ({_expand_dm("07-05")}, {hyear=>2545}),
+        _h_ascension ({_expand_dm("24-05")}),
+        _h_mawlid    ({_expand_dm("04-06")}, {hyear=>1422}),
+        _h_isramiraj ({_expand_dm("15-10")}),
+        _h_eidulf    ({_expand_dm("16-12")}, {hyear=>1422, day=>1}),
+        _h_eidulf    ({_expand_dm("17-12")}, {hyear=>1422, day=>2}),
+    ];
+}
+
+# decreed ?
 {
     my $eidulf2002;
     $year_holidays{2002} = [
