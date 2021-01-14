@@ -299,7 +299,26 @@ sub _expand_dm {
 my %year_holidays;
 
 # decreed ?
-# source:
+# source: https://id.wikipedia.org/wiki/2000
+{
+    $year_holidays{2000} = [
+        _h_eidulf    ({_expand_dm("08-01")}, {hyear=>1420, day=>1}),
+        _h_eidulf    ({_expand_dm("09-01")}, {hyear=>1420, day=>2}),
+        _h_eidula    ({_expand_dm("16-03")}, {hyear=>1420}),
+        _h_nyepi     ({_expand_dm("04-04")}, {hyear=>1922}),
+        _h_hijra     ({_expand_dm("06-04")}, {hyear=>1421}),
+        _h_goodfri   ({_expand_dm("21-04")}),
+        _h_vesakha   ({_expand_dm("18-05")}, {hyear=>2544}),
+        _h_ascension ({_expand_dm("01-06")}),
+        _h_mawlid    ({_expand_dm("15-06")}, {hyear=>1421}),
+        _h_isramiraj ({_expand_dm("25-10")}, {hyear=>1421}),
+        _h_eidulf    ({_expand_dm("16-12")}, {hyear=>1422, day=>1}),
+        _h_eidulf    ({_expand_dm("17-12")}, {hyear=>1422, day=>2}),
+    ];
+}
+
+# decreed ?
+# source: https://id.wikipedia.org/wiki/2001
 {
     $year_holidays{2001} = [
         _h_eidula    ({_expand_dm("05-03")}, {hyear=>1421}),
@@ -309,7 +328,7 @@ my %year_holidays;
         _h_vesakha   ({_expand_dm("07-05")}, {hyear=>2545}),
         _h_ascension ({_expand_dm("24-05")}),
         _h_mawlid    ({_expand_dm("04-06")}, {hyear=>1422}),
-        _h_isramiraj ({_expand_dm("15-10")}),
+        _h_isramiraj ({_expand_dm("15-10")}, {hyear=>1422}),
         _h_eidulf    ({_expand_dm("16-12")}, {hyear=>1422, day=>1}),
         _h_eidulf    ({_expand_dm("17-12")}, {hyear=>1422, day=>2}),
     ];
@@ -327,7 +346,7 @@ my %year_holidays;
         _h_ascension ({_expand_dm("09-05")}),
         _h_mawlid    ({_expand_dm("25-05")}, {hyear=>1423, original_date=>'2003-05-14'}),
         _h_vesakha   ({_expand_dm("26-05")}, {hyear=>2546}),
-        _h_isramiraj ({_expand_dm("04-10")}),
+        _h_isramiraj ({_expand_dm("04-10")}, {hyear=>1423}),
         ($eidulf2002 =
         _h_eidulf    ({_expand_dm("06-12")}, {hyear=>1423, day=>1})),
         _h_eidulf    ({_expand_dm("07-12")}, {hyear=>1423, day=>2}),
