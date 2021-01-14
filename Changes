@@ -1,3 +1,24 @@
+0.333   2021-01-14  Released-By: PERLANCAR; Urgency: medium
+
+        [Data]
+
+	- Add holidays for 2000 & 2001.
+
+	- [bugfix] Fix Hijra year for Eid Ul Fitr 2002, 2003.
+
+	- Add fixed_date=1 field for holidays that have fixed dates.
+
+	- Add note (in year_start field) that Chinese New Year holiday
+	  began in 2003.
+
+        [Documentation]
+
+	- [doc] Revise/add more explanation to FAQ item on joint leave.
+
+	- [doc] Add FAQ item about when joint leave was first established.
+
+
+
 0.332   2021-01-13  Released-By: PERLANCAR; Urgency: medium
 
 	- [bugfix] is_id_holiday(): Forgot to put Rinci metadata for
