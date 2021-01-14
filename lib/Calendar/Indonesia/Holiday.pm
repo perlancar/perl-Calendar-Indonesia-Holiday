@@ -347,6 +347,110 @@ sub _uniquify_holidays {
 my %year_holidays;
 
 # decreed ?
+# source: https://id.wikipedia.org/wiki/1990
+{
+    $year_holidays{1990} = [
+        _h_isramiraj ({_expand_dm("23-02")}, {hyear=>1410}),
+        _h_nyepi     ({_expand_dm("27-03")}, {hyear=>1912}),
+        _h_goodfri   ({_expand_dm("13-04")}),
+        _h_eidulf    ({_expand_dm("26-04")}, {hyear=>1410, day=>1}),
+        _h_eidulf    ({_expand_dm("27-04")}, {hyear=>1410, day=>2}),
+        _h_vesakha   ({_expand_dm("10-05")}, {hyear=>2534}),
+        _h_ascension ({_expand_dm("24-05")}),
+        _h_eidula    ({_expand_dm("03-07")}, {hyear=>1410}),
+        _h_hijra     ({_expand_dm("23-07")}, {hyear=>1411}),
+        _h_mawlid    ({_expand_dm("01-10")}, {hyear=>1411}),
+    ];
+}
+
+# decreed ?
+# source: https://id.wikipedia.org/wiki/1991
+{
+    $year_holidays{1991} = [
+        _h_isramiraj ({_expand_dm("12-02")}, {hyear=>1411}),
+        _h_nyepi     ({_expand_dm("17-03")}, {hyear=>1913}),
+        _h_goodfri   ({_expand_dm("29-03")}),
+        _h_eidulf    ({_expand_dm("16-04")}, {hyear=>1411, day=>1}),
+        _h_eidulf    ({_expand_dm("17-04")}, {hyear=>1411, day=>2}),
+        _h_ascension ({_expand_dm("09-05")}),
+        _h_vesakha   ({_expand_dm("28-05")}, {hyear=>2535}),
+        _h_eidula    ({_expand_dm("23-06")}, {hyear=>1411}),
+        _h_hijra     ({_expand_dm("13-07")}, {hyear=>1412}),
+        _h_mawlid    ({_expand_dm("21-09")}, {hyear=>1412}),
+    ];
+}
+
+# decreed ?
+# source: https://id.wikipedia.org/wiki/1992
+{
+    $year_holidays{1992} = [
+        _h_isramiraj ({_expand_dm("01-02")}, {hyear=>1412}),
+        _h_nyepi     ({_expand_dm("05-03")}, {hyear=>1914}),
+        _h_eidulf    ({_expand_dm("05-04")}, {hyear=>1412, day=>1}),
+        _h_eidulf    ({_expand_dm("06-04")}, {hyear=>1412, day=>2}),
+        _h_goodfri   ({_expand_dm("17-04")}),
+        _h_vesakha   ({_expand_dm("16-05")}, {hyear=>2536}),
+        _h_ascension ({_expand_dm("28-05")}),
+        _h_lelection ({_expand_dm("09-06")}, {}),
+        _h_eidula    ({_expand_dm("11-06")}, {hyear=>1412}),
+        _h_hijra     ({_expand_dm("02-07")}, {hyear=>1413}),
+        _h_mawlid    ({_expand_dm("09-09")}, {hyear=>1413}),
+    ];
+}
+
+# decreed ?
+# source: https://id.wikipedia.org/wiki/1993
+{
+    $year_holidays{1993} = [
+        _h_isramiraj ({_expand_dm("20-01")}, {hyear=>1413}),
+        _h_nyepi     ({_expand_dm("24-03")}, {hyear=>1915}),
+        _h_eidulf    ({_expand_dm("25-03")}, {hyear=>1413, day=>1}),
+        _h_eidulf    ({_expand_dm("26-03")}, {hyear=>1413, day=>2}),
+        _h_goodfri   ({_expand_dm("09-04")}),
+        _h_vesakha   ({_expand_dm("06-05")}, {hyear=>2537}),
+        _h_ascension ({_expand_dm("20-05")}),
+        _h_eidula    ({_expand_dm("01-06")}, {hyear=>1413}),
+        _h_hijra     ({_expand_dm("21-06")}, {hyear=>1414}),
+        _h_mawlid    ({_expand_dm("30-08")}, {hyear=>1414}),
+    ];
+}
+
+# decreed ?
+# source: https://id.wikipedia.org/wiki/1994
+{
+    $year_holidays{1994} = [
+        _h_isramiraj ({_expand_dm("10-01")}, {hyear=>1414}),
+        _h_eidulf    ({_expand_dm("14-03")}, {hyear=>1414, day=>1}),
+        _h_eidulf    ({_expand_dm("15-03")}, {hyear=>1414, day=>2}),
+        _h_goodfri   ({_expand_dm("01-04")}),
+        _h_nyepi     ({_expand_dm("12-04")}, {hyear=>1916}),
+        _h_ascension ({_expand_dm("12-05")}),
+        _h_eidula    ({_expand_dm("21-05")}, {hyear=>1414}),
+        _h_vesakha   ({_expand_dm("25-05")}, {hyear=>2538}),
+        _h_hijra     ({_expand_dm("11-06")}, {hyear=>1415}),
+        _h_mawlid    ({_expand_dm("20-08")}, {hyear=>1415}),
+        _h_isramiraj ({_expand_dm("30-12")}, {hyear=>1415}),
+    ];
+}
+
+# decreed ?
+# source: https://id.wikipedia.org/wiki/1995
+{
+    $year_holidays{1995} = [
+        _h_eidulf    ({_expand_dm("03-03")}, {hyear=>1415, day=>1}),
+        _h_eidulf    ({_expand_dm("04-03")}, {hyear=>1415, day=>2}),
+        _h_nyepi     ({_expand_dm("01-04")}, {hyear=>1917}),
+        _h_goodfri   ({_expand_dm("14-04")}),
+        _h_eidula    ({_expand_dm("10-05")}, {hyear=>1415}),
+        _h_vesakha   ({_expand_dm("15-05")}, {hyear=>2539}),
+        _h_ascension ({_expand_dm("25-05")}),
+        _h_hijra     ({_expand_dm("31-05")}, {hyear=>1416}),
+        _h_mawlid    ({_expand_dm("09-08")}, {hyear=>1416}),
+        _h_isramiraj ({_expand_dm("20-12")}, {hyear=>1416}),
+    ];
+}
+
+# decreed ?
 # source: https://id.wikipedia.org/wiki/1996
 {
     $year_holidays{1996} = [
