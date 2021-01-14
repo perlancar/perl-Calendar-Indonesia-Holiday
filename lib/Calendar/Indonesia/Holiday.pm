@@ -392,6 +392,7 @@ my %year_holidays;
         _h_eidula    ({_expand_dm("02-02")}, {hyear=>1424, original_date=>'2004-02-01'}),
         _h_hijra     ({_expand_dm("23-02")}, {hyear=>1425, original_date=>'2004-02-01'}),
         _h_nyepi     ({_expand_dm("22-03")}, {hyear=>1926}),
+        _h_lelection ({_expand_dm("05-04")}, {}),
         _h_goodfri   ({_expand_dm("09-04")}),
         _h_mawlid    ({_expand_dm("03-05")}, {original_date=>'2004-05-02'}),
         _h_ascension ({_expand_dm("20-05")}),
