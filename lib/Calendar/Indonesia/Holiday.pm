@@ -299,6 +299,24 @@ sub _expand_dm {
 my %year_holidays;
 
 # decreed ?
+# source: https://id.wikipedia.org/wiki/1999
+{
+    $year_holidays{1999} = [
+        _h_eidulf    ({_expand_dm("19-01")}, {hyear=>1419, day=>1}),
+        _h_eidulf    ({_expand_dm("20-01")}, {hyear=>1419, day=>2}),
+        _h_nyepi     ({_expand_dm("18-03")}, {hyear=>1921}),
+        _h_eidula    ({_expand_dm("28-03")}, {hyear=>1419}),
+        _h_goodfri   ({_expand_dm("02-04")}),
+        _h_hijra     ({_expand_dm("17-04")}, {hyear=>1420}),
+        _h_ascension ({_expand_dm("13-05")}),
+        _h_vesakha   ({_expand_dm("30-05")}, {hyear=>2543}),
+        _h_lelection ({_expand_dm("07-06")}, {}),
+        _h_mawlid    ({_expand_dm("26-06")}, {hyear=>1420}),
+        _h_isramiraj ({_expand_dm("06-11")}, {hyear=>1420}),
+    ];
+}
+
+# decreed ?
 # source: https://id.wikipedia.org/wiki/2000
 {
     $year_holidays{2000} = [
