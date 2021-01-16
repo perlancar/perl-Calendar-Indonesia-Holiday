@@ -1590,6 +1590,8 @@ sub is_idn_holiday {
 1;
 # ABSTRACT:
 
+=for Pod::Coverage ^(.+_id_.+)$
+
 =head1 SYNOPSIS
 
  use Calendar::Indonesia::Holiday qw(
