@@ -1503,6 +1503,11 @@ single YYYY-MM-DD date.
 Will return undef (exit code 2 on CLI) if year is not within range of the
 holiday data.
 
+Note that you can also use `list_idn_holidays` to check whether a `date` (or a
+combination of `day`, `month`, and `year`) is a holiday , but `is_idn_holiday`
+is slightly more efficient, its `include_joint_leave` option is more convenient,
+and it offers a few more options.
+
 _
     args => {
         day        => {schema=>['int*', between=>[1,31]]},
@@ -1642,8 +1647,9 @@ Sample result:
 
 This checks whether 2011-02-16 is a holiday:
 
- my $res = list_idn_holidays(date => '2011-02-16');
- print "2011-02-16 is a holiday\n" if @{$res->[2]};
+ my $res = is_idn_holidays(date => '2011-02-16');
+ # or: my $res = is_idn_holidays(day => 16, month => 2, year => 2011);
+ print "2011-02-16 is a holiday\n" if $res->[2];
 
 This enumerate working days for a certain period:
 
