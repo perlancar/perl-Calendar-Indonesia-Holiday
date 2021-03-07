@@ -1452,7 +1452,7 @@ gen_modified_sub(
 
 $SPEC{list_idn_workdays} = {
     v => 1.1,
-    summary => '',
+    summary => 'List Indonesian workdays (non-holidays) in calendar',
     args => {
         year       => {schema=>'int*'},
         month      => {schema=>['int*', between=>[1, 12]]},
