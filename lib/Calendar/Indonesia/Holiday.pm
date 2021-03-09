@@ -1743,6 +1743,10 @@ Some religious holidays, especially Vesakha, are not determined yet. Joint leave
 days are also usually decreed by the government in as late as October/November
 in the preceding year.
 
+=head2 How to calculate the difference of two dates in number of working days?
+
+Use L</count_idn_workdays>.
+
 
 =head1 SEE ALSO
 
