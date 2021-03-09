@@ -23,12 +23,6 @@ our @EXPORT_OK = (
     'list_idn_workdays',
     'count_idn_workdays',
     'is_idn_holiday',
-
-    # old names, deprecated and will be removed later
-    'list_id_holidays',
-    'list_id_workdays',
-    'count_id_workdays',
-    'is_id_holiday',
 );
 
 our %SPEC;
@@ -1535,22 +1529,6 @@ sub is_idn_holiday {
         'cmdline.exit_code' => ($args{reverse} ? 0 : 1),
         'cmdline.result' => ($args{quiet} ? '' : "Date $date is NOT a holiday"),
     }];
-}
-
-# old deprecated names, undocumented. will be removed in the future
-{
-    no strict 'refs';
-    my %aliases = (
-        list_id_holidays  => 'list_idn_holidays',
-        list_id_workdays  => 'list_idn_workdays',
-        count_id_workdays => 'count_idn_workdays',
-        is_id_holiday     => 'is_idn_holiday',
-    );
-    for my $al (keys %aliases) {
-        $SPEC{$al} = { %{ $SPEC{ $aliases{$al} } } };
-        $SPEC{$al}{'x.no_index'} = 1;
-        *{ $al } = \&{ $aliases{$al} };
-    }
 }
 
 1;
