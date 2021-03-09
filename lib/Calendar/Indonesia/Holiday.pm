@@ -1392,6 +1392,7 @@ _
         start_date => {
             summary => 'Starting date',
             schema  => 'str*',
+            pos => 0,
             description => <<'_',
 
 Defaults to start of current month. Either a string in the form of "YYYY-MM-DD",
@@ -1402,6 +1403,7 @@ _
         end_date => {
             summary => 'End date',
             schema  => 'str*',
+            pos => 1,
             description => <<'_',
 
 Defaults to end of current month. Either a string in the form of "YYYY-MM-DD",
@@ -1416,6 +1418,7 @@ _
         observe_joint_leaves => {
             summary => 'If set to 0, do not observe joint leave as holidays',
             schema  => ['bool' => {default => 1}],
+            cmdline_aliases => {j=>{}},
         },
     },
 };
