@@ -18,17 +18,18 @@ use Perinci::Sub::Util qw(err gen_modified_sub);
 
 require Exporter;
 our @ISA = qw(Exporter);
-our @EXPORT_OK = qw(
-                       list_idn_holidays
-                       enum_idn_workdays
-                       count_idn_workdays
-                       is_idn_holiday
+our @EXPORT_OK = (
+    'list_idn_holidays',
+    'enum_idn_workdays',
+    'count_idn_workdays',
+    'is_idn_holiday',
 
-                       list_id_holidays
-                       enum_id_workdays
-                       count_id_workdays
-                       is_id_holiday
-               );
+    # old names, deprecated and will be removed later
+    'list_id_holidays',
+    'enum_id_workdays',
+    'count_id_workdays',
+    'is_id_holiday',
+);
 
 our %SPEC;
 
