@@ -23,9 +23,22 @@ our @EXPORT_OK = (
     'list_idn_workdays',
     'count_idn_workdays',
     'is_idn_holiday',
+    'is_idn_workday',
 );
 
 our %SPEC;
+
+our %argspecs_date_or_day_month_year = (
+    day        => {schema=>['int*', between=>[1,31]]},
+    month      => {schema=>['int*', between=>[1, 12]]},
+    year       => {schema=>'int*'},
+    date       => {schema=>'str*', pos=>0},
+);
+
+our %argsrels_date_or_day_month_year = (
+    choose_all => [qw/day month year/],
+    req_one => [qw/day date/],
+);
 
 $SPEC{':package'} = {
     v => 1.1,
@@ -343,6 +356,22 @@ sub _uniquify_holidays {
     }
 
     map { $seen{$_} } sort keys %seen;
+}
+
+sub _get_date_day_month_year {
+    my $args = shift;
+
+    my ($y, $m, $d, $date);
+    if (defined $args->{date}) {
+        $args->{date} =~ /\A(\d{4})-(\d{1,2})-(\d{1,2})\z/
+            or return [400, "Invalid date syntax, please use 'YYYY-MM-DD' format"];
+        ($y, $m, $d) = ($1, $2, $3);
+    } else {
+        ($y = $args->{year}) && ($m = $args->{month}) && ($d = $args->{day})
+            or return [400, "Please specify day/month/year or date"];
+    }
+    $date = sprintf "%04d-%02d-%02d", $y, $m, $d;
+    [200, "OK", [$date, $y, $m, $d]];
 }
 
 my %year_holidays;
@@ -1470,10 +1499,7 @@ and it offers a few more options.
 
 _
     args => {
-        day        => {schema=>['int*', between=>[1,31]]},
-        month      => {schema=>['int*', between=>[1, 12]]},
-        year       => {schema=>'int*'},
-        date       => {schema=>'str*', pos=>0},
+        %argspecs_date_or_day_month_year,
 
         include_joint_leave => {schema=>'bool*', cmdline_aliases=>{j=>{}}},
         reverse    => {schema=>'bool*', cmdline_aliases=>{r=>{}}},
@@ -1481,23 +1507,15 @@ _
         detail     => {schema=>'bool*', cmdline_aliases=>{l=>{}}},
     },
     args_rels => {
-        choose_all => [qw/day month year/],
-        req_one => [qw/day date/],
+        %argsrels_date_or_day_month_year,
     },
 };
 sub is_idn_holiday {
     my %args = @_;
 
-    my ($y, $m, $d);
-    if (defined $args{date}) {
-        $args{date} =~ /\A(\d{4})-(\d{1,2})-(\d{1,2})\z/
-            or return [400, "Invalid date syntax, please use 'YYYY-MM-DD' format"];
-        ($y, $m, $d) = ($1, $2, $3);
-    } else {
-        ($y = $args{year}) && ($m = $args{month}) && ($d = $args{day})
-            or return [400, "Please specify day/month/year or date"];
-    }
-    my $date = sprintf "%04d-%02d-%02d", $y, $m, $d;
+    my $res = _get_date_day_month_year(\%args);
+    return $res unless $res->[0] == 200;
+    my ($date, $y, $m, $d) = @{ $res->[2] };
 
     for my $e (@fixed_holidays) {
         next if defined $e->{year_start} && $y < $e->{year_start};
@@ -1530,6 +1548,38 @@ sub is_idn_holiday {
         'cmdline.result' => ($args{quiet} ? '' : "Date $date is NOT a holiday"),
     }];
 }
+
+gen_modified_sub(
+    output_name => 'is_idn_workday',
+    summary     => "Check whether a date is a working day (non-holiday business day)",
+    base_name   => 'count_idn_workdays',
+    modify_meta => sub {
+        my $meta = shift;
+        delete $meta->{args}{start_date};
+        delete $meta->{args}{end_date};
+        $meta->{args}{$_} = $argspecs_date_or_day_month_year{$_}
+            for keys %argspecs_date_or_day_month_year;
+        $meta->{args_rels} = {
+            %argsrels_date_or_day_month_year,
+        };
+    },
+    output_code => sub {
+        my %args = @_;
+
+        my $res = _get_date_day_month_year(\%args);
+        return $res unless $res->[0] == 200;
+        my ($date, $y, $m, $d) = @{ $res->[2] };
+
+        delete $args{date};
+        delete $args{day};
+        delete $args{month};
+        delete $args{year};
+
+        $res = count_idn_workdays(%args, start_date=>$date, end_date=>$date);
+        return $res unless $res->[0] == 200;
+        $res;
+    },
+);
 
 1;
 # ABSTRACT:
@@ -1596,8 +1646,12 @@ Sample result:
 
 This checks whether 2011-02-16 is a holiday:
 
- my $res = is_idn_holidays(date => '2011-02-16');
- # or: my $res = is_idn_holidays(day => 16, month => 2, year => 2011);
+ my $res = is_idn_holiday(date => '2011-02-16');
+ print "2011-02-16 is a holiday\n" if $res->[2];
+
+This checks whether 2021-03-11 is a working day:
+
+ my $res = is_idn_workday(date => '2021-03-11');
  print "2011-02-16 is a holiday\n" if $res->[2];
 
 This lists working days for a certain period:
