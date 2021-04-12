@@ -1164,7 +1164,7 @@ my %year_holidays;
         # - labor day
         _h_ascension ({_expand_dm("13-05")}),
         ($eidulf2021 = _h_eidulf    ({_expand_dm("13-05")}, {hyear=>1442, day=>1})),
-        _h_eidulf    ({_expand_dm("14-05")}, {hyear=>1442, day=>1}),
+        _h_eidulf    ({_expand_dm("14-05")}, {hyear=>1442, day=>2}),
         _h_vesakha   ({_expand_dm("26-05")}, {hyear=>2565}),
         # - pancasila day
         _h_eidula ({_expand_dm("20-07")}, {hyear=>1442}),
