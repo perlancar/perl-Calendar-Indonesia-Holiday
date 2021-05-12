@@ -1345,6 +1345,7 @@ my $res = gen_read_table_func(
 die "BUG: Can't generate func: $res->[0] - $res->[1]"
     unless $res->[0] == 200;
 
+delete $SPEC{list_idn_holidays}{args}{query}{pos};
 $SPEC{list_idn_holidays}{args}{year}{pos}  = 0;
 $SPEC{list_idn_holidays}{args}{month}{pos} = 1;
 
