@@ -1,10 +1,5 @@
 package Calendar::Indonesia::Holiday;
 
-# AUTHORITY
-# DATE
-# DIST
-# VERSION
-
 use 5.010001;
 use strict;
 use warnings;
@@ -17,6 +12,12 @@ use Perinci::Sub::Gen::AccessTable qw(gen_read_table_func);
 use Perinci::Sub::Util qw(err gen_modified_sub);
 
 require Exporter;
+
+# AUTHORITY
+# DATE
+# DIST
+# VERSION
+
 our @ISA = qw(Exporter);
 our @EXPORT_OK = (
     'list_idn_holidays',
@@ -1151,6 +1152,10 @@ my %year_holidays;
 # ref:
 # - https://www.menpan.go.id/site/berita-terkini/cegah-penularan-covid-19-pemerintah-pangkas-cuti-bersama-2021-jadi-2-hari
 # - https://www.kemenkopmk.go.id/sites/default/files/pengumuman/2021-02/SKB%203%20Menteri%20tentang%20Perubahan%20Libnas%20%26%20Cutber%202021%20.pdf
+#
+# revised jun 18, 2021: hijra moved from aug 10 to aug 11, mawlid moved from oct 19 to oct 20, remove christmas/new year joint leave so total reduced from 2 -> 1 (SKB No. 712/2021, 1/2021, 3/2021)
+# ref:
+# - https://www.kemenkopmk.go.id/sites/default/files/pengumuman/2021-06/SKB%203%20Menteri%20tentang%20Perubahan%20kedua%20Libur%20Nasional%20dan%20Cuti%20Bersama%202021.pdf
 
 {
     my $isramiraj2021;
@@ -1168,15 +1173,14 @@ my %year_holidays;
         _h_vesakha   ({_expand_dm("26-05")}, {hyear=>2565}),
         # - pancasila day
         _h_eidula ({_expand_dm("20-07")}, {hyear=>1442}),
-        _h_hijra   ({_expand_dm("10-08")}, {hyear=>1443}),
+        _h_hijra   ({_expand_dm("11-08")}, {hyear=>1443, original_date=>"2021-08-10"}),
         # - independence day
-        _h_mawlid({_expand_dm("19-10")}, {hyear=>1443}),
+        _h_mawlid({_expand_dm("20-10")}, {hyear=>1443, original_date=>"2021-10-19"}),
         # - christmas
     ];
 
     push @{ $year_holidays{2021} }, (
         _jointlv     ({_expand_dm("12-05")}, {holiday=>$eidulf2021}),
-        _jointlv     ({_expand_dm("24-12")}, {holiday=>$christmas}),
     );
 }
 
@@ -1674,6 +1678,12 @@ returns the number of working days in the current month:
 This module provides functions to list Indonesian holidays.
 
 There is a command-line script interface for this module: L<list-id-holidays>.
+
+
+=head1 DEVELOPER NOTES
+
+To mark that a holiday has been moved from its original date, use the
+C<original_date> option.
 
 
 =head1 FAQ
