@@ -1683,7 +1683,15 @@ There is a command-line script interface for this module: L<list-id-holidays>.
 =head1 DEVELOPER NOTES
 
 To mark that a holiday has been moved from its original date, use the
-C<original_date> option.
+C<original_date> option. For example, Mawlid in 2021 has been moved from its
+original date 2021-11-19 (this is the day it is actually observed/commemorated)
+to 2021-11-20 (this is the day the holiday is in effect where offices and public
+places are closed). By adding this option, the summary will reflect this
+information:
+
+ date: 2021-12-20
+ eng_name: Mawlid (commemorated on 2021-12-19)
+ ind_name: Maulid Nabi Muhammad (diperingati 2021-12-19)
 
 
 =head1 FAQ
