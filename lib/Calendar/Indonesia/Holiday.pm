@@ -1675,9 +1675,21 @@ returns the number of working days in the current month:
 
 =head1 DESCRIPTION
 
-This module provides functions to list Indonesian holidays.
+This module provides functions to list Indonesian holidays. There is a
+command-line script interface for this module: L<list-idn-holidays>.
 
-There is a command-line script interface for this module: L<list-idn-holidays>.
+Note: Note that sometimes the holiday (as set by law) falls at a different date
+than the actual religious commemoration date. When you use the C<detail> option,
+the C<original_date> key will show you the actual religious date.
+
+Note: it is also possible that multiple (religious, cultural) holidays fall on
+the same national holiday. An example is May 8, 1997 which is commemorated as
+Hijra 1418H as well as Ascension Day. When this happens, the C<holidays> key
+will contain the details of each religious/cultural holiday.
+
+Caveat: aside from national holidays, some provinces sometimes declare their own
+(e.g. governor election day for East Java province, etc). This is currently not
+yet included in this module.
 
 
 =head1 DEVELOPER NOTES
@@ -1765,13 +1777,5 @@ in the preceding year.
 =head2 How to calculate the difference of two dates in number of working days?
 
 Use L</count_idn_workdays>.
-
-
-=head1 SEE ALSO
-
-This API will also be available on GudangAPI, http://gudangapi.com/
-
-Aside from national holidays, some provinces declare their own (e.g. governor
-election day for East Java province, etc).
 
 =cut
