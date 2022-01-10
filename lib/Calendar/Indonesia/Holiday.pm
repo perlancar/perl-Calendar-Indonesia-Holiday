@@ -375,7 +375,7 @@ sub _get_date_day_month_year {
     [200, "OK", [$date, $y, $m, $d]];
 }
 
-my %year_holidays;
+our %year_holidays;
 
 # decreed ?
 # source: https://id.wikipedia.org/wiki/1990
@@ -1700,7 +1700,10 @@ returns the number of working days in the current month:
 =head1 DESCRIPTION
 
 This module provides functions to list Indonesian holidays. There is a
-command-line script interface for this module: L<list-idn-holidays>.
+command-line script interface for this module: L<list-idn-holidays> and a few
+others distributed in L<App::IndonesianHolidayUtils distribution.
+
+# CODE: require Calendar::Indonesia::Holiday; require Set::IntSpan::Util; print "Calendar years supported: ", Set::IntSpan::Util::intspans2str(keys %Calendar::Indonesia::Holiday::year_holidays), ".\n";
 
 Note: Note that sometimes the holiday (as set by law) falls at a different date
 than the actual religious commemoration date. When you use the C<detail> option,
