@@ -5,6 +5,8 @@
 	- [doc] Document the calendar years supported by this module in the
 	  POD.
 
+        - [doc] Mention App::IndonesianHolidayUtils.
+
 
 0.345   2022-01-10  Released-By: PERLANCAR; Urgency: medium
 
