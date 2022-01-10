@@ -1163,7 +1163,7 @@ my %year_holidays;
     $year_holidays{2021} = [
         # - new year
         _h_chnewyear ({_expand_dm("12-02")}, {hyear=>2572}),
-        ($isramiraj2021 = _h_isramiraj ({_expand_dm("11-03")}, {hyear=>1442})),
+        _h_isramiraj ({_expand_dm("11-03")}, {hyear=>1442}),
         _h_nyepi     ({_expand_dm("14-03")}, {hyear=>1943}),
         _h_goodfri   ({_expand_dm("02-04")}),
         # - labor day
@@ -1172,10 +1172,10 @@ my %year_holidays;
         _h_eidulf    ({_expand_dm("14-05")}, {hyear=>1442, day=>2}),
         _h_vesakha   ({_expand_dm("26-05")}, {hyear=>2565}),
         # - pancasila day
-        _h_eidula ({_expand_dm("20-07")}, {hyear=>1442}),
-        _h_hijra   ({_expand_dm("11-08")}, {hyear=>1443, original_date=>"2021-08-10"}),
+        _h_eidula    ({_expand_dm("20-07")}, {hyear=>1442}),
+        _h_hijra     ({_expand_dm("11-08")}, {hyear=>1443, original_date=>"2021-08-10"}),
         # - independence day
-        _h_mawlid({_expand_dm("20-10")}, {hyear=>1443, original_date=>"2021-10-19"}),
+        _h_mawlid   ({_expand_dm("20-10")}, {hyear=>1443, original_date=>"2021-10-19"}),
         # - christmas
     ];
 
@@ -1184,9 +1184,33 @@ my %year_holidays;
     );
 }
 
-L2022: {
-    # 2022 holidays
-    1;
+# decreed sep 22, 2021 (SKB No 963/2021, 3/2021, 4/2021)
+#
+# ref:
+# - https://www.kemenkopmk.go.id/sites/default/files/pengumuman/2021-09/SKB%20Libnas%20%26%20Cuti%20Bersama%20Tahun%202022.pdf
+{
+    $year_holidays{2022} = [
+        # - new year
+        _h_chnewyear ({_expand_dm("01-02")}, {hyear=>2573}),
+        _h_isramiraj ({_expand_dm("28-02")}, {hyear=>1443}),
+        _h_nyepi     ({_expand_dm("03-03")}, {hyear=>1944}),
+        _h_goodfri   ({_expand_dm("15-04")}),
+        # - labor day
+        _h_eidulf    ({_expand_dm("02-05")}, {hyear=>1443, day=>1}),
+        _h_eidulf    ({_expand_dm("03-05")}, {hyear=>1443, day=>2}),
+        _h_vesakha   ({_expand_dm("16-05")}, {hyear=>2566}),
+        _h_ascension ({_expand_dm("26-05")}),
+        # - pancasila day
+        _h_eidula    ({_expand_dm("09-07")}, {hyear=>1443}),
+        _h_hijra     ({_expand_dm("30-07")}, {hyear=>1444}),
+        # - independence day
+        _h_mawlid({_expand_dm("08-10")}, {hyear=>1444}),
+        # - christmas
+    ];
+
+    # no joint leave days
+    push @{ $year_holidays{2022} }, (
+    );
 }
 
 {
