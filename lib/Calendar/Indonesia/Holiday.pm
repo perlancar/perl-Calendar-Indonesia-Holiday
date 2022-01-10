@@ -1701,7 +1701,7 @@ returns the number of working days in the current month:
 
 This module provides functions to list Indonesian holidays. There is a
 command-line script interface for this module: L<list-idn-holidays> and a few
-others distributed in L<App::IndonesianHolidayUtils distribution.
+others distributed in L<App::IndonesianHolidayUtils> distribution.
 
 # CODE: require Calendar::Indonesia::Holiday; require Set::IntSpan::Util; print "Calendar years supported: ", Set::IntSpan::Util::intspans2str(keys %Calendar::Indonesia::Holiday::year_holidays), ".\n";
 
