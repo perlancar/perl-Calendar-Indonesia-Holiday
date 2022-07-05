@@ -1188,6 +1188,9 @@ our %year_holidays;
 #
 # ref:
 # - https://www.kemenkopmk.go.id/sites/default/files/pengumuman/2021-09/SKB%20Libnas%20%26%20Cuti%20Bersama%20Tahun%202022.pdf
+#
+# Eid Al-Adha is changed from 9 jul to 10 jul, ref:
+# - https://www.kemenag.go.id/read/pemerintah-tetapkan-iduladha-1443-h-jatuh-pada-10-juli-2022
 {
     $year_holidays{2022} = [
         # - new year
@@ -1201,7 +1204,7 @@ our %year_holidays;
         _h_vesakha   ({_expand_dm("16-05")}, {hyear=>2566}),
         _h_ascension ({_expand_dm("26-05")}),
         # - pancasila day
-        _h_eidula    ({_expand_dm("09-07")}, {hyear=>1443}),
+        _h_eidula    ({_expand_dm("10-07")}, {hyear=>1443}),
         _h_hijra     ({_expand_dm("30-07")}, {hyear=>1444}),
         # - independence day
         _h_mawlid({_expand_dm("08-10")}, {hyear=>1444}),
