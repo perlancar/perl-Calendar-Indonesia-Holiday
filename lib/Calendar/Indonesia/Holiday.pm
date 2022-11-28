@@ -1216,9 +1216,42 @@ our %year_holidays;
     );
 }
 
+# decreed oct 11, 2022 (SKB No 1066/2022, 3/2022, 3/2022)
+#
+# ref:
+# - https://www.kemenkopmk.go.id/pemerintah-terapkan-hari-libur-nasional-dan-cuti-bersama-tahun-2023
 {
     # 2023 holidays
-    1;
+    my ($chnewyear2023, $nyepi2023, $eidulf2023, $vesakha2023, $christmas);
+    $year_holidays{2023} = [
+        # - new year
+        ($chnewyear2023 = _h_chnewyear ({_expand_dm("22-01")}, {hyear=>2574})),
+        _h_isramiraj ({_expand_dm("18-02")}, {hyear=>1444}),
+        ($nyepi2023 = _h_nyepi     ({_expand_dm("22-03")}, {hyear=>1945})),
+        _h_goodfri   ({_expand_dm("07-04")}),
+        ($eidulf2023 = _h_eidulf    ({_expand_dm("22-04")}, {hyear=>1444, day=>1})),
+        _h_eidulf    ({_expand_dm("23-04")}, {hyear=>1444, day=>2}),
+        # - labor day
+        _h_ascension ({_expand_dm("18-05")}),
+        # - pancasila day
+        _h_vesakha   ({_expand_dm("04-06")}, {hyear=>2567}),
+        _h_eidula    ({_expand_dm("29-06")}, {hyear=>1444}),
+        _h_hijra     ({_expand_dm("19-07")}, {hyear=>1445}),
+        # - independence day
+        _h_mawlid({_expand_dm("28-09")}, {hyear=>1445}),
+        # - christmas
+    ];
+
+    push @{ $year_holidays{2023} }, (
+        _jointlv     ({_expand_dm("23-01")}, {holiday=>$chnewyear2023}),
+        _jointlv     ({_expand_dm("23-03")}, {holiday=>$nyepi2023}),
+        _jointlv     ({_expand_dm("21-04")}, {holiday=>$eidulf2023}),
+        _jointlv     ({_expand_dm("24-04")}, {holiday=>$eidulf2023}),
+        _jointlv     ({_expand_dm("25-04")}, {holiday=>$eidulf2023}),
+        _jointlv     ({_expand_dm("26-04")}, {holiday=>$eidulf2023}),
+        _jointlv     ({_expand_dm("02-06")}, {holiday=>$vesakha2023}),
+        _jointlv     ({_expand_dm("26-12")}, {holiday=>$christmas}),
+    );
 }
 
 {
