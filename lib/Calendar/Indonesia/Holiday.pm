@@ -1323,7 +1323,6 @@ my $res = gen_read_table_func(
             date => {
                 schema     => 'date*',
                 pos        => 0,
-                searchable => 0,
             },
             day => {
                 schema     => 'int*',
@@ -1346,29 +1345,21 @@ my $res = gen_read_table_func(
                 schema     => 'str*',
                 summary    => 'English name',
                 pos        => 5,
-                filterable => 0,
-                sortable   => 0,
             },
             ind_name => {
                 schema     => 'str*',
                 summary    => 'Indonesian name',
                 pos        => 6,
-                filterable => 0,
-                sortable   => 0,
             },
             eng_aliases => {
                 schema     => ['array*'=>{of=>'str*'}],
                 summary    => 'English other names, if any',
                 pos        => 7,
-                filterable => 0,
-                sortable   => 0,
             },
             ind_aliases => {
                 schema     => ['array*'=>{of=>'str*'}],
                 summary    => 'Indonesian other names, if any',
                 pos        => 8,
-                filterable => 0,
-                sortable   => 0,
             },
             is_holiday => {
                 schema     => 'bool*',
@@ -1383,22 +1374,18 @@ my $res = gen_read_table_func(
             decree_date => {
                 schema     => 'str',
                 pos        => 11,
-                sortable   => 1,
             },
             decree_note => {
                 schema     => 'str',
                 pos        => 12,
-                sortable   => 0,
             },
             note => {
                 schema     => 'str',
                 pos        => 13,
-                sortable   => 0,
             },
             tags => {
                 schema     => 'array*',
                 pos        => 14,
-                sortable   => 0,
             },
         },
         pk => 'date',
@@ -1409,7 +1396,8 @@ my $res = gen_read_table_func(
 die "BUG: Can't generate func: $res->[0] - $res->[1]"
     unless $res->[0] == 200;
 
-delete $SPEC{list_idn_holidays}{args}{query}{pos};
+delete $SPEC{list_idn_holidays}{args}{queries}{pos};
+delete $SPEC{list_idn_holidays}{args}{queries}{slurpy};
 $SPEC{list_idn_holidays}{args}{year}{pos}  = 0;
 $SPEC{list_idn_holidays}{args}{month}{pos} = 1;
 
