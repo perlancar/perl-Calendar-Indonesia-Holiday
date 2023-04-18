@@ -1220,6 +1220,10 @@ our %year_holidays;
 #
 # ref:
 # - https://www.kemenkopmk.go.id/pemerintah-terapkan-hari-libur-nasional-dan-cuti-bersama-tahun-2023
+#
+# superseded mar 29, 2023 (SKB No 327/2023, 1/2023, 1/2023)
+# ref:
+# - https://setkab.go.id/pemerintah-terbitkan-skb-perubahan-libur-nasional-dan-cuti-bersama-2023/
 {
     # 2023 holidays
     my ($chnewyear2023, $nyepi2023, $eidulf2023, $vesakha2023, $christmas);
@@ -1245,10 +1249,11 @@ our %year_holidays;
     push @{ $year_holidays{2023} }, (
         _jointlv     ({_expand_dm("23-01")}, {holiday=>$chnewyear2023}),
         _jointlv     ({_expand_dm("23-03")}, {holiday=>$nyepi2023}),
+        _jointlv     ({_expand_dm("19-04")}, {holiday=>$eidulf2023}),
+        _jointlv     ({_expand_dm("20-04")}, {holiday=>$eidulf2023}),
         _jointlv     ({_expand_dm("21-04")}, {holiday=>$eidulf2023}),
         _jointlv     ({_expand_dm("24-04")}, {holiday=>$eidulf2023}),
         _jointlv     ({_expand_dm("25-04")}, {holiday=>$eidulf2023}),
-        _jointlv     ({_expand_dm("26-04")}, {holiday=>$eidulf2023}),
         _jointlv     ({_expand_dm("02-06")}, {holiday=>$vesakha2023}),
         _jointlv     ({_expand_dm("26-12")}, {holiday=>$christmas}),
     );
