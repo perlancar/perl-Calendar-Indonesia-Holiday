@@ -3,7 +3,6 @@ package Calendar::Indonesia::Holiday;
 use 5.010001;
 use strict;
 use warnings;
-use experimental 'smartmatch';
 #use Log::ger;
 
 use DateTime;
@@ -293,7 +292,7 @@ sub _jointlv {
 # can operate on a single holiday or multiple ones
 sub _make_tentative {
     for my $arg (@_) {
-        push @{ $arg->{tags} }, 'tentative' unless $arg->{tags} ~~ 'tentative';
+        push @{ $arg->{tags} }, 'tentative' unless grep { $_ eq 'tentative' } @{ $arg->{tags} };
     }
     @_;
 }
@@ -1525,7 +1524,7 @@ sub list_idn_workdays {
         next if $dt->day_of_week == 6 && !$work_saturdays;
         last if DateTime->compare($dt, $end_date) > 0;
         my $ymd = $dt->ymd;
-        next if $ymd ~~ @{$res->[2]};
+        next if grep { $_ eq $ymd } @{$res->[2]};
         push @wd, $ymd;
     }
 
