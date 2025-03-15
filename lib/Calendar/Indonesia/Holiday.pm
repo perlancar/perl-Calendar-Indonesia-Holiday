@@ -48,7 +48,10 @@ $SPEC{':package'} = {
 my @fixed_holidays = (
     my $newyear = {
         day        =>  1, month =>  1,
-        ind_name   => "Tahun Baru",
+        ind_name   => sub {
+            my $opts = shift;
+            "Tahun Baru " . $opts->{year} . " Masehi";
+        },
         eng_name   => "New Year",
         tags       => [qw/international/],
         fixed_date => 1,
@@ -102,8 +105,9 @@ sub _add_original_date {
 
 sub _h_chnewyear {
     my ($r, $opts) = @_;
+    $opts //= {};
     $r->{ind_name}    = "Tahun Baru Imlek".
-        ($opts->{hyear} ? " $opts->{hyear}":"");
+        ($opts->{hyear} ? " $opts->{hyear}" . ($opts->{year} && $opts->{year} >= 2024 ? " Kongzili" : ""):"");
     $r->{eng_name}    = "Chinese New Year".
         ($opts->{hyear} ? " $opts->{hyear}":"");
     _add_original_date($r, $opts);
@@ -156,7 +160,9 @@ sub _h_goodfri {
 # since 2024
 sub _h_easter {
     my ($r, $opts) = @_;
-    $r->{ind_name}    = "Paskah";
+    $opts //= {};
+    $r->{ind_name}    = $opts->{year} && $opts->{year} >= 2025 ?
+        "Kebangkitan Yesus Kristus (Paskah)" : "Hari Paskah";
     $r->{eng_name}    = "Easter";
     _add_original_date($r, $opts);
     $r->{ind_aliases} = [];
@@ -182,7 +188,9 @@ sub _h_vesakha {
 
 sub _h_ascension {
     my ($r, $opts) = @_;
-    $r->{ind_name}    = "Kenaikan Isa Al-Masih";
+    $opts //= {};
+    $r->{ind_name}    = $opts->{year} && $opts->{year} >= 2024 ?
+        "Kenaikan Yesus Kristus" : "Kenaikan Isa Al-Masih";
     $r->{eng_name}    = "Ascension Day";
     _add_original_date($r, $opts);
     $r->{ind_aliases} = [];
@@ -1300,7 +1308,7 @@ our %year_holidays;
         ($eidulf2024 = _h_eidulf    ({_expand_dm("10-04")}, {hyear=>1445, day=>1})),
         _h_eidulf    ({_expand_dm("11-04")}, {hyear=>1445, day=>2}),
         # - labor day
-        ($ascension2024 = _h_ascension ({_expand_dm("09-05")})),
+        ($ascension2024 = _h_ascension ({_expand_dm("09-05")}, {year=>2024})),
         _h_vesakha   ({_expand_dm("23-05")}, {hyear=>2568}),
         # - pancasila day
         ($eidula2024 = _h_eidula    ({_expand_dm("17-06")}, {hyear=>1445})),
@@ -1324,10 +1332,47 @@ our %year_holidays;
     );
 }
 
+# decreed oct 14, 2024 (SKB No 1017/2024, 2/2024, 2/2024)
+#
+# ref:
+# - https://www.kemenkopmk.go.id/sites/default/files/pengumuman/2024-10/SKB%203%20Menteri%20Libur%20Nasional%20dan%20Cuti%20Bersama%20Tahun%202025.pdf
 {
     # 2025 holidays
-    #_h_jrelection({_expand_dm("09-12")}, {decree_date => "2025-11-xx"}), # keppres xx/2025, surat edaran menaker xxx.../2020 (2020-12-xx)
-    1;
+    my ($chnewyear2024, $nyepi2024, $eidulf2024, $ascension2024, $eidula2024, $vesakha2024, $christmas);
+    $year_holidays{2024} = [
+        # - new year
+        _h_isramiraj ({_expand_dm("08-02")}, {hyear=>1445}),
+        ($chnewyear2024 = _h_chnewyear ({_expand_dm("10-02")}, {hyear=>2575})),
+        _h_pelection ({_expand_dm("14-02")}, {}),
+        ($nyepi2024 = _h_nyepi     ({_expand_dm("11-03")}, {hyear=>1946})),
+        _h_goodfri   ({_expand_dm("29-03")}),
+        _h_goodfri   ({_expand_dm("29-03")}),
+        _h_easter    ({_expand_dm("31-03")}),
+        ($eidulf2024 = _h_eidulf    ({_expand_dm("10-04")}, {hyear=>1445, day=>1})),
+        _h_eidulf    ({_expand_dm("11-04")}, {hyear=>1445, day=>2}),
+        # - labor day
+        ($ascension2024 = _h_ascension ({_expand_dm("09-05")}, {year=>2025})),
+        _h_vesakha   ({_expand_dm("23-05")}, {hyear=>2568}),
+        # - pancasila day
+        ($eidula2024 = _h_eidula    ({_expand_dm("17-06")}, {hyear=>1445})),
+        _h_hijra     ({_expand_dm("07-07")}, {hyear=>1446}),
+        # - independence day
+        _h_mawlid({_expand_dm("16-09")}, {hyear=>1446}),
+        # - christmas
+    ];
+
+    push @{ $year_holidays{2024} }, (
+        _jointlv     ({_expand_dm("09-02")}, {holiday=>$chnewyear2024}),
+        _jointlv     ({_expand_dm("12-03")}, {holiday=>$nyepi2024}),
+        _jointlv     ({_expand_dm("08-04")}, {holiday=>$eidulf2024}),
+        _jointlv     ({_expand_dm("09-04")}, {holiday=>$eidulf2024}),
+        _jointlv     ({_expand_dm("12-04")}, {holiday=>$eidulf2024}),
+        _jointlv     ({_expand_dm("15-04")}, {holiday=>$eidulf2024}),
+        _jointlv     ({_expand_dm("10-05")}, {holiday=>$ascension2024}),
+        _jointlv     ({_expand_dm("24-05")}, {holiday=>$vesakha2024}),
+        _jointlv     ({_expand_dm("18-06")}, {holiday=>$eidula2024}),
+        _jointlv     ({_expand_dm("26-12")}, {holiday=>$christmas}),
+    );
 }
 
 {
@@ -1354,6 +1399,9 @@ for my $year ($min_year .. $max_year) {
         next if $h0->{year_start} && $year < $h0->{year_start};
         next if $h0->{year_en}    && $year > $h0->{year_end};
         my $h = clone $h0;
+        if (ref $h->{ind_name} eq 'CODE') {
+            $h->{ind_name} = $h->{ind_name}->({year=>$year});
+        }
         push @{$h->{tags}}, "fixed-date";
         $h->{is_holiday}     = 1;
         $h->{is_joint_leave} = 0;
