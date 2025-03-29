@@ -103,11 +103,13 @@ sub _add_original_date {
     }
 }
 
+our $year;
+
 sub _h_chnewyear {
     my ($r, $opts) = @_;
     $opts //= {};
     $r->{ind_name}    = "Tahun Baru Imlek".
-        ($opts->{hyear} ? " $opts->{hyear}" . ($opts->{year} && $opts->{year} >= 2024 ? " Kongzili" : ""):"");
+        ($opts->{hyear} ? " $opts->{hyear}" . ($year && $year >= 2024 ? " Kongzili" : ""):"");
     $r->{eng_name}    = "Chinese New Year".
         ($opts->{hyear} ? " $opts->{hyear}":"");
     _add_original_date($r, $opts);
@@ -161,7 +163,7 @@ sub _h_goodfri {
 sub _h_easter {
     my ($r, $opts) = @_;
     $opts //= {};
-    $r->{ind_name}    = $opts->{year} && $opts->{year} >= 2025 ?
+    $r->{ind_name}    = $year && $year >= 2025 ?
         "Kebangkitan Yesus Kristus (Paskah)" : "Hari Paskah";
     $r->{eng_name}    = "Easter";
     _add_original_date($r, $opts);
@@ -189,7 +191,7 @@ sub _h_vesakha {
 sub _h_ascension {
     my ($r, $opts) = @_;
     $opts //= {};
-    $r->{ind_name}    = $opts->{year} && $opts->{year} >= 2024 ?
+    $r->{ind_name}    = $year && $year >= 2024 ?
         "Kenaikan Yesus Kristus" : "Kenaikan Isa Al-Masih";
     $r->{eng_name}    = "Ascension Day";
     _add_original_date($r, $opts);
@@ -1296,7 +1298,8 @@ our %year_holidays;
 {
     # 2024 holidays
     my ($chnewyear2024, $nyepi2024, $eidulf2024, $ascension2024, $eidula2024, $vesakha2024, $christmas);
-    $year_holidays{2024} = [
+    local $year = 2024;
+    $year_holidays{$year} = [
         # - new year
         _h_isramiraj ({_expand_dm("08-02")}, {hyear=>1445}),
         ($chnewyear2024 = _h_chnewyear ({_expand_dm("10-02")}, {hyear=>2575})),
@@ -1307,7 +1310,7 @@ our %year_holidays;
         ($eidulf2024 = _h_eidulf    ({_expand_dm("10-04")}, {hyear=>1445, day=>1})),
         _h_eidulf    ({_expand_dm("11-04")}, {hyear=>1445, day=>2}),
         # - labor day
-        ($ascension2024 = _h_ascension ({_expand_dm("09-05")}, {year=>2024})),
+        ($ascension2024 = _h_ascension ({_expand_dm("09-05")})),
         _h_vesakha   ({_expand_dm("23-05")}, {hyear=>2568}),
         # - pancasila day
         ($eidula2024 = _h_eidula    ({_expand_dm("17-06")}, {hyear=>1445})),
@@ -1317,7 +1320,7 @@ our %year_holidays;
         # - christmas
     ];
 
-    push @{ $year_holidays{2024} }, (
+    push @{ $year_holidays{$year} }, (
         _jointlv     ({_expand_dm("09-02")}, {holiday=>$chnewyear2024}),
         _jointlv     ({_expand_dm("12-03")}, {holiday=>$nyepi2024}),
         _jointlv     ({_expand_dm("08-04")}, {holiday=>$eidulf2024}),
@@ -1338,7 +1341,8 @@ our %year_holidays;
 {
     # 2025 holidays
     my ($chnewyear2025, $nyepi2025, $eidulf2025, $ascension2025, $eidula2025, $vesakha2025, $christmas);
-    $year_holidays{2025} = [
+    local $year = 2025;
+    $year_holidays{$year} = [
         # - new year
         _h_isramiraj ({_expand_dm("27-01")}, {hyear=>1446}),
         ($chnewyear2025 = _h_chnewyear ({_expand_dm("29-01")}, {hyear=>2576})),
@@ -1349,7 +1353,7 @@ our %year_holidays;
         _h_easter    ({_expand_dm("20-04")}),
         # - labor day
         _h_vesakha   ({_expand_dm("12-05")}, {hyear=>2569}),
-        ($ascension2025 = _h_ascension({_expand_dm("29-05")}, {year=>2025})),
+        ($ascension2025 = _h_ascension({_expand_dm("29-05")})),
         # - pancasila day
         ($eidula2025 = _h_eidula({_expand_dm("06-06")}, {hyear=>1446})),
         _h_hijra     ({_expand_dm("27-06")}, {hyear=>1447}),
@@ -1358,7 +1362,7 @@ our %year_holidays;
         # - christmas
     ];
 
-    push @{ $year_holidays{2025} }, (
+    push @{ $year_holidays{$year} }, (
         _jointlv     ({_expand_dm("28-01")}, {holiday=>$chnewyear2025}),
         _jointlv     ({_expand_dm("28-03")}, {holiday=>$nyepi2025}),
         _jointlv     ({_expand_dm("02-04")}, {holiday=>$eidulf2025}),
