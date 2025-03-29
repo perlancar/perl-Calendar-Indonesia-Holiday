@@ -1341,7 +1341,7 @@ our %year_holidays;
     $year_holidays{2025} = [
         # - new year
         _h_isramiraj ({_expand_dm("27-01")}, {hyear=>1446}),
-        ($chnewyear2025 = _h_chnewyear ({_expand_dm("29-011")}, {hyear=>2576})),
+        ($chnewyear2025 = _h_chnewyear ({_expand_dm("29-01")}, {hyear=>2576})),
         ($nyepi2025 = _h_nyepi({_expand_dm("29-03")}, {hyear=>1947})),
         ($eidulf2025 = _h_eidulf({_expand_dm("31-03")}, {hyear=>1446, day=>1})),
         _h_eidulf    ({_expand_dm("01-04")}, {hyear=>1446, day=>2}),
