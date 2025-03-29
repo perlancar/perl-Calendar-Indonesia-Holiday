@@ -1303,7 +1303,6 @@ our %year_holidays;
         _h_pelection ({_expand_dm("14-02")}, {}),
         ($nyepi2024 = _h_nyepi     ({_expand_dm("11-03")}, {hyear=>1946})),
         _h_goodfri   ({_expand_dm("29-03")}),
-        _h_goodfri   ({_expand_dm("29-03")}),
         _h_easter    ({_expand_dm("31-03")}),
         ($eidulf2024 = _h_eidulf    ({_expand_dm("10-04")}, {hyear=>1445, day=>1})),
         _h_eidulf    ({_expand_dm("11-04")}, {hyear=>1445, day=>2}),
@@ -1338,39 +1337,37 @@ our %year_holidays;
 # - https://www.kemenkopmk.go.id/sites/default/files/pengumuman/2024-10/SKB%203%20Menteri%20Libur%20Nasional%20dan%20Cuti%20Bersama%20Tahun%202025.pdf
 {
     # 2025 holidays
-    my ($chnewyear2024, $nyepi2024, $eidulf2024, $ascension2024, $eidula2024, $vesakha2024, $christmas);
-    $year_holidays{2024} = [
+    my ($chnewyear2025, $nyepi2025, $eidulf2025, $ascension2025, $eidula2025, $vesakha2025, $christmas);
+    $year_holidays{2025} = [
         # - new year
-        _h_isramiraj ({_expand_dm("08-02")}, {hyear=>1445}),
-        ($chnewyear2024 = _h_chnewyear ({_expand_dm("10-02")}, {hyear=>2575})),
-        _h_pelection ({_expand_dm("14-02")}, {}),
-        ($nyepi2024 = _h_nyepi     ({_expand_dm("11-03")}, {hyear=>1946})),
-        _h_goodfri   ({_expand_dm("29-03")}),
-        _h_goodfri   ({_expand_dm("29-03")}),
-        _h_easter    ({_expand_dm("31-03")}),
-        ($eidulf2024 = _h_eidulf    ({_expand_dm("10-04")}, {hyear=>1445, day=>1})),
-        _h_eidulf    ({_expand_dm("11-04")}, {hyear=>1445, day=>2}),
+        _h_isramiraj ({_expand_dm("27-01")}, {hyear=>1446}),
+        ($chnewyear2025 = _h_chnewyear ({_expand_dm("29-011")}, {hyear=>2576})),
+        ($nyepi2025 = _h_nyepi({_expand_dm("29-03")}, {hyear=>1947})),
+        ($eidulf2025 = _h_eidulf({_expand_dm("31-03")}, {hyear=>1446, day=>1})),
+        _h_eidulf    ({_expand_dm("01-04")}, {hyear=>1446, day=>2}),
+        _h_goodfri   ({_expand_dm("18-04")}),
+        _h_easter    ({_expand_dm("20-04")}),
         # - labor day
-        ($ascension2024 = _h_ascension ({_expand_dm("09-05")}, {year=>2025})),
-        _h_vesakha   ({_expand_dm("23-05")}, {hyear=>2568}),
+        _h_vesakha   ({_expand_dm("12-05")}, {hyear=>2569}),
+        ($ascension2025 = _h_ascension({_expand_dm("29-05")}, {year=>2025})),
         # - pancasila day
-        ($eidula2024 = _h_eidula    ({_expand_dm("17-06")}, {hyear=>1445})),
-        _h_hijra     ({_expand_dm("07-07")}, {hyear=>1446}),
+        ($eidula2025 = _h_eidula({_expand_dm("06-06")}, {hyear=>1446})),
+        _h_hijra     ({_expand_dm("27-06")}, {hyear=>1447}),
         # - independence day
-        _h_mawlid({_expand_dm("16-09")}, {hyear=>1446}),
+        _h_mawlid({_expand_dm("05-09")}, {hyear=>1447}),
         # - christmas
     ];
 
-    push @{ $year_holidays{2024} }, (
-        _jointlv     ({_expand_dm("09-02")}, {holiday=>$chnewyear2024}),
-        _jointlv     ({_expand_dm("12-03")}, {holiday=>$nyepi2024}),
-        _jointlv     ({_expand_dm("08-04")}, {holiday=>$eidulf2024}),
-        _jointlv     ({_expand_dm("09-04")}, {holiday=>$eidulf2024}),
-        _jointlv     ({_expand_dm("12-04")}, {holiday=>$eidulf2024}),
-        _jointlv     ({_expand_dm("15-04")}, {holiday=>$eidulf2024}),
-        _jointlv     ({_expand_dm("10-05")}, {holiday=>$ascension2024}),
-        _jointlv     ({_expand_dm("24-05")}, {holiday=>$vesakha2024}),
-        _jointlv     ({_expand_dm("18-06")}, {holiday=>$eidula2024}),
+    push @{ $year_holidays{2025} }, (
+        _jointlv     ({_expand_dm("28-01")}, {holiday=>$chnewyear2025}),
+        _jointlv     ({_expand_dm("28-03")}, {holiday=>$nyepi2025}),
+        _jointlv     ({_expand_dm("02-04")}, {holiday=>$eidulf2025}),
+        _jointlv     ({_expand_dm("03-04")}, {holiday=>$eidulf2025}),
+        _jointlv     ({_expand_dm("04-04")}, {holiday=>$eidulf2025}),
+        _jointlv     ({_expand_dm("07-04")}, {holiday=>$eidulf2025}),
+        _jointlv     ({_expand_dm("13-05")}, {holiday=>$vesakha2025}),
+        _jointlv     ({_expand_dm("30-05")}, {holiday=>$ascension2025}),
+        _jointlv     ({_expand_dm("09-06")}, {holiday=>$eidula2025}),
         _jointlv     ({_expand_dm("26-12")}, {holiday=>$christmas}),
     );
 }
