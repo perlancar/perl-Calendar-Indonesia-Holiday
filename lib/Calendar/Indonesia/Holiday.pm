@@ -1293,7 +1293,6 @@ our %year_holidays;
 # - https://kemenkopmk.go.id/sites/default/files/pengumuman/2023-09/SKB%202024.pdf
 #
 # TODO:
-# - renaming of Isa Almasih to Yesus Kristus
 # - decree reference for election
 {
     # 2024 holidays
@@ -1338,6 +1337,11 @@ our %year_holidays;
 #
 # ref:
 # - https://www.kemenkopmk.go.id/sites/default/files/pengumuman/2024-10/SKB%203%20Menteri%20Libur%20Nasional%20dan%20Cuti%20Bersama%20Tahun%202025.pdf
+#
+# superseded aug 7, 2025 to add 18 agu as additional joint leave day (SKB No 933/2025, 1/2025, 3/2025)
+#
+# ref:
+# - https://www.kemenkopmk.go.id/pemerintah-tetapkan-cuti-bersama-18-agustus-2025-untuk-peringatan-hut-ke-80-ri
 {
     # 2025 holidays
     my ($chnewyear2025, $nyepi2025, $eidulf2025, $ascension2025, $eidula2025, $vesakha2025, $christmas);
@@ -1371,6 +1375,7 @@ our %year_holidays;
         _jointlv     ({_expand_dm("07-04")}, {holiday=>$eidulf2025}),
         _jointlv     ({_expand_dm("13-05")}, {holiday=>$vesakha2025}),
         _jointlv     ({_expand_dm("30-05")}, {holiday=>$ascension2025}),
+        _jointlv     ({_expand_dm("18-07")}, {holiday=>$indep}),
         _jointlv     ({_expand_dm("09-06")}, {holiday=>$eidula2025}),
         _jointlv     ({_expand_dm("26-12")}, {holiday=>$christmas}),
     );
