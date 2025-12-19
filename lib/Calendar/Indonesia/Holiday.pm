@@ -68,7 +68,7 @@ my @fixed_holidays = (
     my $christmas = sub {
         return {
             day        => 25, month => 12,
-            ind_name   => ($year >= 2025 ? "Kelahiran Yesus Kristus" : "Natal"),
+            ind_name   => ($year && ($year >= 2025) ? "Kelahiran Yesus Kristus" : "Natal"),
             eng_name   => "Christmas",
             tags       => [qw/international religious religion=christianity/],
             fixed_date => 1,
